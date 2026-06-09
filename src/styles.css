@@ -1054,7 +1054,6 @@ background: linear-gradient(90deg, rgb(128, 177, 255) 0%, rgb(131, 255, 193) 9.0
 }
 
 .trait-strip {
-  height: 96px;
   margin-top: 18px;
 }
 
@@ -1178,9 +1177,17 @@ background: linear-gradient(90deg, rgb(128, 177, 255) 0%, rgb(131, 255, 193) 9.0
   display: grid;
   aspect-ratio: 1;
   place-items: center;
+  overflow: hidden;
+  background: #ffffff;
   border: 4px solid var(--outline);
   border-radius: 20px;
   box-shadow: var(--hard-shadow);
+}
+
+.reveal-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .reveal-card .material-symbols-outlined {

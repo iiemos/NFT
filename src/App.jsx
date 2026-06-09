@@ -5,32 +5,28 @@ const closeMenuIcon = "https://www.doodles.app/icons/close-menu.svg";
 const menuRopeImage =
   "https://www.doodles.app/_next/image?url=%2Fimages%2Frope.png&w=1920&q=100&dpl=dpl_8Y9GS5ztL2YdAwYZFWtXNUcXiJVB";
 
-const heroImage =
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuBf0CKuOO8FwmzjkeSoOSbKslN9Qrs8jbDjyGPIQJ8gZZ0N08vfwfNKFOEUkPRfZj_GaxXH236z6xijVVgEOY6d2vuPNDIcdFXrFcQlBfAvh7iUYru39GDy-710BlrmuZiqEjEU_QddDrkxOYX8ybg78jQ9HprWEy9GWlTnsdZgSwY-g-iFDAQIYVQ4av0Q5BqxN5BTgxtZWlmopBA0id_K319KM1rYPQAs6cH4TWtrVuMhJz9lRmJamMFPmc1xBcyI3mj9e_WARQ";
-const traitsImage =
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuBCuuShg7kZbPWRZormoWCp1GOMHBp-qr2Iz_ilAnaT0qupLpA9ixV_ytQ--2kZWWN65EOQGhbYKCy9giIe4bt3z-a6AyDMmXtRdVBmVD-PKzPesfYRKrFipznGXwlyn_JE5CWVP-RQquaieK3QLCnsSuRNQy6olpM5KoiyBHNk07C33UoPI97IQ13zYxCc_BboaGgrhygOGnoSohWJMlP3SiZW3ur3lrqNrMIizc2UN6D_ncwZBrjxzrn6BMDScLTGeA7CwLHJQg";
-const mintProgressImage =
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuC5jzfh4hHqZQZ2phu3nABkdZ1L4oEoXTEs9G4xW2lfQkNI4gHUj3rk6-w7PFM6NEX4idQCp2H9BIHH7lD_kJhat0XyFNjNMtwhBJHikBKXxNrf1F_xdiu10SIh9fnTv1eQIcjkAgWgTFr2thRPUyw9WKyaOzW4zZvnpMdRdIBmB6rpT1uq21gcsu4C2AUgZqbSUabprbMmcxxrjnD44D-DT4fVx0Y5920HYNYTNyk4Ni6xnsT1BwoTs1FviFsQIdWriNCDYNzUIw";
+const brandLogoImage = "/images/brand/cigr-logo-black.jpg";
+const brandBannerImage = "/images/brand/cigr-banner.jpg";
+const nftImages = Array.from({ length: 9 }, (_, index) => `/images/nft/nft-${String(index + 1).padStart(2, "0")}.jpg`);
+
+const heroImage = brandLogoImage;
+const traitsImage = nftImages[0];
+const mintProgressImage = brandBannerImage;
 const gashaponImage =
   "https://lh3.googleusercontent.com/aida-public/AB6AXuAtyyYtsB4BNChOt4jNwC-M7ub7kXdF_0rMraddLOyzA34-fuJu_D5y4lvqMtwWHK_GuDymxFnDFsHPqWNdcpsizkqarstEpPHMdswXBy36xuP-6tW1kLYHPXQ71mPHJwrfhd1kQeU80P9UpEmYQWVAs6gfUI34L_epq6deX6E7xGYRBwiFs9BUvSz47enDbt5EMkAJ_DXmekusG7oyEkkVo45_irEoDGeHEZEPbQNZPLh4UnsTEEVnVIGibJdNgz7Wgjda4-4niQ";
-const friendsImage =
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuBSVqOTRypBpd4xnL2X4zMmEreLrOOJ4kvQYukoVZ4BUljxwaozlid1LXQEf8xwkyeN8qHFTMudxumJXZ7Qp6CKnj3K3humMPMmVOBv9RKieqy2DFaT2WHs4nUJlvJ0CeJTdp7mNTWAFwM3w22ZlVgd3zFAladh0FueCvB__eIiV8xSCpEhz0Dt2EsMzUtITWkulVGVIPa3CN2ebZ44weZcFPEgM0U5x1TI1YxiIEK1JzTshnNIhitiS-VSjrLlx6EiPVA_-F17Dw";
+const friendsImage = nftImages[1];
 const reactorImage =
   "https://lh3.googleusercontent.com/aida-public/AB6AXuDIFSbvqMaWRGkJBU0L34N8-nr9d6FD3v4f7KVayWWYW9CFIhi6PRRDEbfPO81aKNhzq1TDxIHXV_juwSQ9QQzgFkNS0LMqrqi9OplUmVYrG7xcU5TY8UVG2v98mBZYpSxPAvhoS7D6BKBWBhuF2Rpoum1uxnP4nsfiY4rLHE495XF2Ev7_RnVbtAfoV__jfHtZW_0qILDxboFcRsfxpXrdFeSNrxPvVDQWmkp6gwML9-orueNVf5WlT4XxXCh1E-upXd1ODAtlmg";
-const doodleTraitImage =
-  "https://lh3.googleusercontent.com/aida/AP1WRLtzdgyyYqRWE_htdkaJcTX1Ja8LGTveuXeB9zMaYHmp7hy23i73TsuBvxu2C5y-7PX1VMLKhn6nsu4twzHBvyiQDylKBiebB83PFD0C8Xhdmxf8zwpWPaSp8Bw-iuKZH5ScTHnLLmMw71ti4PTqHXZu-_KX8DeKW7DuApd1eKh_LusM1oKFX6wSSVuTxDV_8L8N5RXkKxvDVgSoKhQzIOPJNSoDauTk3V9F8yypzNR3RkZYuEIIHf6W";
+const stakedNftImage = nftImages[2];
 const farmHeroImage =
   "https://lh3.googleusercontent.com/aida-public/AB6AXuBHrCU-CTk1VPzA5R47UYOaLUxiJ1vITRszZqtVJIzWNH7pUIGiI-0PHob3K5gNSzEv-bfXY1TJhCKOk0AGTJU57huDQgSh7D58WwzdZtihN-WEK6lzI5ppIJenzC66PqrEo4aYBEVNnomxQvBjW6Uk6r8UhDcpn7Nc7Y4O0ovXF2FAiby7KAPnEQS_NIN6NiJQ6NRDnAvJ-1y1oeItcu03h3njOp6BU8r7DXS7k6lEirPVdF_-tQCONgUJDcFWvfRgVz2seiGAwQ";
-const auctionNftImage =
-  "https://lh3.googleusercontent.com/aida/AP1WRLvuKTJMF0x8YM0k1aO4HcvHw1imOjIaWbZb7-EtpYA6944ag74MY6Tc15zh5mTS2pno1epvVRUuxdugqyFrVRH8GR5mAU9KVIEaC3-epQl3hrJbiokbx3eid2AmRE246EJlDcM386PKNC7hr2CGiqikl2GLkWu81f5FiF16EM12pbq8eL1HrZ-2Ar48CEolsQhCIIazc0JUCWngVZgMEXG4_wQ17ZMF1_DbyXiD3VEZ4HGzZK-tL5RFHg";
+const auctionNftImage = nftImages[3];
 const countdownBombImage =
   "https://lh3.googleusercontent.com/aida-public/AB6AXuAb_aUb7r4lJG20pDFYcyQc1P4JdugkA9LLP78zXZOgfq4Ozf0h38e0h41aiV0Py7HcY0zFLlSShOxJp9S_YiN1we_CH8hZQav_7FgoDWxvos8oWX0h8xTU_cffd3Aq93WYVg7Vwgscn58_R21wQdr5nJvZ63BINLsioMj8mifwLMcHSmvcg96H0ZnOjOBuI6ilQBXM0fh45m6G0ZBqWNV4EqCj-wCCznqAQ6iSoSbXuB9SlMHyxVjP6NoYFdtN5AreJrmhqeNiow";
-const passportAvatar =
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuANZ6VCcZ5udSOUCpLTRgY340WCNUFzmOzvPSLaeOutQHkH5jeamCNgYM-DcckWaFeAJtnHIDVIQt7Ecc4wcGTsyqmu9TPzEyukcHE89PoTFLghlL10nXas0NtBoP_yqzPt2O9GSLLc9v4Gz0OyluhSbozbC-VXpZsIdmeiZB-SIbOnf4LT36OI-WQbPBQDypfA6z47LX7EuHmgxk43nDQzQjLzeXrROk5mlMMcYVuuBQApf_-xFkchREIzyUTIfNnr9a2kCcNc2w";
+const passportAvatar = nftImages[4];
 const passportStamps =
   "https://lh3.googleusercontent.com/aida-public/AB6AXuBOYKpuQuqW63Ehv7DXkEw5yZNKJdNUu8s0AJ62gYyB3Y_JkRQEMWcImaXGWRuDfXHCdkhP4SAHD4CWZPWVZizH0OqvuUAzr4lqKiz6hFUcgJHpRcoR3NIzaygeqT7NGTL4InLjLTb--vP4GJjROpM-Ms8-oSivH6lG66FkxJr0ZwMs1_58Uf2ZRt7m_HwKDaah-Kl1YxekAtGz5RTaimhlxRqbKUMSfcUfOD0BZOQnOk8fibRUzb5-OWOTMg4T_YNLWMsaEuNDuQ";
-const perkImage =
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuDQwPdn1rwbDsBeLu-_Zxpt7jVnZJvPopFGWfw6lTanQ_LXxlwtUqZLxv_mXHe3SFRvqJmAbiQzVM0VKJBKsbTqp-rfuIHkTddvatJ5PwYjsTKwVRDNXKeEo1pHihRHM3TN4jp21QRBqIQmf3gQ7z5PvLujUXREMIBspMFB35sf3KLCucHQkupeOZs9eSvfci6kBcdS_Fjs8oLUeFZOfADqcOmZcy7tt9tWHAS-GgPgGcNUlKFdVuQwJ2NEaOBazI0h4pdJ4T5Ang";
+const perkImage = nftImages[5];
 
 const routes = [
   { id: "home", label: "Home", path: "#/" },
@@ -135,7 +131,7 @@ function Navigation({ currentPage }) {
     <nav className={`nav-shell ${isMenuOpen ? "menu-open" : ""} ${isScrolled || currentPage !== "home" ? "scrolled" : ""}`}>
       <div className="nav-inner">
         <a className="brand" href="#/">
-          DoodleWorlds
+          GigrWorlds
         </a>
         <div className="nav-links">
           {routes.map((item) => (
@@ -219,12 +215,12 @@ function Hero() {
     <section className="hero-section" id="top">
       <div className="hero-copy">
         <div className="status-badge">
-          <span>NOW LIVE ON ETHEREUM</span>
+          <span>NOW LIVE ON SOLANA</span>
         </div>
         <h1>
-          Enter <span>DoodleWorlds</span>
+          Enter <span>GigrWorlds</span>
         </h1>
-        <p>A whimsical collection of 10,000 unique hand-drawn friends on the blockchain. Explore a world where imagination knows no bounds!</p>
+        <p>A vivid collection of 10,000 unique CIGR-inspired NFTs on the blockchain. Explore a world where culture, identity, and collectible art meet.</p>
         <div className="hero-actions">
           <a className="jelly-button mint-button" href="#/mint">
             Mint a Friend
@@ -237,7 +233,7 @@ function Hero() {
 
       <div className="hero-art" style={{ "--x": `${offset.x}px`, "--y": `${offset.y}px` }}>
         <div className="hero-frame">
-          <img alt="Three playful doodle characters" src={heroImage} />
+          <img alt="CIGR brand art" src={heroImage} />
         </div>
         <div className="eco-sticker">
           <Icon>potted_plant</Icon>
@@ -284,9 +280,9 @@ function BentoStats() {
       <div className="bento-grid">
         <article className="ethos-card">
           <div>
-            <h2>The Doodle Ethos</h2>
+            <h2>The Gigr Ethos</h2>
             <p>
-              We're building a community-driven universe where every holder has a say. From global events to exclusive collaborations, your Doodle is your ticket to the future of fun.
+              We're building a community-driven universe where every holder has a say. From global events to exclusive collaborations, your Gigr is your ticket to the future of culture.
             </p>
             <div className="tag-row">
               <span>DAO GOVERNANCE</span>
@@ -312,7 +308,7 @@ function BentoStats() {
             <Icon>token</Icon>
             <div>
               <small>FLOOR PRICE</small>
-              <strong>1.2 ETH</strong>
+              <strong>1.2 SOL</strong>
             </div>
           </div>
           <div className="trend">
@@ -368,21 +364,21 @@ function MintPage() {
     <main className="page-shell mint-page">
       <section className="page-heading">
         <span className="kicker">NFT Mint</span>
-        <h1>Mint Your Doodle</h1>
-        <p>Public mint controls, progress, pricing, and recent reveals converted from the pasted Tailwind page into React.</p>
+        <h1>Mint Your Gigr</h1>
+        <p>Public mint controls, progress, pricing, and recent reveals for the GigrWorlds collection.</p>
       </section>
 
       <section className="mint-grid">
         <aside className="stack">
           <Panel className="white-card">
             <h2>Mint Progress</h2>
-            <img className="mint-progress-image" src={mintProgressImage} alt="Rainbow mint progress bottle" />
+            <img className="mint-progress-image" src={mintProgressImage} alt="CIGR banner" />
             <p className="label">Current supply</p>
             <strong className="display-number green-text">4,321 / 10,000</strong>
           </Panel>
           <Panel className="sky-card rotate-card">
             <h3>The Collection</h3>
-            <p>Each Doodle is generated from over 200 whimsical traits. Join the most imaginative community in the metaverse.</p>
+            <p>Each Gigr is generated from distinctive CIGR culture traits. Join the most imaginative community in the metaverse.</p>
           </Panel>
         </aside>
 
@@ -398,7 +394,7 @@ function MintPage() {
             </button>
           </div>
           <button className="jelly-button primary-action" type="button">
-            Mint Now · {(count * 0.05).toFixed(2)} ETH
+            Mint Now · {(count * 0.05).toFixed(2)} SOL
           </button>
         </section>
 
@@ -409,14 +405,14 @@ function MintPage() {
               <h3>Minting Live</h3>
             </div>
             <ul className="clean-list">
-              <li>0.05 ETH per Doodle</li>
+              <li>0.05 SOL per Gigr</li>
               <li>Max 5 per transaction</li>
               <li>Instant reveal on OpenSea</li>
             </ul>
           </Panel>
           <Panel className="white-card overflow-card">
             <p className="label">Friends forever</p>
-            <img className="rounded-image" src={friendsImage} alt="Three colorful Doodle friends" />
+            <img className="rounded-image" src={friendsImage} alt="CIGR NFT preview" />
           </Panel>
         </aside>
       </section>
@@ -424,9 +420,9 @@ function MintPage() {
       <section className="recent-grid-section">
         <h2>Recent Revelations</h2>
         <div className="reveal-grid">
-          {["gray", "pink", "blue", "green"].map((tone) => (
-            <div className={`reveal-card ${tone}`} key={tone}>
-              <Icon>question_mark</Icon>
+          {nftImages.map((image, index) => (
+            <div className="reveal-card" key={image}>
+              <img src={image} alt={`Gigr NFT #${index + 1}`} />
             </div>
           ))}
         </div>
@@ -456,7 +452,7 @@ function SynthesisPage() {
       <section className="page-heading center">
         <span className="kicker">NFT Synthesis</span>
         <h1>Synthesis Lab</h1>
-        <p>Mix two Doodles to create rare cosmic hybrids in the fusion reactor.</p>
+        <p>Mix two Gigrs to create rare cosmic hybrids in the fusion reactor.</p>
       </section>
 
       <section className="fusion-layout">
@@ -475,15 +471,15 @@ function SynthesisPage() {
         <div className="section-title-row">
           <div>
             <h2>Your Collection</h2>
-            <p>Select two compatible Doodles to fuse.</p>
+            <p>Select two compatible Gigrs to fuse.</p>
           </div>
-          <span className="pill">Balance: 12 Doodles</span>
+          <span className="pill">Balance: 12 Gigrs</span>
         </div>
         <div className="inventory-grid">
-          {inventory.map((item) => (
+          {inventory.map((item, index) => (
             <button className={`inventory-card ${item.tone} ${selected.includes(item.id) ? "selected" : ""}`} key={item.id} type="button" onClick={() => toggleNft(item.id)}>
-              <img className={item.effect} src={doodleTraitImage} alt={`Doodle #${item.id}`} />
-              <span>Doodle #{item.id}</span>
+              <img className={item.effect} src={nftImages[index % nftImages.length]} alt={`Gigr #${item.id}`} />
+              <span>Gigr #{item.id}</span>
               <div className="swatches">
                 {item.traits.map((trait) => (
                   <i className={trait} key={trait}></i>
@@ -503,8 +499,8 @@ function SynthesisSlot({ label, badge, nftId }) {
       <div className="slot-box">
         {nftId ? (
           <>
-            <img src={doodleTraitImage} alt={`Selected Doodle #${nftId}`} />
-            <strong>Doodle #{nftId}</strong>
+            <img src={nftImages[Number(nftId) % nftImages.length]} alt={`Selected Gigr #${nftId}`} />
+            <strong>Gigr #{nftId}</strong>
           </>
         ) : (
           <>
@@ -534,7 +530,7 @@ function StakingPage() {
         <img src={farmHeroImage} alt="Sunny farm staking vacation" />
         <div className="farm-hero-copy">
           <h1>Sunny Farm Vacation</h1>
-          <p>Staking $DOODLE in Paradise</p>
+          <p>Staking $CIGR in Paradise</p>
         </div>
         <div className="apy-sticker">APY: 420%</div>
       </section>
@@ -547,8 +543,8 @@ function StakingPage() {
               <h2>My Staked NFTs</h2>
             </div>
             <strong className="display-number">12</strong>
-            <span className="label">Doodles</span>
-            <img className="trait-strip" src={doodleTraitImage} alt="Recent staked traits" />
+            <span className="label">Gigrs</span>
+            <img className="trait-strip" src={stakedNftImage} alt="Recent staked traits" />
           </Panel>
           <Panel className="blue-card">
             <div className="inline-heading">
@@ -556,7 +552,7 @@ function StakingPage() {
               <h2>Accrued Rewards</h2>
             </div>
             <strong className="display-number">{rewards.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</strong>
-            <span className="label">$DOODLE</span>
+            <span className="label">$CIGR</span>
             <Progress value={65} />
           </Panel>
         </div>
@@ -581,7 +577,7 @@ function StakingPage() {
               ["Total Staked", "4,821"],
               ["Pool Share", "0.24%"],
               ["Time Staked", "14d"],
-              ["Doodles TVL", "$1.2M"],
+              ["Gigrs TVL", "$1.2M"],
             ].map(([label, value]) => (
               <div className="mini-stat" key={label}>
                 <span>{label}</span>
@@ -593,7 +589,7 @@ function StakingPage() {
         <Panel className="pink-card center-card">
           <Icon>auto_awesome</Icon>
           <h3>Power Up!</h3>
-          <p>Holding a Space Doodle boosts your rewards by 1.5x.</p>
+          <p>Holding a Space Gigr boosts your rewards by 1.5x.</p>
         </Panel>
       </section>
     </main>
@@ -619,11 +615,11 @@ function AuctionPage() {
             <div className="star-badge">
               <Icon>star</Icon>
             </div>
-            <img src={auctionNftImage} alt="Doodle Buddies auction NFT" />
+            <img src={auctionNftImage} alt="Gigr auction NFT" />
             <div className="auction-title-row">
               <div>
                 <p className="label">Genesis Series</p>
-                <h1>Doodle Buddies #1337</h1>
+                <h1>Gigr Genesis #1337</h1>
               </div>
               <div className="tag-row compact">
                 <span>Rare</span>
@@ -633,7 +629,7 @@ function AuctionPage() {
           </div>
           <Panel className="story-card">
             <h3>The Story</h3>
-            <p>Meet the first trio of the DoodleWorlds universe. These bouncy explorers carry the essence of pure joy and decentralized creativity.</p>
+            <p>Meet the first reveal from the GigrWorlds universe. This collection carries the essence of CIGR culture and decentralized creativity.</p>
           </Panel>
         </div>
 
@@ -648,19 +644,19 @@ function AuctionPage() {
           <Panel className="white-card">
             <div className="section-title-row">
               <h3>Current Bid</h3>
-              <span className="wallet-name">doodle_king.eth</span>
+              <span className="wallet-name">gigr_king.sol</span>
             </div>
             <div className="bid-display">
               <strong>{bid.toFixed(2)}</strong>
-              <span>ETH</span>
+              <span>SOL</span>
             </div>
           </Panel>
           <div className="bid-actions">
             <button className="jelly-button neutral-button" type="button" onClick={() => setBid((value) => value + 0.1)}>
-              <Icon>add_circle</Icon> +0.1 ETH
+              <Icon>add_circle</Icon> +0.1 SOL
             </button>
             <button className="jelly-button neutral-button" type="button" onClick={() => setBid((value) => value + 0.5)}>
-              <Icon>add_circle</Icon> +0.5 ETH
+              <Icon>add_circle</Icon> +0.5 SOL
             </button>
             <button className="jelly-button claim-button place-bid" type="button">
               Place Your Bid
@@ -670,10 +666,10 @@ function AuctionPage() {
             <h3>
               <Icon>history</Icon> Bid History
             </h3>
-            {["doodle_king.eth", "pastel_lover.eth", "zigzag_vault", "bubble_man"].map((name, index) => (
+            {["gigr_king.sol", "pastel_lover.sol", "zigzag_vault", "bubble_man"].map((name, index) => (
               <div className={`bid-bubble tone-${index}`} key={name}>
                 <span>{name}</span>
-                <strong>{(4.2 - index * 0.1).toFixed(2)} ETH</strong>
+                <strong>{(4.2 - index * 0.1).toFixed(2)} SOL</strong>
               </div>
             ))}
           </Panel>
@@ -722,8 +718,8 @@ function PerksPage() {
             ))}
           </div>
           <div className="perk-list">
-            <PerkCard title="Limited Edition Hoodie" status="Active" text="Exclusive chunky hoodie with embroidered Doodle logo. Worldwide shipping included." action="Claim Now" />
-            <PerkCard title="Series 1 Vinyl Toy" status="Claimed" text="Collectable character toy from the inaugural DoodleWorlds physical collection." isClaimed />
+            <PerkCard title="Limited Edition Hoodie" status="Active" text="Exclusive chunky hoodie with embroidered CIGR logo. Worldwide shipping included." action="Claim Now" />
+            <PerkCard title="Series 1 Vinyl Toy" status="Claimed" text="Collectable character toy from the inaugural GigrWorlds physical collection." isClaimed />
             <PerkCard title="Golden Passport Cover" status="Locked" text="Reach Cosmic Voyager tier to unlock this exclusive digital passport customisation." isLocked />
           </div>
         </section>
@@ -768,9 +764,9 @@ function Footer() {
       <div className="footer-inner">
         <div>
           <a className="brand" href="#/">
-            DoodleWorlds
+            GigrWorlds
           </a>
-          <p>&copy; 2026 DoodleWorlds. All rights reserved.</p>
+          <p>&copy; 2026 GigrWorlds. All rights reserved.</p>
         </div>
         <div className="socials">
           {socials.map((item) => (
