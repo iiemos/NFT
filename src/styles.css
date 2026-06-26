@@ -79,6 +79,49 @@ main {
         background-position: 100% 0
     }
 }
+
+@keyframes download-scroll-up {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(-50%);
+  }
+}
+
+@keyframes download-scroll-down {
+  from {
+    transform: translateY(-50%);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes mint-live-scroll {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(-50%);
+  }
+}
+
+@keyframes synthesis-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(248, 48, 139, 0.34), inset 0 0 34px rgba(251, 194, 2, 0.42);
+    transform: scale(1);
+  }
+
+  50% {
+    box-shadow: 0 0 0 18px rgba(2, 195, 255, 0.14), inset 0 0 54px rgba(248, 48, 139, 0.34);
+    transform: scale(1.04);
+  }
+}
 .material-symbols-outlined {
   font-family: "Material Symbols Outlined";
   font-weight: normal;
@@ -1688,19 +1731,15 @@ background: linear-gradient(90deg, rgb(128, 177, 255) 0%, rgb(131, 255, 193) 9.0
 }
 
 .tone-0 {
-  background: var(--primary-fixed);
 }
 
 .tone-1 {
-  background: var(--tertiary-soft);
 }
 
 .tone-2 {
-  background: var(--secondary-soft);
 }
 
 .tone-3 {
-  background: var(--primary-soft);
 }
 
 .passport-page {
@@ -2092,6 +2131,12 @@ background: linear-gradient(90deg, rgb(128, 177, 255) 0%, rgb(131, 255, 193) 9.0
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .download-column-track {
+    animation: none;
+  }
+}
+
 @media (max-width: 640px) {
   .nav-inner,
   .hero-section,
@@ -2329,5 +2374,3761 @@ background: linear-gradient(90deg, rgb(128, 177, 255) 0%, rgb(131, 255, 193) 9.0
 
   .floating-star {
     display: none;
+  }
+}
+
+:root {
+  --cigr-yellow: #fbc202;
+  --cigr-pink: #f8308b;
+  --cigr-cyan: #02c3ff;
+  --cigr-ink: #000000;
+  --cigr-text: #454545;
+  --cigr-muted: #4c4c4c;
+  --cigr-soft: #f3f3f3;
+  --cigr-gradient: linear-gradient(90deg, var(--cigr-yellow), var(--cigr-pink), var(--cigr-cyan));
+  font-family: "Noto Sans SC", Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+body {
+  background: #ffffff;
+}
+
+.cigr-page {
+  overflow: hidden;
+  background: #ffffff;
+  color: var(--cigr-ink);
+}
+
+.cigr-nav.nav-shell {
+  color: #ffffff;
+  background: transparent;
+  border-bottom: 0;
+  box-shadow: none;
+}
+
+.cigr-nav.nav-shell.scrolled,
+.cigr-nav.nav-shell.menu-open {
+  color: var(--cigr-ink);
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+}
+
+.cigr-nav .nav-inner,
+.cigr-section,
+.partner-inner,
+.distribution-inner,
+.cigr-footer .footer-inner {
+  width: min(100% - 48px, 1200px);
+  margin: 0 auto;
+}
+
+.cigr-nav .nav-inner {
+  min-height: 74px;
+}
+
+.cigr-nav .brand.cigr-brand {
+  display: inline-flex;
+  align-items: center;
+  color: inherit;
+  filter: none;
+}
+
+.cigr-brand img,
+.cigr-footer-logo img {
+  width: 78px;
+  height: auto;
+  object-fit: contain;
+}
+
+.cigr-nav .nav-links {
+  gap: clamp(22px, 3vw, 48px);
+}
+
+.cigr-nav .nav-item {
+  position: relative;
+}
+
+.cigr-nav .nav-links a {
+  color: currentColor;
+  font-size: 15px;
+  font-weight: 800;
+  text-shadow: 0 8px 18px rgba(0, 0, 0, 0.24);
+}
+
+.cigr-nav.scrolled .nav-links a,
+.cigr-nav.menu-open .nav-links a {
+  text-shadow: none;
+}
+
+.cigr-nav .nav-links a::after {
+  background: var(--cigr-gradient);
+}
+
+.nav-dropdown {
+  position: absolute;
+  top: calc(100% + 18px);
+  left: 50%;
+  display: grid;
+  min-width: 118px;
+  gap: 8px;
+  padding: 12px;
+  pointer-events: none;
+  background: rgba(8, 8, 8, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 8px;
+  opacity: 0;
+  transform: translate(-50%, 8px);
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.cigr-nav.scrolled .nav-dropdown,
+.cigr-nav.menu-open .nav-dropdown {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.12);
+}
+
+.nav-item:hover .nav-dropdown,
+.nav-item:focus-within .nav-dropdown {
+  pointer-events: auto;
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.cigr-nav .nav-dropdown a {
+  padding: 8px 10px;
+  border-radius: 6px;
+  font-size: 13px;
+  text-align: center;
+}
+
+.cigr-nav .nav-dropdown a:hover {
+  color: var(--cigr-cyan);
+  background: rgba(16, 189, 232, 0.1);
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.outline-pill {
+  display: inline-flex;
+  min-height: 36px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 18px;
+  color: currentColor;
+  background: rgba(0, 0, 0, 0.14);
+  border: 2px solid transparent;
+  border-radius: 999px;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.55);
+  font-size: 14px;
+  font-weight: 900;
+  transition: transform 180ms ease, background 180ms ease;
+}
+
+.outline-pill::before {
+  position: absolute;
+}
+
+.cigr-nav.scrolled .outline-pill,
+.cigr-nav.menu-open .outline-pill {
+  background:
+    linear-gradient(#ffffff, #ffffff) padding-box,
+    var(--cigr-gradient) border-box;
+  box-shadow: none;
+}
+
+.outline-pill:hover {
+  transform: translateY(-2px);
+}
+
+.cigr-nav .mobile-menu-toggle img {
+  filter: brightness(0) invert(1);
+}
+
+.cigr-nav.scrolled .mobile-menu-toggle img,
+.cigr-nav.menu-open .mobile-menu-toggle img {
+  filter: brightness(0);
+}
+
+.cigr-hero {
+  position: relative;
+  display: grid;
+  min-height: 760px;
+  place-items: center;
+  padding: 130px 24px 88px;
+  overflow: hidden;
+  isolation: isolate;
+  text-align: center;
+}
+
+.cigr-hero::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+}
+
+.cigr-hero-video {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: brightness(0.52);
+  transform: scale(1.01);
+}
+
+.cigr-hero::after {
+  z-index: -1;
+  background: rgba(0, 0, 0, 0.34);
+}
+
+.cigr-hero-inner {
+  width: min(100%, 1020px);
+  margin-top: 44px;
+  color: #ffffff;
+}
+
+.cigr-hero h1,
+.cigr-section h2,
+.about-hero h1,
+.token-section h2 {
+  margin: 0;
+  color: var(--cigr-ink);
+  font-size: clamp(32px, 4vw, 54px);
+  font-weight: 950;
+  line-height: 1.15;
+}
+
+.cigr-hero h1 {
+  color: #ffffff;
+  font-size: clamp(30px, 3.1vw, 44px);
+}
+
+.cigr-hero p {
+  max-width: 820px;
+  margin: 24px auto 0;
+  color: #ffffff;
+  font-size: clamp(16px, 1.7vw, 24px);
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.cigr-hero-actions,
+.download-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 18px;
+  margin-top: 36px;
+}
+
+.cigr-button,
+.download-actions a,
+.magic-link {
+  display: inline-flex;
+  min-height: 42px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 24px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 900;
+  transition: transform 180ms ease, filter 180ms ease;
+}
+
+.cigr-button:hover,
+.download-actions a:hover,
+.magic-link:hover {
+  filter: brightness(1.04);
+  transform: translateY(-2px);
+}
+
+.cigr-button.yellow {
+  color: var(--cigr-ink);
+  background: var(--cigr-yellow);
+}
+
+.cigr-button.pink {
+  color: var(--cigr-ink);
+  background: var(--cigr-pink);
+}
+
+.cigr-section {
+  padding: 76px 0;
+}
+
+.cigr-card-section {
+  padding-top: 96px;
+  padding-bottom: 42px;
+}
+
+.cigr-card-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+  max-width: 770px;
+  margin: 0 auto;
+}
+
+.cigr-nft-card {
+  display: grid;
+  gap: 7px;
+  padding: 10px 10px 14px;
+  background:
+    linear-gradient(#ffffff, #ffffff) padding-box,
+    var(--cigr-gradient) border-box;
+  border: 3px solid transparent;
+  border-radius: 14px;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+.cigr-nft-card img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.cigr-nft-card strong {
+  font-size: 17px;
+}
+
+.cigr-nft-card span {
+  color: #686868;
+  font-family: "Space Mono", monospace;
+  font-size: 12px;
+}
+
+.lifestyle-section {
+  text-align: center;
+}
+
+.lifestyle-grid,
+.mechanism-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+  margin-top: 42px;
+}
+
+.lifestyle-card,
+.mechanism-card {
+  min-height: 154px;
+  padding: 30px 28px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.lifestyle-card img,
+.mechanism-card img,
+.workflow-card img {
+  width: 46px;
+  height: 46px;
+  margin: 0 auto 14px;
+  object-fit: contain;
+}
+
+.lifestyle-card h3,
+.mechanism-card h3,
+.workflow-card h3 {
+  margin: 0 0 12px;
+  font-size: 18px;
+  font-weight: 950;
+}
+
+.lifestyle-card p,
+.mechanism-card p,
+.workflow-card p,
+.future-copy p,
+.culture-copy p,
+.about-hero p,
+.token-section p,
+.expansion-section > p,
+.roadmap-card p {
+  margin: 0;
+  color: var(--cigr-text);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.6;
+}
+
+.lifestyle-card.tone-0,
+.mechanism-card.tone-0 {
+  background: var(--cigr-cyan);
+}
+
+.lifestyle-card.tone-1,
+.mechanism-card.tone-1 {
+  background: var(--cigr-yellow);
+}
+
+.lifestyle-card.tone-2,
+.mechanism-card.tone-2 {
+  background: var(--cigr-pink);
+}
+
+.lifestyle-card.tone-0 p,
+.lifestyle-card.tone-1 p,
+.lifestyle-card.tone-2 p,
+.mechanism-card p {
+  color: #111111;
+}
+
+.rwa-section,
+.culture-section,
+.future-section {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 56px;
+  align-items: center;
+}
+
+.cigr-wordmark {
+  width: min(100%, 470px);
+  margin: 28px 0 18px;
+}
+
+.rwa-doodle {
+  display: grid;
+  min-height: 260px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  align-content: center;
+  padding: 24px;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255, 196, 0, 0.28), transparent 28%),
+    radial-gradient(circle at 78% 22%, rgba(248, 48, 139, 0.28), transparent 30%),
+    radial-gradient(circle at 55% 78%, rgba(16, 189, 232, 0.32), transparent 34%);
+  border-radius: 16px;
+}
+
+.rwa-doodle span {
+  display: grid;
+  min-height: 86px;
+  place-items: center;
+  color: #ffffff;
+  background: var(--cigr-ink);
+  border-radius: 8px;
+  font-weight: 950;
+}
+
+.rwa-doodle-art {
+  width: min(100%, 710px);
+  justify-self: center;
+  object-fit: contain;
+}
+
+.create-section h2,
+.workflow-section h2,
+.expansion-section h2,
+.mechanism-section h2 {
+  text-align: center;
+}
+
+.create-masonry {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 14px;
+  width: min(100%, 1060px);
+  margin: 38px auto 0;
+  overflow: visible;
+}
+
+.create-masonry-column {
+  display: grid;
+  min-width: 0;
+  gap: 14px;
+  align-content: start;
+}
+
+.create-masonry-column.offset-deep {
+  margin-top: 96%;
+}
+
+.create-masonry-column.offset-low {
+  margin-top: 66%;
+}
+
+.create-masonry-column.offset-mid {
+  margin-top: 28%;
+}
+
+.create-masonry-column.offset-top {
+  margin-top: 0;
+}
+
+.create-story-card {
+  position: relative;
+  display: grid;
+  width: 100%;
+  place-items: center;
+  overflow: hidden;
+  margin: 0;
+  color: #ffffff;
+  background: #000000;
+  border-radius: 8px;
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.12);
+  text-align: center;
+  text-decoration: none;
+  isolation: isolate;
+}
+
+.create-story-card.shape-square {
+  aspect-ratio: 1;
+}
+
+.create-story-card.shape-tall {
+  aspect-ratio: 234 / 419;
+}
+
+.create-story-card img,
+.create-story-card video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 220ms ease;
+}
+
+.create-story-card:hover img,
+.create-story-card:hover video,
+.create-story-card.action-card:hover {
+  transform: scale(1.055);
+}
+
+.create-story-card.action-card {
+  padding: 18px;
+  transition: transform 220ms ease, filter 220ms ease;
+}
+
+.create-story-card.action-card::after {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  content: "";
+  opacity: 0.2;
+  background:
+    radial-gradient(circle at 20% 18%, #ffffff 0 2px, transparent 3px),
+    radial-gradient(circle at 74% 76%, #ffffff 0 2px, transparent 3px);
+}
+
+.create-story-card.tone-cyan {
+  color: #00151b;
+  background: var(--cigr-cyan);
+}
+
+.create-story-card.tone-yellow {
+  color: #111111;
+  background: var(--cigr-yellow);
+}
+
+.create-story-card.tone-pink {
+  color: #ffffff;
+  background: var(--cigr-pink);
+}
+
+.create-story-card.tone-black {
+  color: #ffffff;
+  background: #000000;
+}
+
+.create-action-mark {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  font-size: 20px;
+  font-weight: 950;
+  line-height: 1;
+}
+
+.create-story-card strong {
+  max-width: 92%;
+  font-size: clamp(17px, 1.55vw, 24px);
+  font-weight: 950;
+  line-height: 1.12;
+}
+
+.culture-copy {
+  order: 2;
+  text-align: center;
+}
+
+.culture-gallery {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 14px;
+  align-items: end;
+}
+
+.culture-gallery img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.culture-gallery img:nth-child(1),
+.culture-gallery img:nth-child(2),
+.culture-gallery img:nth-child(7) {
+  grid-column: span 2;
+}
+
+.culture-gallery img:nth-child(3),
+.culture-gallery img:nth-child(6) {
+  grid-column: span 3;
+}
+
+.culture-gallery img:nth-child(4),
+.culture-gallery img:nth-child(5) {
+  grid-column: span 3;
+}
+
+.future-section {
+  grid-template-columns: 0.8fr 1.2fr;
+}
+
+.future-copy {
+  max-width: 420px;
+}
+
+.magic-link {
+  gap: 8px;
+  margin-top: 24px;
+  color: #00151b;
+  background: var(--cigr-cyan);
+}
+
+.magic-link img,
+.download-actions img {
+  width: 15px;
+  height: 15px;
+}
+
+.future-slot-grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 12px;
+}
+
+.future-slot-grid span {
+  aspect-ratio: 1.22;
+  background: #918d86;
+  border-radius: 8px;
+}
+
+.download-grid {
+  position: relative;
+  display: grid;
+  height: 243px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  overflow: hidden;
+}
+
+.download-column {
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.download-column-track {
+  animation: download-scroll-up 12s linear infinite;
+  will-change: transform;
+}
+
+.download-column:nth-child(2) .download-column-track,
+.download-column:nth-child(4) .download-column-track {
+  animation-name: download-scroll-down;
+}
+
+.download-column:nth-child(1) .download-column-track {
+  animation-delay: -2s;
+}
+
+.download-column:nth-child(2) .download-column-track {
+  animation-duration: 14s;
+  animation-delay: -7s;
+}
+
+.download-column:nth-child(3) .download-column-track {
+  animation-duration: 13s;
+  animation-delay: -4s;
+}
+
+.download-column:nth-child(4) .download-column-track {
+  animation-delay: -9s;
+}
+
+.download-column-set {
+  display: grid;
+  gap: 12px;
+  padding-bottom: 12px;
+}
+
+.download-column span {
+  display: block;
+  aspect-ratio: 1.22;
+  background: rgba(255, 255, 255, 0.86);
+  border-radius: 8px;
+}
+
+.workflow-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 52px;
+}
+
+.workflow-card {
+  display: grid;
+  justify-items: center;
+  text-align: center;
+}
+
+.workflow-card small {
+  display: inline-flex;
+  padding: 4px 16px;
+  background:
+    linear-gradient(#ffffff, #ffffff) padding-box,
+    var(--cigr-gradient) border-box;
+  border: 2px solid transparent;
+  border-radius: 999px;
+  font-weight: 900;
+}
+
+.download-panel {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 40px;
+  align-items: center;
+  overflow: hidden;
+  background: var(--cigr-gradient);
+  border-radius: 10px;
+}
+.download-content{
+  padding: 44px 60px;
+}
+
+.download-panel h2 {
+  max-width: 360px;
+  margin: 0;
+  color: var(--cigr-ink);
+  font-size: clamp(30px, 3.2vw, 46px);
+  line-height: 1.1;
+}
+
+.download-actions {
+  justify-content: flex-start;
+}
+
+.download-actions a {
+  gap: 8px;
+  min-height: 34px;
+  color: #ffffff;
+  background: #050505;
+}
+
+.about-token-page {
+  padding-top: 112px;
+}
+
+.about-hero {
+  display: grid;
+  justify-items: center;
+  gap: 22px;
+  text-align: center;
+}
+
+.page-label {
+  margin: 0;
+  color: var(--cigr-ink);
+  font-size: clamp(34px, 5vw, 64px);
+  font-weight: 950;
+  line-height: 1.05;
+}
+
+.about-hero h1,
+.token-section h2,
+.roadmap-section h2,
+.expansion-section h2,
+.mechanism-section h2 {
+  font-size: clamp(26px, 3vw, 38px);
+}
+
+.about-hero p {
+  max-width: 680px;
+}
+
+.about-hero img {
+  width: min(100%, 1280px);
+  margin-top: 12px;
+  border-radius: 18px;
+}
+
+.partner-band,
+.distribution-section {
+  margin: 24px 0;
+  padding: 78px 0;
+  background: rgba(16, 189, 232, 0.42);
+}
+
+.partner-inner {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 42px;
+  align-items: center;
+}
+
+.partner-inner h2 {
+  margin: 0;
+  font-size: clamp(28px, 3vw, 40px);
+}
+
+.partner-cards,
+.token-issue-grid,
+.expansion-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.partner-cards article {
+  display: grid;
+  min-height: 164px;
+  align-content: center;
+  justify-items: center;
+  gap: 18px;
+  padding: 28px 34px;
+  background: #ffffff;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.partner-cards img {
+  width: min(100%, 310px);
+  max-height: 82px;
+  object-fit: contain;
+}
+
+.partner-cards p {
+  margin: 0;
+  color: var(--cigr-text);
+  font-weight: 700;
+  line-height: 1.55;
+}
+
+.roadmap-section {
+  position: relative;
+}
+
+.roadmap-line {
+  height: 4px;
+  margin: 42px 0 -32px;
+  background: var(--cigr-gradient);
+}
+
+.roadmap-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.roadmap-card {
+  display: grid;
+  align-content: start;
+  min-height: 214px;
+  gap: 12px;
+  padding-top: 10px;
+}
+
+.roadmap-card small {
+  font-weight: 950;
+}
+
+.roadmap-card h3 {
+  min-height: 44px;
+  margin: 0;
+  font-size: 17px;
+}
+
+.roadmap-card button {
+  justify-self: start;
+  min-height: 30px;
+  padding: 0 18px;
+  background: var(--cigr-gradient);
+  border: 0;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 950;
+}
+
+.roadmap-card p {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 220ms ease, opacity 220ms ease;
+}
+
+.roadmap-card.open p {
+  max-height: 200px;
+  opacity: 1;
+}
+
+.expansion-section {
+  text-align: center;
+}
+
+.expansion-section > p {
+  max-width: 640px;
+  margin: 14px auto 42px;
+}
+
+.expansion-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.expansion-grid img {
+  width: 100%;
+  aspect-ratio: 0.82;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.token-section {
+  width: min(100% - 48px, 980px);
+  margin: 0 auto;
+  padding: 96px 0 76px;
+  text-align: center;
+}
+
+.token-issue-grid {
+  margin: 44px 0 22px;
+}
+
+.token-issue {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 24px;
+  align-items: center;
+  min-height: 126px;
+  padding: 22px 36px;
+  border-radius: 12px;
+  text-align: left;
+}
+
+.token-issue.pink {
+  background: var(--cigr-pink);
+}
+
+.token-issue.yellow {
+  background: var(--cigr-yellow);
+}
+
+.token-issue img,
+.token-issue .solana-logo {
+  width: 100px;
+}
+
+.token-issue-coins {
+  width: 112px;
+}
+
+.token-issue > div {
+  padding-left: 24px;
+  border-left: 1px solid rgba(255, 255, 255, 0.45);
+}
+
+.token-issue.yellow > div {
+  border-left-color: rgba(0, 0, 0, 0.22);
+}
+
+.token-issue strong,
+.token-issue span {
+  display: block;
+  font-size: 18px;
+  font-weight: 950;
+}
+
+.solana-logo {
+  height: auto;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.18));
+}
+
+.distribution-section {
+  background: #eeeeee;
+}
+
+.distribution-inner {
+  display: grid;
+  grid-template-columns: 0.9fr 260px 1fr;
+  gap: 56px;
+  align-items: center;
+}
+
+.distribution-inner h2 {
+  margin: 0 0 58px;
+  font-size: clamp(28px, 3vw, 40px);
+}
+
+.donut-chart {
+  width: 260px;
+  aspect-ratio: 1;
+  border-radius: 999px;
+  background: conic-gradient(var(--cigr-cyan) 0 90%, var(--cigr-yellow) 90% 100%);
+  position: relative;
+}
+
+.donut-chart::before {
+  position: absolute;
+  inset: 54px;
+  content: "";
+  background: #eeeeee;
+  border-radius: inherit;
+}
+
+.allocation-note {
+  display: grid;
+  gap: 8px;
+}
+
+.allocation-note strong {
+  font-size: 34px;
+  line-height: 1;
+}
+
+.allocation-note span {
+  font-size: 20px;
+  font-weight: 950;
+}
+
+.allocation-note p {
+  margin: 0;
+  color: var(--cigr-text);
+  font-weight: 700;
+  line-height: 1.55;
+}
+
+.mechanism-section {
+  padding-bottom: 112px;
+}
+
+.feature-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 0.88fr) minmax(360px, 1.12fr);
+  gap: 60px;
+  align-items: center;
+  padding-top: 142px;
+}
+
+.feature-hero h1,
+.brand-kit-hero h1 {
+  max-width: 760px;
+  margin: 0;
+  font-size: clamp(38px, 5vw, 70px);
+  font-weight: 950;
+  line-height: 1.04;
+}
+
+.feature-hero p,
+.brand-kit-hero > p,
+.section-heading-row p,
+.utility-card p,
+.event-list p,
+.nft-flow-grid p,
+.usage-grid p {
+  margin: 0;
+  color: var(--cigr-text);
+  font-size: 15px;
+  font-weight: 750;
+  line-height: 1.65;
+}
+
+.eyebrow {
+  display: inline-flex;
+  margin: 0 0 18px;
+  padding: 6px 16px;
+  background:
+    linear-gradient(#ffffff, #ffffff) padding-box,
+    var(--cigr-gradient) border-box;
+  border: 2px solid transparent;
+  border-radius: 999px;
+  color: var(--cigr-ink);
+  font-size: 13px;
+  font-weight: 950;
+  text-transform: uppercase;
+}
+
+.feature-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 30px;
+}
+
+.nft-hero-stack {
+  position: relative;
+  display: grid;
+  min-height: 520px;
+  place-items: center;
+}
+
+.nft-stack-card {
+  position: absolute;
+  display: grid;
+  width: 230px;
+  gap: 8px;
+  padding: 12px 12px 16px;
+  background:
+    linear-gradient(#ffffff, #ffffff) padding-box,
+    var(--cigr-gradient) border-box;
+  border: 3px solid transparent;
+  border-radius: 16px;
+  box-shadow: 0 22px 42px rgba(0, 0, 0, 0.14);
+  text-align: center;
+}
+
+.nft-stack-card img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.nft-stack-card strong {
+  font-size: 18px;
+}
+
+.nft-stack-card span {
+  color: #686868;
+  font-family: "Space Mono", monospace;
+  font-size: 12px;
+}
+
+.nft-stack-card.card-0 {
+  top: 18px;
+  left: 3%;
+  transform: rotate(-7deg);
+}
+
+.nft-stack-card.card-1 {
+  top: 0;
+  right: 10%;
+  transform: rotate(5deg);
+}
+
+.nft-stack-card.card-2 {
+  bottom: 18px;
+  left: 18%;
+  transform: rotate(4deg);
+}
+
+.nft-stack-card.card-3 {
+  right: 0;
+  bottom: 46px;
+  transform: rotate(-4deg);
+}
+
+.utility-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+  margin-top: 38px;
+}
+
+.utility-card {
+  min-height: 230px;
+  padding: 34px 30px;
+  border-radius: 14px;
+  text-align: center;
+}
+
+.utility-card img {
+  width: 52px;
+  height: 52px;
+  margin: 0 auto 16px;
+  object-fit: contain;
+}
+
+.utility-card h3 {
+  margin: 0 0 12px;
+  font-size: 22px;
+  font-weight: 950;
+}
+
+.utility-card.tone-0 {
+  background: var(--cigr-cyan);
+}
+
+.utility-card.tone-1 {
+  background: var(--cigr-yellow);
+}
+
+.utility-card.tone-2 {
+  background: var(--cigr-pink);
+}
+
+.utility-card p {
+  color: #111111;
+}
+
+.section-heading-row {
+  display: grid;
+  grid-template-columns: minmax(240px, 0.8fr) minmax(280px, 1fr);
+  gap: 32px;
+  align-items: end;
+  margin-bottom: 34px;
+}
+
+.section-heading-row h2 {
+  margin: 0;
+}
+
+.nft-series-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.series-card {
+  display: grid;
+  overflow: hidden;
+  background:
+    linear-gradient(#ffffff, #ffffff) padding-box,
+    var(--cigr-gradient) border-box;
+  border: 3px solid transparent;
+  border-radius: 16px;
+}
+
+.series-card img {
+  width: 100%;
+  aspect-ratio: 0.9;
+  object-fit: cover;
+}
+
+.series-card div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px;
+}
+
+.series-card h3 {
+  margin: 0;
+  font-size: 19px;
+}
+
+.series-card span {
+  color: #747474;
+  font-family: "Space Mono", monospace;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.nft-flow-section {
+  padding-bottom: 120px;
+}
+
+.nft-flow-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+  margin-top: 42px;
+  border-top: 4px solid transparent;
+  border-image: var(--cigr-gradient) 1;
+}
+
+.nft-flow-grid article {
+  padding: 28px 24px 0;
+}
+
+.nft-flow-grid strong {
+  display: inline-grid;
+  width: 46px;
+  height: 46px;
+  place-items: center;
+  background: var(--cigr-gradient);
+  border-radius: 999px;
+  font-weight: 950;
+}
+
+.nft-flow-grid h3 {
+  margin: 18px 0 10px;
+  font-size: 22px;
+}
+
+.club-visual {
+  position: relative;
+  min-height: 500px;
+}
+
+.club-visual > img {
+  width: min(100%, 430px);
+  margin-left: auto;
+  border-radius: 22px;
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.18);
+}
+
+.club-stat-panel {
+  position: absolute;
+  left: 0;
+  bottom: 20px;
+  display: grid;
+  width: min(100%, 430px);
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  padding: 18px;
+  background: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.16);
+}
+
+.club-stat-panel div {
+  display: grid;
+  gap: 4px;
+  padding: 12px;
+  background: var(--cigr-soft);
+  border-radius: 12px;
+  text-align: center;
+}
+
+.club-stat-panel strong {
+  font-size: 26px;
+  line-height: 1;
+}
+
+.club-stat-panel span {
+  color: #666666;
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.event-list {
+  display: grid;
+  gap: 16px;
+}
+
+.event-list article {
+  display: grid;
+  grid-template-columns: minmax(160px, 0.7fr) minmax(110px, 0.4fr) minmax(260px, 1fr);
+  gap: 18px;
+  align-items: center;
+  padding: 22px 26px;
+  background:
+    linear-gradient(#ffffff, #ffffff) padding-box,
+    var(--cigr-gradient) border-box;
+  border: 2px solid transparent;
+  border-radius: 14px;
+}
+
+.event-list strong {
+  font-size: 20px;
+  font-weight: 950;
+}
+
+.event-list span {
+  justify-self: start;
+  padding: 6px 12px;
+  background: var(--cigr-ink);
+  border-radius: 999px;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.brand-kit-page {
+  padding-top: 112px;
+}
+
+.brand-kit-hero {
+  display: grid;
+  justify-items: center;
+  gap: 18px;
+  text-align: center;
+}
+
+.brand-kit-hero > p {
+  max-width: 720px;
+}
+
+.brand-logo-showcase {
+  display: grid;
+  width: min(100%, 900px);
+  grid-template-columns: 0.75fr 1.25fr;
+  gap: 20px;
+  margin-top: 36px;
+}
+
+.brand-logo-showcase img {
+  width: 100%;
+  height: 260px;
+  object-fit: contain;
+  padding: 34px;
+  background:
+    linear-gradient(#ffffff, #ffffff) padding-box,
+    var(--cigr-gradient) border-box;
+  border: 3px solid transparent;
+  border-radius: 18px;
+}
+
+.brand-color-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 34px;
+}
+
+.brand-color-grid article {
+  display: grid;
+  gap: 12px;
+  padding: 14px;
+  background: #ffffff;
+  border: 1px solid #ececec;
+  border-radius: 14px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+}
+
+.brand-color-grid span {
+  min-height: 128px;
+  border-radius: 10px;
+}
+
+.brand-color-grid strong {
+  font-size: 16px;
+}
+
+.brand-color-grid code {
+  color: var(--cigr-text);
+  font-family: "Space Mono", monospace;
+  font-weight: 850;
+}
+
+.brand-asset-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.brand-asset-grid article {
+  display: grid;
+  gap: 14px;
+  padding: 16px;
+  background: #ffffff;
+  border: 1px solid #eeeeee;
+  border-radius: 16px;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.08);
+}
+
+.asset-preview {
+  display: grid;
+  height: 160px;
+  place-items: center;
+  padding: 18px;
+  background: var(--cigr-soft);
+  border-radius: 12px;
+}
+
+.asset-preview img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.brand-asset-grid h3 {
+  margin: 0;
+  font-size: 17px;
+}
+
+.brand-asset-grid span {
+  color: #747474;
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.brand-asset-grid a {
+  display: inline-flex;
+  min-height: 36px;
+  align-items: center;
+  justify-content: center;
+  background: var(--cigr-ink);
+  border-radius: 999px;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.usage-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  margin-top: 34px;
+}
+
+.usage-grid article {
+  padding: 28px;
+  background: var(--cigr-soft);
+  border-radius: 14px;
+}
+
+.usage-grid strong {
+  display: block;
+  margin-bottom: 12px;
+  font-size: 20px;
+  font-weight: 950;
+}
+
+.figma-page {
+  padding-top: 112px;
+}
+
+.figma-page .cigr-section,
+.mint-design-section {
+  width: min(100% - 48px, 980px);
+}
+
+.figma-page .cigr-section {
+  padding: 38px 0;
+}
+
+.figma-sheet.compact {
+  padding-top: 24px;
+}
+
+.figma-page-title {
+  margin: 0 0 54px;
+  color: var(--cigr-ink);
+  font-size: clamp(38px, 5vw, 58px);
+  font-weight: 950;
+  line-height: 1.05;
+  text-align: center;
+}
+
+.figma-sheet h2,
+.mint-design-section h2,
+.club-house-band h2 {
+  margin: 0;
+  color: var(--cigr-ink);
+  font-size: clamp(24px, 2.8vw, 34px);
+  font-weight: 950;
+  line-height: 1.18;
+}
+
+.figma-sheet p,
+.mint-design-section p,
+.club-house-band p {
+  margin: 0;
+  color: #3f3f3f;
+  font-size: 14px;
+  font-weight: 650;
+  line-height: 1.65;
+}
+
+.nft-story {
+  display: grid;
+  justify-items: center;
+  gap: 14px;
+  text-align: center;
+}
+
+.nft-story p {
+  max-width: 620px;
+}
+
+.nft-story-banner {
+  width: min(100%, 740px);
+  aspect-ratio: 4.5;
+  margin-top: 18px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.nft-card-profile {
+  display: grid;
+  grid-template-columns: 28px minmax(160px, 250px) minmax(0, 1fr);
+  gap: 20px;
+  align-items: center;
+  width: min(100%, 680px);
+  margin: 44px auto 0;
+}
+
+.nft-profile-dots {
+  display: grid;
+  gap: 12px;
+}
+
+.nft-profile-dots button {
+  position: relative;
+  display: grid;
+  width: 28px;
+  height: 28px;
+  place-items: center;
+  padding: 0;
+  overflow: hidden;
+  background: #ffffff;
+  border: 2px solid transparent;
+  border-radius: 999px;
+  transition: border-color 180ms ease, transform 180ms ease;
+}
+
+.nft-profile-dots button::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background: rgba(0, 0, 0, 0.58);
+  transition: opacity 180ms ease;
+}
+
+.nft-profile-dots button:hover,
+.nft-profile-dots button.active {
+  border-color: var(--cigr-cyan);
+  transform: scale(1.08);
+}
+
+.nft-profile-dots button:hover::after,
+.nft-profile-dots button.active::after {
+  opacity: 0;
+}
+
+.nft-profile-dots img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.nft-card-profile > img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.nft-profile-copy {
+  display: grid;
+  gap: 10px;
+}
+
+.nft-profile-copy h3 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 950;
+}
+
+.nft-profile-copy strong {
+  font-size: 13px;
+}
+
+.nft-profile-copy p {
+  padding: 16px;
+  background: #f2f2f2;
+  border-radius: 6px;
+}
+
+.nft-trait-strip {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.nft-trait-strip img,
+.nft-trait-strip span {
+  display: grid;
+  width: 100%;
+  height: 58px;
+  place-items: center;
+  object-fit: contain;
+  padding: 8px;
+  background: #f6f6f6;
+  border-radius: 6px;
+  color: #666666;
+  font-size: 28px;
+  font-weight: 950;
+}
+
+.nft-yellow-band {
+  margin: 24px 0;
+  padding: 48px 0;
+  background:
+    linear-gradient(rgba(255, 220, 68, 0.58), rgba(255, 220, 68, 0.58)),
+    url("/images/cigr/design/nft/yellow-bg.jpg") center / cover;
+}
+
+.nft-yellow-band .cigr-section {
+  width: min(100% - 48px, 980px);
+  padding: 0;
+}
+
+.nft-access-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 24px;
+}
+
+.nft-access-grid a {
+  display: grid;
+  gap: 8px;
+  padding: 10px;
+  background: #ffffff;
+  border-radius: 9px;
+  box-shadow: 0 12px 22px rgba(0, 0, 0, 0.08);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.nft-access-grid a:hover {
+  box-shadow: 0 18px 28px rgba(0, 0, 0, 0.12);
+  transform: translateY(-4px);
+}
+
+.nft-access-grid img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 7px;
+}
+
+.nft-access-grid div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.nft-access-grid strong {
+  font-size: 12px;
+  font-weight: 950;
+}
+
+.nft-access-grid span {
+  padding: 3px 7px;
+  background: var(--cigr-gradient);
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 950;
+  white-space: nowrap;
+}
+
+.nft-access-grid span.soon {
+  color: #ffffff;
+  background: #1a1a1a;
+}
+
+.nft-perk-pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 52px;
+  margin-top: 28px;
+}
+
+.nft-perk-pair article {
+  display: grid;
+  gap: 9px;
+}
+
+.nft-perk-pair img {
+  width: 100%;
+  aspect-ratio: 2.25;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.nft-perk-pair strong {
+  font-size: 14px;
+  font-weight: 950;
+}
+
+.mint-design-section {
+  width: 100%;
+  margin: 0 auto;
+  padding: 44px 0 38px;
+  text-align: center;
+}
+
+.mint-drop-hero {
+  display: grid;
+  height: 154px;
+  margin-top: 44px;
+  place-items: center;
+  color: #ffffff;
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.42), rgba(0, 0, 0, 0.42)),
+    var(--mint-bg) center / cover;
+}
+
+.mint-drop-hero strong {
+  font-size: clamp(24px, 3.6vw, 38px);
+  font-weight: 950;
+}
+
+.mint-stat-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  width: min(100% - 48px, 900px);
+  margin: 0 auto;
+  padding: 52px 0 50px;
+  background: #ffffff;
+}
+
+.mint-stat-row h3 {
+  grid-column: 1 / -1;
+  margin: 0 0 28px;
+  font-size: clamp(22px, 2.7vw, 34px);
+  font-weight: 950;
+  line-height: 1.1;
+}
+
+.mint-stat-row article {
+  display: grid;
+  gap: 4px;
+  border-right: 1px solid #dddddd;
+}
+
+.mint-stat-row article:last-child {
+  border-right: 0;
+}
+
+.mint-stat-row strong {
+  font-size: clamp(24px, 3vw, 34px);
+  font-weight: 950;
+  line-height: 1;
+}
+
+.mint-stat-row article:nth-of-type(1) strong {
+  color: var(--cigr-yellow);
+}
+
+.mint-stat-row article:nth-of-type(2) strong {
+  color: var(--cigr-cyan);
+}
+
+.mint-stat-row article:nth-of-type(3) strong {
+  color: var(--cigr-pink);
+}
+
+.mint-stat-row span {
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.mint-how-row {
+  display: grid;
+  grid-template-columns: minmax(300px, 440px) minmax(240px, 320px);
+  gap: 70px;
+  align-items: center;
+  justify-content: center;
+  padding: 76px 48px;
+  background: #eeeeee;
+  text-align: left;
+}
+
+.mint-how-row img {
+  width: 100%;
+  aspect-ratio: 2.2;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.mint-how-row h3 {
+  margin: 0 0 16px;
+  font-size: 22px;
+  font-weight: 950;
+}
+
+.mint-method-list {
+  display: grid;
+  gap: 16px;
+}
+
+.mint-method-list article {
+  display: grid;
+  grid-template-columns: 34px 1fr;
+  gap: 14px;
+  align-items: start;
+}
+
+.mint-method-list img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
+.mint-method-list strong {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 14px;
+  font-weight: 950;
+}
+
+.nft-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0;
+  width: min(100%, 780px);
+  margin: 44px auto 0;
+  text-align: center;
+}
+
+.nft-metrics-grid article {
+  display: grid;
+  gap: 4px;
+  padding: 8px 12px;
+  border-right: 1px solid #dddddd;
+}
+
+.nft-metrics-grid article:last-child {
+  border-right: 0;
+}
+
+.nft-metrics-grid span,
+.nft-metrics-grid small {
+  color: #7a7a7a;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.nft-metrics-grid span {
+  text-transform: uppercase;
+}
+
+.nft-metrics-grid strong {
+  font-size: clamp(24px, 3vw, 34px);
+  font-weight: 950;
+  line-height: 1;
+}
+
+.nft-metrics-grid article:nth-child(1) strong,
+.nft-metrics-grid article:nth-child(4) strong {
+  color: var(--cigr-yellow);
+}
+
+.nft-metrics-grid article:nth-child(2) strong {
+  color: var(--cigr-pink);
+}
+
+.nft-metrics-grid article:nth-child(3) strong {
+  color: var(--cigr-cyan);
+}
+
+.nft-mint-identity {
+  display: grid;
+  justify-items: center;
+  gap: 14px;
+  margin-top: 52px;
+  text-align: center;
+}
+
+.nft-mint-identity > p {
+  max-width: 600px;
+  font-size: 12px;
+}
+
+.mint-widget-row {
+  display: grid;
+  grid-template-columns: minmax(300px, 420px) minmax(320px, 410px);
+  gap: 22px;
+  align-items: center;
+  width: min(100%, 860px);
+  margin-top: 38px;
+  text-align: left;
+}
+
+.mint-preview-card {
+  position: relative;
+  display: grid;
+  padding: 26px 26px 28px;
+  overflow: hidden;
+  background: #eeeeee;
+  border-radius: 22px;
+}
+
+.mint-preview-card > img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 0;
+}
+
+.mint-trait-badges {
+  position: absolute;
+  right: 22px;
+  bottom: 18px;
+  left: 22px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 5px;
+}
+
+.mint-trait-badges span {
+  display: inline-flex;
+  min-height: 20px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 6px;
+  background: #ffffff;
+  border-radius: 999px;
+  color: #4f4f4f;
+  font-size: 8px;
+  font-weight: 950;
+  white-space: nowrap;
+}
+
+.mint-trait-badges span::before {
+  width: 8px;
+  height: 8px;
+  margin-right: 4px;
+  content: "";
+  background: var(--cigr-gradient);
+  border-radius: 999px;
+}
+
+.mint-control-stack {
+  display: grid;
+  gap: 14px;
+}
+
+.mint-widget {
+  display: grid;
+  gap: 12px;
+  padding: 20px 24px;
+  background: #eeeeee;
+  border-radius: 22px;
+}
+
+.mint-status-card {
+  display: grid;
+  gap: 8px;
+  padding: 18px 24px;
+  background: #eeeeee;
+  border-radius: 22px;
+}
+
+.mint-status-head,
+.mint-status-main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.mint-status-head span,
+.mint-status-head b,
+.mint-status-main small,
+.mint-widget small,
+.mint-widget p,
+.mint-live-title {
+  color: #777777;
+  font-size: 11px;
+  font-weight: 850;
+}
+
+.mint-status-head b {
+  color: var(--cigr-pink);
+}
+
+.mint-status-main strong {
+  font-size: 24px;
+  font-weight: 950;
+  line-height: 1;
+}
+
+.mint-status-card > i {
+  height: 6px;
+  overflow: hidden;
+  background: #d9d9d9;
+  border-radius: 999px;
+}
+
+.mint-status-card > i::before {
+  display: block;
+  width: 42%;
+  height: 100%;
+  content: "";
+  background: var(--cigr-gradient);
+}
+
+.mint-control-row {
+  align-items: stretch;
+}
+
+.mint-quantity-control {
+  display: grid;
+  grid-template-columns: 36px 1fr 36px;
+  gap: 12px;
+  align-items: center;
+  padding: 0;
+  background: transparent;
+  border: 0;
+}
+
+.mint-quantity-control button {
+  display: grid;
+  width: 36px;
+  height: 36px;
+  place-items: center;
+  color: #111111;
+  background: #ffffff;
+  border: 0;
+  border-radius: 999px;
+}
+
+.mint-quantity-control output {
+  display: grid;
+  min-height: 36px;
+  place-items: center;
+  background: #ffffff;
+  border-radius: 999px;
+  font-size: 16px;
+  font-weight: 950;
+  text-align: center;
+}
+
+.mint-operation-panel {
+  margin-top: 0;
+}
+
+.mint-route-section .figma-page-title {
+  margin-bottom: 42px;
+}
+
+.mint-route-section .mint-drop-hero {
+  margin-top: 0;
+}
+
+.mint-widget label {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  color: #777777;
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.mint-widget label:first-child b {
+  color: #111111;
+  font-size: 24px;
+  line-height: 1;
+}
+
+.mint-widget button,
+.synthesis-preview-button {
+  min-height: 38px;
+  color: #111111;
+  background: var(--cigr-gradient);
+  border: 0;
+  border-radius: 999px;
+  font-weight: 950;
+}
+
+.mint-widget p {
+  text-align: center;
+}
+
+.mint-live-card {
+  padding: 12px 24px 14px;
+  overflow: hidden;
+  background: #eeeeee;
+  border-radius: 22px;
+}
+
+.mint-live-title {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 8px;
+}
+
+.mint-live-title i {
+  width: 7px;
+  height: 7px;
+  background: var(--cigr-cyan);
+  border-radius: 999px;
+}
+
+.mint-live-viewport {
+  height: 92px;
+  overflow: hidden;
+}
+
+.mint-live-track {
+  display: grid;
+  gap: 8px;
+  animation: mint-live-scroll 8s linear infinite;
+}
+
+.mint-live-item {
+  display: grid;
+  min-height: 42px;
+  grid-template-columns: auto 1fr auto;
+  gap: 4px;
+  align-items: center;
+  padding: 0 12px;
+  background: #ffffff;
+  border-radius: 999px;
+}
+
+.mint-live-item span {
+  color: var(--cigr-pink);
+  font-size: 14px;
+  font-weight: 950;
+}
+
+.mint-live-item b {
+  font-size: 13px;
+  font-weight: 850;
+}
+
+.mint-live-item em {
+  color: var(--cigr-cyan);
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 950;
+  white-space: nowrap;
+}
+
+.synthesis-stack {
+  display: grid;
+  gap: 34px;
+  margin-top: 30px;
+}
+
+.synthesis-design-card {
+  display: grid;
+  justify-items: center;
+  gap: 14px;
+  padding: 22px;
+  background: #ffffff;
+  border: 1px solid #eeeeee;
+  border-radius: 12px;
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.06);
+}
+
+.synthesis-design-card h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 950;
+}
+
+.synthesis-design-card p {
+  font-size: 13px;
+  text-align: center;
+}
+
+/* 合成流程：材料 → 代币消耗 → 合成 → 成功/失败概率 */
+.synthesis-inputs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 6px;
+}
+
+.synthesis-inputs figure {
+  display: grid;
+  gap: 5px;
+  width: 94px;
+}
+
+.synthesis-inputs figure img {
+  width: 94px;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.synthesis-inputs figcaption {
+  text-align: center;
+  font-size: 11px;
+  font-weight: 800;
+  color: #9a9a9a;
+}
+
+.synthesis-plus {
+  align-self: flex-start;
+  margin-top: 36px;
+  color: #c2c2c2;
+  font-size: 18px;
+  font-weight: 900;
+}
+
+.synthesis-cost {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 22px;
+  background: #f4f4f5;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.synthesis-cost span {
+  color: #bdbdbd;
+}
+
+.synthesis-fuse-btn {
+  min-width: 96px;
+  min-height: 38px;
+  color: #1a1205;
+  background: var(--cigr-gradient);
+  border: 0;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 950;
+  cursor: pointer;
+}
+
+.synthesis-outcomes {
+  display: grid;
+  gap: 22px 28px;
+  justify-content: center;
+  width: 100%;
+}
+
+.synthesis-outcomes.count-2 {
+  grid-template-columns: repeat(2, minmax(0, 220px));
+}
+
+.synthesis-outcomes.count-1 {
+  grid-template-columns: minmax(0, 360px);
+}
+
+.synthesis-outcome {
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+}
+
+.synthesis-rate {
+  font-size: 13px;
+  font-weight: 950;
+}
+
+.synthesis-rate em {
+  font-style: normal;
+}
+
+.synthesis-outcome.win .synthesis-rate em {
+  color: var(--cigr-pink);
+}
+
+.synthesis-outcome.lose .synthesis-rate em {
+  color: #8a8a8a;
+}
+
+.synthesis-outcome-art {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  width: 100%;
+}
+
+.synthesis-outcome-art img {
+  width: 100%;
+  max-width: 150px;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.synthesis-upgrade-card {
+  display: grid;
+  justify-items: center;
+  gap: 14px;
+  padding: 34px 22px;
+  text-align: center;
+}
+
+.synthesis-upgrade-card h3,
+.synthesis-fuse-panel h2 {
+  margin: 0;
+  font-size: clamp(28px, 4vw, 46px);
+  font-weight: 950;
+  line-height: 1.05;
+}
+
+.synthesis-upgrade-card p,
+.synthesis-fuse-panel > p {
+  max-width: 610px;
+  color: #555555;
+}
+
+.synthesis-upgrade-card a {
+  display: inline-flex;
+  min-height: 32px;
+  align-items: center;
+  padding: 0 18px;
+  color: #00151b;
+  background: var(--cigr-gradient);
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 950;
+}
+
+.synthesis-fuse-panel {
+  display: grid;
+  justify-items: center;
+  gap: 18px;
+  margin-top: 28px;
+  text-align: center;
+}
+
+.synthesis-rate-toggle {
+  display: inline-grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0;
+  margin-top: 10px;
+  overflow: hidden;
+  background: #eeeeee;
+  border-radius: 999px;
+}
+
+.synthesis-rate-toggle span {
+  min-width: 150px;
+  padding: 10px 18px;
+  color: #555555;
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.synthesis-rate-toggle span:first-child {
+  color: #ffffff;
+  background: var(--cigr-gradient);
+}
+
+.synthesis-operation-grid {
+  display: grid;
+  grid-template-columns: minmax(170px, 0.72fr) minmax(240px, 1fr) minmax(170px, 0.72fr);
+  gap: 28px;
+  align-items: start;
+  width: 100%;
+  margin-top: 24px;
+}
+
+.synthesis-panel-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+  color: #111111;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.synthesis-panel-label b {
+  padding: 5px 12px;
+  color: var(--cigr-pink);
+  background: #f5f5f5;
+  border-radius: 999px;
+  font-size: 11px;
+}
+
+.synthesis-mini-list {
+  display: grid;
+  gap: 12px;
+}
+
+.synthesis-mini-list button {
+  display: grid;
+  grid-template-columns: 78px 1fr;
+  gap: 10px;
+  align-items: center;
+  padding: 8px;
+  background: #ffffff;
+  border: 1px solid #e5e5e5;
+  border-radius: 10px;
+  text-align: left;
+  transition: border-color 180ms ease, transform 180ms ease;
+}
+
+.synthesis-mini-list button.selected {
+  border-color: var(--cigr-cyan);
+  transform: translateY(-2px);
+}
+
+.synthesis-mini-list img {
+  width: 78px;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.synthesis-mini-list span {
+  font-size: 13px;
+  font-weight: 950;
+}
+
+.synthesis-chamber {
+  display: grid;
+  justify-items: center;
+  gap: 14px;
+}
+
+.synthesis-orb {
+  display: grid;
+  width: min(100%, 260px);
+  aspect-ratio: 1;
+  grid-template-columns: repeat(2, 24px);
+  gap: 18px;
+  place-content: center;
+  background:
+    radial-gradient(circle, rgba(255, 255, 255, 0.95) 0 38%, rgba(255, 244, 180, 0.96) 39% 68%, rgba(251, 194, 2, 0.58) 69% 100%),
+    #fff7c4;
+  border: 2px dashed rgba(2, 195, 255, 0.42);
+  border-radius: 999px;
+  box-shadow: inset 0 0 34px rgba(251, 194, 2, 0.42);
+}
+
+.synthesis-orb.is-pulsing {
+  animation: synthesis-pulse 700ms ease;
+}
+
+.synthesis-orb i {
+  display: block;
+  width: 24px;
+  height: 24px;
+  background: #ffffff;
+  border-radius: 999px;
+  box-shadow: inset 0 0 0 5px #eeeeee;
+}
+
+.synthesis-chamber button {
+  min-width: 76px;
+  min-height: 76px;
+  color: #111111;
+  background: var(--cigr-gradient);
+  border: 0;
+  border-radius: 999px;
+  font-size: 18px;
+  font-weight: 950;
+}
+
+.synthesis-chamber button:disabled {
+  cursor: not-allowed;
+  filter: grayscale(1);
+  opacity: 0.58;
+}
+
+.synthesis-chamber small {
+  color: #777777;
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.synthesis-result-preview {
+  display: grid;
+  gap: 12px;
+  text-align: left;
+}
+
+.synthesis-result-box {
+  display: grid;
+  aspect-ratio: 1;
+  place-items: center;
+  overflow: hidden;
+  background: #eeeeee;
+  border-radius: 10px;
+}
+
+.synthesis-result-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.synthesis-result-box .material-symbols-outlined {
+  color: #aaaaaa;
+  font-size: 52px;
+}
+
+.synthesis-result-preview p {
+  color: #666666;
+  font-size: 12px;
+}
+
+.nft-auction-coming {
+  position: relative;
+  display: grid;
+  min-height: 390px;
+  place-items: center;
+  margin: 36px 0;
+  padding: 88px 24px;
+  overflow: hidden;
+  color: #ffffff;
+  isolation: isolate;
+  text-align: center;
+}
+
+.nft-auction-coming::before {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  content: "";
+  background: var(--auction-bg) center / cover;
+}
+
+.nft-auction-coming::after {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  content: "";
+  background: rgba(0, 0, 0, 0.46);
+}
+
+.nft-auction-coming h2 {
+  position: absolute;
+  top: -76px;
+  margin: 0;
+  color: var(--cigr-ink);
+  font-size: clamp(28px, 3vw, 42px);
+  font-weight: 950;
+}
+
+.nft-auction-coming strong {
+  font-size: clamp(30px, 4vw, 56px);
+  font-weight: 950;
+}
+
+.auction-route-page {
+  min-height: 100dvh;
+}
+
+.route-auction-coming {
+  width: min(100% - 48px, 980px);
+  margin: 0 auto 72px;
+}
+
+.exchange-hero-row {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 32px;
+  align-items: center;
+  margin-top: 28px;
+}
+
+.exchange-hero-row h3,
+.exchange-records h3 {
+  margin: 0 0 12px;
+  font-size: 22px;
+  font-weight: 950;
+}
+
+.exchange-hero-row button,
+.exchange-search button {
+  min-height: 32px;
+  padding: 0 18px;
+  color: #00151b;
+  background: var(--cigr-cyan);
+  border: 0;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 950;
+}
+
+.exchange-hero-row img {
+  width: 100%;
+  object-fit: contain;
+}
+
+.exchange-records {
+  margin-top: 46px;
+  padding: 36px;
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.exchange-records-note {
+  margin: 0 0 16px;
+  color: #777777;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.exchange-search {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 560px;
+  min-height: 42px;
+  padding: 5px 5px 5px 6px;
+  background: #ffffff;
+  border-radius: 999px;
+}
+
+.exchange-search input {
+  flex: 1;
+  min-width: 0;
+  padding: 0 14px;
+  color: #333333;
+  background: transparent;
+  border: 0;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.exchange-search input:focus {
+  outline: none;
+}
+
+.exchange-search button {
+  background: var(--cigr-pink);
+  color: #ffffff;
+}
+
+.exchange-panel {
+  margin-top: 22px;
+  overflow: hidden;
+  background: #ffffff;
+  border: 1px solid #e2e2e2;
+  border-radius: 12px;
+}
+
+.exchange-panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 20px;
+  border-bottom: 1px solid #eeeeee;
+}
+
+.exchange-panel-head strong {
+  font-size: 15px;
+  font-weight: 950;
+}
+
+.exchange-panel-actions {
+  display: inline-flex;
+  gap: 10px;
+}
+
+.exchange-panel-actions button {
+  min-height: 30px;
+  padding: 0 16px;
+  background: #ffffff;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.exchange-panel-actions .filter {
+  color: var(--cigr-pink);
+  border: 1px solid var(--cigr-pink);
+}
+
+.exchange-panel-actions .export {
+  color: #222222;
+  border: 1px solid #222222;
+}
+
+.exchange-table {
+  display: grid;
+  overflow-x: auto;
+}
+
+.exchange-row {
+  display: grid;
+  grid-template-columns: 0.9fr 0.8fr 1.3fr 0.9fr 1.5fr 1.4fr 1.1fr;
+  gap: 12px;
+  align-items: center;
+  min-width: 720px;
+  padding: 14px 20px;
+  border-bottom: 1px solid #f0f0f0;
+  color: #555555;
+  font-size: 12px;
+  font-weight: 750;
+  text-align: center;
+}
+
+.exchange-row span:first-child {
+  text-align: left;
+}
+
+.exchange-row:last-child {
+  border-bottom: 0;
+}
+
+.exchange-head {
+  color: #999999;
+  font-weight: 850;
+  background: #fafafa;
+}
+
+.exchange-status {
+  font-weight: 950;
+}
+
+.exchange-status.done {
+  color: #15b66a;
+}
+
+.exchange-status.shipping {
+  color: #02a8e0;
+}
+
+.exchange-status.pending {
+  color: #f5a623;
+}
+
+.exchange-status.review {
+  color: var(--cigr-pink);
+}
+
+.exchange-ops {
+  display: inline-flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.exchange-ops a {
+  color: #333333;
+  font-weight: 850;
+  white-space: nowrap;
+}
+
+.exchange-ops a:hover {
+  color: var(--cigr-pink);
+}
+
+.exchange-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(0, 0, 0, 0.32);
+}
+
+.exchange-modal {
+  position: relative;
+  display: grid;
+  width: min(100%, 560px);
+  grid-template-columns: 190px 1fr;
+  gap: 22px;
+  align-items: center;
+  padding: 22px;
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 26px 80px rgba(0, 0, 0, 0.28);
+}
+
+.exchange-modal-close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  display: grid;
+  width: 28px;
+  height: 28px;
+  place-items: center;
+  color: #111111;
+  background: #f1f1f1;
+  border: 0;
+  border-radius: 999px;
+  font-size: 20px;
+  font-weight: 950;
+  line-height: 1;
+}
+
+.exchange-modal > img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.exchange-modal-form {
+  display: grid;
+  gap: 10px;
+}
+
+.exchange-modal-form label {
+  display: grid;
+  gap: 5px;
+  color: #555555;
+  font-size: 12px;
+  font-weight: 850;
+  text-align: left;
+}
+
+.exchange-modal-form input {
+  min-height: 34px;
+  padding: 0 12px;
+  border: 1px solid #dddddd;
+  border-radius: 999px;
+  outline: 0;
+}
+
+.exchange-modal-form button {
+  min-height: 36px;
+  margin-top: 4px;
+  color: #111111;
+  background: var(--cigr-gradient);
+  border: 0;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 950;
+}
+
+.club-top-row,
+.brand-kit-intro,
+.figma-sheet.split {
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  gap: 52px;
+  align-items: center;
+}
+
+.club-top-row img {
+  width: 100%;
+  aspect-ratio: 2.25;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.club-top-row h2 {
+  margin-bottom: 14px;
+}
+
+.club-house-band {
+  margin: 24px 0 38px;
+  padding: 64px 0;
+  background:
+    linear-gradient(rgba(255, 192, 226, 0.72), rgba(255, 181, 220, 0.72)),
+    var(--club-bg) center / cover;
+}
+
+.club-house-band .cigr-section {
+  width: min(100% - 48px, 980px);
+  padding: 0;
+}
+
+.club-house-map {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 260px minmax(0, 1fr);
+  gap: 22px 34px;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.club-house-logo {
+  display: grid;
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  aspect-ratio: 1;
+  place-items: center;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.86), rgba(255, 255, 255, 0.86)) padding-box,
+    conic-gradient(var(--cigr-cyan), var(--cigr-pink), var(--cigr-yellow), var(--cigr-cyan)) border-box;
+  border: 4px solid transparent;
+  border-radius: 999px;
+  box-shadow: 0 18px 50px rgba(248, 48, 139, 0.16);
+}
+
+.club-house-logo img {
+  width: 86%;
+}
+
+.club-house-map article {
+  max-width: 240px;
+}
+
+.club-house-map article:nth-of-type(1) {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+.club-house-map article:nth-of-type(2) {
+  grid-column: 1;
+  grid-row: 2;
+  justify-self: end;
+}
+
+.club-house-map article:nth-of-type(3) {
+  grid-column: 3;
+  grid-row: 2;
+}
+
+.club-house-map strong {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 18px;
+  font-weight: 950;
+}
+
+.club-location-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 32px;
+}
+
+.club-location-grid article {
+  display: grid;
+  gap: 9px;
+  padding: 10px 10px 14px;
+  background: #f1f1f1;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.club-location-grid img {
+  width: 100%;
+  aspect-ratio: 1.08;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.club-location-grid strong {
+  font-size: 15px;
+  font-weight: 950;
+}
+
+.brand-kit-intro h2,
+.figma-sheet.split h2 {
+  margin-bottom: 14px;
+}
+
+.brand-kit-download {
+  display: inline-flex;
+  min-height: 28px;
+  align-items: center;
+  margin-top: 22px;
+  padding: 0 15px;
+  color: #00151b;
+  background: var(--cigr-cyan);
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 950;
+}
+
+.brand-kit-board {
+  width: 100%;
+  object-fit: contain;
+  border-radius: 12px;
+}
+
+/* CIGR 标志：图片居中，外层安全区示意由 div 绘制 */
+.logo-spec-board {
+  position: relative;
+  padding: 30px 32px 34px;
+  background: #ededed;
+  border-radius: 12px;
+}
+
+.logo-spec-tag {
+  display: inline-flex;
+  align-items: center;
+  height: 24px;
+  margin-bottom: 20px;
+  padding: 0 16px;
+  color: #1a1205;
+  background: var(--cigr-yellow);
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 950;
+}
+
+.logo-spec-frame {
+  position: relative;
+  display: grid;
+  place-items: center;
+  padding: 44px;
+  background: #ffffff;
+  border: 1px solid #cfcfcf;
+  outline: 1px dashed #d9d9d9;
+  outline-offset: -16px;
+}
+
+.logo-spec-logo {
+  width: min(74%, 340px);
+  object-fit: contain;
+}
+
+.spec-block {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  color: #ffffff;
+  background: #b7b7b7;
+  font-size: 11px;
+  font-style: italic;
+  font-weight: 800;
+}
+
+.spec-block-tl {
+  top: 0;
+  left: 0;
+}
+
+.spec-block-tr {
+  top: 0;
+  right: 0;
+}
+
+.spec-block-bl {
+  bottom: 0;
+  left: 0;
+}
+
+.spec-block-br {
+  bottom: 0;
+  right: 0;
+}
+
+.brand-spec-color-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.brand-spec-color-grid article {
+  display: grid;
+  min-height: 116px;
+  align-content: end;
+  gap: 3px;
+  padding: 12px;
+  color: #080808;
+  background: var(--brand-color);
+  border: 1px solid #d8d8d8;
+  border-radius: 5px;
+}
+
+.brand-spec-color-grid article:nth-child(4) {
+  grid-column: span 2;
+  color: #ffffff;
+}
+
+.brand-spec-color-grid strong {
+  margin-bottom: 4px;
+  font-size: 12px;
+  font-weight: 950;
+}
+
+.brand-spec-color-grid span {
+  font-size: 10px;
+  font-weight: 800;
+  opacity: 0.86;
+}
+
+/* 标志颜色：黑/白底为图片，下方标签与 JPG/PNG 下载按钮由 div 构成 */
+.logo-modes-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.wordmark-card {
+  display: grid;
+  overflow: hidden;
+  background: #ffffff;
+  border: 1px solid #e4e4e4;
+  border-radius: 12px;
+}
+
+.wordmark-canvas {
+  height: 160px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.wordmark-card.dark .wordmark-canvas {
+  background-color: #0c0c0c;
+}
+
+.wordmark-card.light .wordmark-canvas {
+  background-color: #ffffff;
+  background-size: 82%;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.wordmark-card figcaption {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 10px;
+  padding: 12px 14px;
+  border-top: 1px solid #ededed;
+}
+
+.wordmark-card figcaption > span {
+  color: #111111;
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.wordmark-actions {
+  display: inline-flex;
+  gap: 8px;
+}
+
+.wordmark-actions a {
+  display: inline-flex;
+  align-items: center;
+  height: 26px;
+  padding: 0 13px;
+  color: #222222;
+  background: #f1f1f1;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 900;
+  transition: background 0.18s ease, color 0.18s ease;
+}
+
+.wordmark-actions a:hover {
+  color: #00151b;
+  background: var(--cigr-cyan);
+}
+
+.cigr-footer.footer {
+  padding: 68px 0 54px;
+  background: #ffffff;
+  border-top: 0;
+}
+
+.cigr-footer .footer-inner {
+  align-items: flex-start;
+  display: grid;
+  grid-template-columns: minmax(220px, 0.9fr) minmax(0, 1.3fr);
+  gap: 80px;
+}
+
+.footer-brand-block p,
+.footer-brand-block small {
+  display: block;
+  max-width: 330px;
+  margin: 16px 0 0;
+  color: #717171;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.6;
+}
+
+.footer-link-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 34px;
+}
+
+.footer-link-grid h3 {
+  margin: 0 0 14px;
+  font-size: 17px;
+  font-weight: 950;
+}
+
+.footer-link-grid a {
+  display: block;
+  margin-top: 9px;
+  color: #5d5d5d;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.footer-socials {
+  display: flex;
+  gap: 12px;
+}
+
+.footer-socials a {
+  display: grid;
+  width: 24px;
+  height: 24px;
+  place-items: center;
+}
+
+.footer-socials img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
+
+@media (max-width: 980px) {
+  .cigr-nav .nav-inner,
+  .cigr-section,
+  .partner-inner,
+  .distribution-inner,
+  .cigr-footer .footer-inner,
+  .token-section {
+    width: min(100% - 40px, 1200px);
+  }
+
+  .nav-actions {
+    display: none;
+  }
+
+  .cigr-nav .mobile-menu-links {
+    gap: 24px;
+    margin-bottom: 42px;
+    font-size: 34px;
+  }
+
+  .mobile-nav-group {
+    display: grid;
+    gap: 10px;
+  }
+
+  .mobile-sub-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .mobile-sub-links a {
+    padding: 7px 12px;
+    background: #f1f1f1;
+    border-radius: 999px;
+    font-size: 14px;
+  }
+
+  .cigr-hero {
+    min-height: 640px;
+  }
+
+  .cigr-card-grid,
+  .roadmap-grid,
+  .workflow-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .create-masonry {
+    grid-template-columns: repeat(7, minmax(142px, 1fr));
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 0 4px 18px;
+    scroll-snap-type: x proximity;
+  }
+
+  .create-masonry-column {
+    scroll-snap-align: start;
+  }
+
+  .rwa-section,
+  .culture-section,
+  .future-section,
+  .feature-hero,
+  .download-panel,
+  .partner-inner,
+  .distribution-inner,
+  .cigr-footer .footer-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .culture-copy {
+    order: 0;
+  }
+
+  .distribution-inner {
+    justify-items: center;
+    text-align: center;
+  }
+
+  .nft-hero-stack {
+    min-height: 430px;
+  }
+
+  .nft-stack-card {
+    width: 190px;
+  }
+
+  .utility-grid,
+  .nft-flow-grid,
+  .brand-color-grid,
+  .brand-asset-grid,
+  .usage-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .nft-series-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .section-heading-row,
+  .brand-logo-showcase {
+    grid-template-columns: 1fr;
+  }
+
+  .event-list article {
+    grid-template-columns: 1fr;
+  }
+
+  .club-visual > img {
+    margin: 0 auto;
+  }
+
+  .club-stat-panel {
+    position: relative;
+    bottom: auto;
+    margin: -44px auto 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .cigr-nav .nav-inner,
+  .cigr-section,
+  .partner-inner,
+  .distribution-inner,
+  .cigr-footer .footer-inner,
+  .token-section {
+    width: min(100% - 32px, 1200px);
+  }
+
+  .cigr-brand img,
+  .cigr-footer-logo img {
+    width: 68px;
+  }
+
+  .cigr-hero {
+    min-height: 560px;
+    padding: 110px 16px 68px;
+  }
+
+  .cigr-hero-inner {
+    margin-top: 20px;
+  }
+
+  .cigr-hero-actions,
+  .download-actions {
+    gap: 12px;
+  }
+
+  .cigr-button,
+  .download-actions a {
+    width: 100%;
+  }
+
+  .cigr-section {
+    padding: 54px 0;
+  }
+
+  .cigr-card-grid,
+  .lifestyle-grid,
+  .mechanism-grid,
+  .expansion-grid,
+  .utility-grid,
+  .nft-series-grid,
+  .nft-flow-grid,
+  .brand-color-grid,
+  .brand-asset-grid,
+  .usage-grid,
+  .token-issue-grid,
+  .roadmap-grid,
+  .workflow-grid,
+  .footer-link-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cigr-card-grid {
+    max-width: 310px;
+  }
+
+  .create-masonry {
+    grid-template-columns: repeat(7, minmax(132px, 154px));
+    width: calc(100% + 32px);
+    margin-left: -16px;
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+
+  .create-masonry-column.offset-deep {
+    margin-top: 70%;
+  }
+
+  .create-masonry-column.offset-low {
+    margin-top: 48%;
+  }
+
+  .create-masonry-column.offset-mid {
+    margin-top: 22%;
+  }
+
+  .rwa-doodle {
+    grid-template-columns: 1fr;
+  }
+
+  .culture-gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .culture-gallery img,
+  .culture-gallery img:nth-child(n) {
+    grid-column: span 1;
+    height: 140px;
+  }
+
+  .future-slot-grid,
+  .download-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .download-grid {
+    height: 132px;
+  }
+
+  .download-panel {
+    padding: 30px 22px;
+  }
+
+  .about-token-page {
+    padding-top: 88px;
+  }
+
+  .feature-hero,
+  .brand-kit-page {
+    padding-top: 96px;
+  }
+
+  .feature-actions {
+    gap: 12px;
+  }
+
+  .feature-actions .cigr-button {
+    width: 100%;
+  }
+
+  .nft-hero-stack {
+    min-height: auto;
+    gap: 14px;
+  }
+
+  .nft-stack-card {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    transform: none !important;
+  }
+
+  .club-visual {
+    min-height: auto;
+  }
+
+  .club-stat-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .brand-logo-showcase img {
+    height: 190px;
+    padding: 24px;
+  }
+
+  .partner-band,
+  .distribution-section {
+    padding: 54px 0;
+  }
+
+  .partner-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .token-issue {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+  }
+
+  .token-issue > div {
+    padding-left: 0;
+    border-left: 0;
+  }
+
+  .donut-chart {
+    width: 210px;
+  }
+}
+
+@media (max-width: 980px) {
+  .figma-page .cigr-section,
+  .mint-design-section,
+  .nft-yellow-band .cigr-section,
+  .club-house-band .cigr-section {
+    width: min(100% - 40px, 980px);
+  }
+
+  .nft-card-profile,
+  .mint-widget-row,
+  .club-top-row,
+  .brand-kit-intro,
+  .figma-sheet.split,
+  .mint-how-row,
+  .exchange-hero-row,
+  .synthesis-operation-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .nft-card-profile {
+    max-width: 560px;
+  }
+
+  .nft-profile-dots {
+    display: flex;
+    justify-content: center;
+  }
+
+  .nft-access-grid,
+  .nft-metrics-grid,
+  .club-location-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .nft-perk-pair,
+  .logo-mode-grid {
+    gap: 20px;
+  }
+
+  .mint-how-row {
+    padding: 38px;
+  }
+
+  .synthesis-operation-grid {
+    max-width: 620px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .club-house-map {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+  }
+
+  .club-house-logo,
+  .club-house-map article,
+  .club-house-map article:nth-of-type(n) {
+    grid-column: auto;
+    grid-row: auto;
+    justify-self: center;
+  }
+
+  .club-house-logo {
+    width: min(100%, 250px);
+  }
+}
+
+@media (max-width: 640px) {
+  .figma-page {
+    padding-top: 92px;
+  }
+
+  .figma-page .cigr-section,
+  .mint-design-section,
+  .nft-yellow-band .cigr-section,
+  .club-house-band .cigr-section {
+    width: min(100% - 32px, 980px);
+  }
+
+  .figma-page-title {
+    margin-bottom: 34px;
+  }
+
+  .nft-card-profile,
+  .nft-perk-pair,
+  .nft-access-grid,
+  .nft-metrics-grid,
+  .synthesis-outcomes.count-2,
+  .exchange-modal,
+  .club-location-grid,
+  .brand-spec-color-grid,
+  .logo-modes-grid,
+  .mint-stat-row {
+    grid-template-columns: 1fr;
+  }
+
+  .brand-spec-color-grid article:nth-child(4) {
+    grid-column: auto;
+  }
+
+  .nft-yellow-band,
+  .club-house-band {
+    padding: 38px 0;
+  }
+
+  .nft-trait-strip {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .mint-drop-hero {
+    height: 112px;
+  }
+
+  .mint-stat-row article,
+  .nft-metrics-grid article {
+    border-right: 0;
+    border-bottom: 1px solid #dddddd;
+    padding: 16px 10px;
+  }
+
+  .mint-stat-row article:last-child,
+  .nft-metrics-grid article:last-child {
+    border-bottom: 0;
+  }
+
+  .mint-how-row {
+    padding: 28px 20px;
+  }
+
+  .mint-quantity-control {
+    grid-template-columns: 34px 1fr 34px;
+  }
+
+  .synthesis-rate-toggle {
+    width: 100%;
+  }
+
+  .synthesis-rate-toggle span {
+    min-width: 0;
+    padding: 9px 10px;
+    font-size: 12px;
+  }
+
+  .synthesis-mini-list button {
+    grid-template-columns: 64px 1fr;
+  }
+
+  .synthesis-mini-list img {
+    width: 64px;
+  }
+
+  .synthesis-orb {
+    width: min(100%, 210px);
+  }
+
+  .nft-auction-coming {
+    min-height: 280px;
+  }
+
+  .nft-auction-coming h2 {
+    top: -58px;
+  }
+
+  .exchange-records {
+    padding: 24px 16px;
+  }
+
+  .exchange-search {
+    align-items: stretch;
+    flex-direction: column;
+    padding: 14px;
+    border-radius: 14px;
+  }
+
+  .exchange-modal {
+    gap: 16px;
+    padding: 18px;
+  }
+
+  .exchange-modal > img {
+    width: min(100%, 210px);
+    justify-self: center;
+  }
+
+  .logo-spec-board {
+    min-height: 210px;
   }
 }
