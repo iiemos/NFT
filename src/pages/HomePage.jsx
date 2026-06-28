@@ -201,6 +201,15 @@ function WorkflowSection() {
 }
 
 function DownloadSection() {
+  const downloadImageColumns = downloadColumns.map((column, columnIndex) => {
+    return {
+      items: column.map((_, itemIndex) => ({
+        id: `${columnIndex}-${itemIndex}`,
+        image: nftImages[(columnIndex * downloadColumns.length + itemIndex) % nftImages.length],
+      })),
+    };
+  });
+
   return (
     <section className="cigr-section download-section" id="download">
       <div className="download-panel">
@@ -218,13 +227,13 @@ function DownloadSection() {
           </div>
         </div>
         <div className="download-grid" aria-hidden="true">
-          {downloadColumns.map((column, columnIndex) => (
+          {downloadImageColumns.map((column, columnIndex) => (
             <div className="download-column" key={columnIndex}>
               <div className="download-column-track">
                 {[0, 1].map((group) => (
                   <div className="download-column-set" key={group}>
-                    {column.map((slot) => (
-                      <span key={`${slot}-${group}`}></span>
+                    {column.items.map((slot) => (
+                      <img className="download-column-item" src={slot.image} alt={`download-slot-${slot.id}`} key={`${slot.id}-${group}`} />
                     ))}
                   </div>
                 ))}

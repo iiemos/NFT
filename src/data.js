@@ -34,9 +34,8 @@ export const navItems = [
   {
     id: "nft",
     label: "NFT",
-    path: "#/nft",
+    path: "#/mint",
     children: [
-      { label: "总览", path: "#/nft" },
       { label: "铸造", path: "#/mint" },
       { label: "质押", path: "#/staking" },
       { label: "合成", path: "#/synthesis" },
@@ -59,7 +58,7 @@ export const footerColumns = [
     [
       ["首页", "#/"],
       ["关于", "#/about"],
-      ["NFT", "#/nft"],
+      ["NFT", "#/mint"],
       ["俱乐部", "#/club"],
     ],
   ],

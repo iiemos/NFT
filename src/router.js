@@ -2,13 +2,16 @@
 import { useEffect, useState } from "react";
 
 // 所有有效页面 id（与 pages 映射、导航链接保持一致）
-export const routeIds = ["home", "about", "club", "nft", "mint", "staking", "synthesis", "auction", "perks"];
+export const routeIds = ["home", "about", "club", "mint", "staking", "synthesis", "auction", "perks"];
 // 归属「NFT」一级导航的子页面 id
-export const nftRouteIds = ["nft", "mint", "staking", "synthesis", "auction", "perks"];
+export const nftRouteIds = ["mint", "staking", "synthesis", "auction", "perks"];
 
 export function getPageFromHash() {
   const page = window.location.hash.replace("#/", "") || "home";
   const pageId = page.split("#")[0].split("?")[0] || "home";
+  if (pageId === "nft") {
+    return "mint";
+  }
   return routeIds.includes(pageId) ? pageId : "home";
 }
 

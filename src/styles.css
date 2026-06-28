@@ -3145,6 +3145,15 @@ body {
   border-radius: 8px;
 }
 
+.download-column-item {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1.22;
+  background: rgba(255, 255, 255, 0.86);
+  border-radius: 8px;
+  object-fit: cover;
+}
+
 .workflow-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
