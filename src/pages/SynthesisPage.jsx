@@ -1,11 +1,13 @@
 import { useState } from "react";
 import SynthesisDesignCard from "../components/SynthesisDesignCard.jsx";
 import { Icon } from "../components/ui.jsx";
-import { designNftPath, inventory, nftDesignCards, synthesisGroups } from "../data.js";
+import { inventory, nftDesignCards, synthesisGroups } from "../data.js";
 
 export default function SynthesisPage() {
   const [selected, setSelected] = useState([]);
   const [isSynthesizing, setIsSynthesizing] = useState(false);
+  const [activeRouteIndex, setActiveRouteIndex] = useState(0);
+  const displayedSynthesis = synthesisGroups[activeRouteIndex];
 
   const toggleNft = (id) => {
     setSelected((value) => {
@@ -20,23 +22,25 @@ export default function SynthesisPage() {
     setTimeout(() => setIsSynthesizing(false), 700);
   };
 
+  const resultText = selected.length >= 2 ? displayedSynthesis.outcomes[0].text : "选择 2 张 NFT 后显示结果。";
+  const resultImage = displayedSynthesis.outcomes[0]?.image;
+
   return (
     <main className="cigr-page figma-page synthesis-operation-page">
       <section className="figma-sheet cigr-section compact">
         <h1 className="figma-page-title">合成页面</h1>
-        <div className="synthesis-stack">
-          {synthesisGroups.map((group) => (
-            <SynthesisDesignCard group={group} key={group.title} />
-          ))}
-        </div>
       </section>
 
       <section className="figma-sheet cigr-section synthesis-fuse-panel">
         <h2>FUSE. UPGRADE. EVOLVE.</h2>
         <p>Combine your CIGR assets into the fusion chamber to unlock higher rarities and identity rights.</p>
         <div className="synthesis-rate-toggle" aria-label="合成概率">
-          <span>R → SR&nbsp;&nbsp;50%</span>
-          <span>SR → SSR&nbsp;&nbsp;100%</span>
+          <button type="button" className={activeRouteIndex === 0 ? "active" : ""} onClick={() => setActiveRouteIndex(0)}>
+            R → SR&nbsp;&nbsp;50%
+          </button>
+          <button type="button" className={activeRouteIndex === 1 ? "active" : ""} onClick={() => setActiveRouteIndex(1)}>
+            SR → SSR&nbsp;&nbsp;100%
+          </button>
         </div>
 
         <div className="synthesis-operation-grid">
@@ -74,10 +78,14 @@ export default function SynthesisPage() {
               <b>{selected.length >= 2 ? "READY" : "LOCKED"}</b>
             </div>
             <div className="synthesis-result-box">
-              {selected.length >= 2 ? <img src={`${designNftPath}/a-card.jpg`} alt="合成结果预览" /> : <Icon>lock</Icon>}
+              {selected.length >= 2 ? <img src={resultImage} alt="合成结果预览" /> : <Icon>lock</Icon>}
             </div>
-            <p>{selected.length >= 2 ? "获得 1 张窖藏 NFT，原 NFT 完整保留。" : "选择 2 张 NFT 后显示结果。"}</p>
+            <p>{resultText}</p>
           </div>
+        </div>
+
+        <div className="synthesis-stack">
+          <SynthesisDesignCard group={displayedSynthesis} />
         </div>
       </section>
     </main>

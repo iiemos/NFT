@@ -51,7 +51,6 @@ export const navItems = [
     path: "#/about",
     children: [{ label: "代币", path: "#/about#token" }],
   },
-  { id: "brand-kit", label: "品牌套件", path: "#/brand-kit" },
 ];
 
 export const footerColumns = [
@@ -68,11 +67,8 @@ export const footerColumns = [
     "Resources",
     [
       ["Whitepaper", "#/about"],
-      ["使用条款", "#/brand-kit"],
-      ["隐私政策", "#/brand-kit"],
     ],
   ],
-  ["资源中心", [["品牌套件", "#/brand-kit"]]],
 ];
 
 export const cigrSocials = [

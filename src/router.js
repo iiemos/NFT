@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 
 // 所有有效页面 id（与 pages 映射、导航链接保持一致）
-export const routeIds = ["home", "about", "club", "brand-kit", "nft", "mint", "staking", "synthesis", "auction", "perks"];
+export const routeIds = ["home", "about", "club", "nft", "mint", "staking", "synthesis", "auction", "perks"];
 // 归属「NFT」一级导航的子页面 id
 export const nftRouteIds = ["nft", "mint", "staking", "synthesis", "auction", "perks"];
 

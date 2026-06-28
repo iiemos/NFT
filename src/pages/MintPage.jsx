@@ -4,8 +4,22 @@ import { designMintPath, mintMethodItems, nftEcosystemMetrics, nftMintStats } fr
 export default function MintPage() {
   return (
     <main className="cigr-page figma-page nft-operation-page mint-operation-page">
+      <section className="figma-sheet cigr-section mint-operation-panel">
+        <h2>Ecosystem Metrics</h2>
+        <div className="nft-metrics-grid">
+          {nftEcosystemMetrics.map(([value, label, helper]) => (
+            <article key={label}>
+              <span>{label}</span>
+              <strong>{value}</strong>
+              <small>{helper}</small>
+            </article>
+          ))}
+        </div>
+
+        <MintIdentityPanel />
+      </section>
+
       <section className="mint-design-section mint-route-section">
-        <h1 className="figma-page-title">铸造页面</h1>
         <div className="mint-drop-hero" style={{ "--mint-bg": `url(${designMintPath}/drop-hero.jpg)` }}>
           <strong>Drop 1 Mint</strong>
         </div>
@@ -35,21 +49,6 @@ export default function MintPage() {
             </div>
           </div>
         </div>
-      </section>
-
-      <section className="figma-sheet cigr-section mint-operation-panel">
-        <h2>Ecosystem Metrics</h2>
-        <div className="nft-metrics-grid">
-          {nftEcosystemMetrics.map(([value, label, helper]) => (
-            <article key={label}>
-              <span>{label}</span>
-              <strong>{value}</strong>
-              <small>{helper}</small>
-            </article>
-          ))}
-        </div>
-
-        <MintIdentityPanel />
       </section>
     </main>
   );

@@ -8,6 +8,8 @@ import { designMintPath, designNftPath, mintMethodItems, nftDesignCards, nftEcos
 export default function NFTPage() {
   const [activeCardIndex, setActiveCardIndex] = useState(0);
   const [isExchangeOpen, setIsExchangeOpen] = useState(false);
+  const [activeRouteIndex, setActiveRouteIndex] = useState(0);
+  const displayedSynthesis = synthesisGroups[activeRouteIndex];
   const activeCard = nftDesignCards[activeCardIndex];
 
   return (
@@ -84,8 +86,22 @@ export default function NFTPage() {
         </div>
       </section>
 
+      <section className="figma-sheet cigr-section">
+        <h2>Ecosystem Metrics</h2>
+        <div className="nft-metrics-grid">
+          {nftEcosystemMetrics.map(([value, label, helper]) => (
+            <article key={label}>
+              <span>{label}</span>
+              <strong>{value}</strong>
+              <small>{helper}</small>
+            </article>
+          ))}
+        </div>
+
+        <MintIdentityPanel />
+      </section>
+
       <section className="mint-design-section" id="nft-mint-section">
-        <h2>铸造页面</h2>
         <div className="mint-drop-hero" style={{ "--mint-bg": `url(${designMintPath}/drop-hero.jpg)` }}>
           <strong>Drop 1 Mint</strong>
         </div>
@@ -117,27 +133,9 @@ export default function NFTPage() {
         </div>
       </section>
 
-      <section className="figma-sheet cigr-section">
-        <h2>Ecosystem Metrics</h2>
-        <div className="nft-metrics-grid">
-          {nftEcosystemMetrics.map(([value, label, helper]) => (
-            <article key={label}>
-              <span>{label}</span>
-              <strong>{value}</strong>
-              <small>{helper}</small>
-            </article>
-          ))}
-        </div>
-
-        <MintIdentityPanel />
-      </section>
-
       <section className="figma-sheet cigr-section compact" id="nft-synthesis-section">
         <h2>合成页面</h2>
         <div className="synthesis-stack">
-          {synthesisGroups.map((group) => (
-            <SynthesisDesignCard group={group} key={group.title} />
-          ))}
           <article className="synthesis-upgrade-card">
             <div>
               <h3>FUSE. UPGRADE. EVOLVE.</h3>
@@ -145,6 +143,15 @@ export default function NFTPage() {
             </div>
             <a href="#/synthesis">进入合成操作</a>
           </article>
+          <div className="synthesis-rate-toggle" aria-label="合成概率">
+            <button type="button" className={activeRouteIndex === 0 ? "active" : ""} onClick={() => setActiveRouteIndex(0)}>
+              R → SR&nbsp;&nbsp;50%
+            </button>
+            <button type="button" className={activeRouteIndex === 1 ? "active" : ""} onClick={() => setActiveRouteIndex(1)}>
+              SR → SSR&nbsp;&nbsp;100%
+            </button>
+          </div>
+          <SynthesisDesignCard group={displayedSynthesis} />
         </div>
       </section>
 

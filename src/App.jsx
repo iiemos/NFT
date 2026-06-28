@@ -6,7 +6,6 @@ import HomePage from "./pages/HomePage.jsx";
 import AboutTokenPage from "./pages/AboutTokenPage.jsx";
 import NFTPage from "./pages/NFTPage.jsx";
 import ClubPage from "./pages/ClubPage.jsx";
-import BrandKitPage from "./pages/BrandKitPage.jsx";
 import MintPage from "./pages/MintPage.jsx";
 import StakingPage from "./pages/StakingPage.jsx";
 import SynthesisPage from "./pages/SynthesisPage.jsx";
@@ -19,7 +18,6 @@ const pageComponents = {
   about: AboutTokenPage,
   nft: NFTPage,
   club: ClubPage,
-  "brand-kit": BrandKitPage,
   mint: MintPage,
   staking: StakingPage,
   synthesis: SynthesisPage,

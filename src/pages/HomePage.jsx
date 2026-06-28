@@ -3,6 +3,7 @@ import {
   cigrArrowWhiteImage,
   cigrCardItems,
   cigrHeroVideo,
+  nftImages,
   cigrWordmarkImage,
   createStoryColumns,
   cultureImages,
@@ -141,6 +142,17 @@ function CultureSection() {
 }
 
 function FutureSection() {
+  const placeholderSlots = futureSlots.map((slot, index) => {
+    const image = nftImages[index % nftImages.length];
+    return {
+      id: slot,
+      image,
+      alt: `placeholder-${index + 1}`,
+    };
+  });
+  const rowSize = Math.ceil(placeholderSlots.length / 3);
+  const futureRows = Array.from({ length: 3 }, (_, rowIndex) => placeholderSlots.slice(rowIndex * rowSize, rowIndex * rowSize + rowSize));
+
   return (
     <section className="cigr-section future-section">
       <div className="future-copy">
@@ -152,8 +164,18 @@ function FutureSection() {
         </a>
       </div>
       <div className="future-slot-grid" aria-hidden="true">
-        {futureSlots.map((slot) => (
-          <span key={slot}></span>
+        {futureRows.map((row, rowIndex) => (
+          <div className={`future-slot-row ${rowIndex % 2 === 1 ? "direction-right" : ""}`} key={`future-slot-row-${rowIndex}`}>
+            <div className="future-slot-track">
+              {[0, 1].map((group) => (
+                <div className="future-slot-track-set" key={`${rowIndex}-${group}`}>
+                  {row.map((slot) => (
+                    <img className="future-slot-item" src={slot.image} alt={slot.alt} key={`${slot.id}-${group}`} />
+                  ))}
+                </div>
+              ))}
+            </div>
+          </div>
         ))}
       </div>
     </section>
