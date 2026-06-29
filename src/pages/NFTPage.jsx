@@ -4,6 +4,7 @@ import ExchangeRecords from "../components/ExchangeRecords.jsx";
 import MintIdentityPanel from "../components/MintIdentityPanel.jsx";
 import SynthesisDesignCard from "../components/SynthesisDesignCard.jsx";
 import { designMintPath, designNftPath, mintMethodItems, nftDesignCards, nftEcosystemMetrics, nftMintStats, nftPerkImages, synthesisGroups } from "../data.js";
+import { useI18n } from "../i18n.js";
 
 export default function NFTPage() {
   const [activeCardIndex, setActiveCardIndex] = useState(0);
@@ -11,15 +12,16 @@ export default function NFTPage() {
   const [activeRouteIndex, setActiveRouteIndex] = useState(0);
   const displayedSynthesis = synthesisGroups[activeRouteIndex];
   const activeCard = nftDesignCards[activeCardIndex];
+  const { t } = useI18n();
 
   return (
     <main className="cigr-page figma-page nft-overview-page">
       <section className="figma-sheet cigr-section">
-        <h1 className="figma-page-title">NFT页面</h1>
+        <h1 className="figma-page-title">{t("nft.pageTitle")}</h1>
 
         <div className="nft-story">
           <h2>The Cigar Society</h2>
-          <p>立足全球雪茄文化与链上身份体系，CIGR NFT 将会员、收藏、权益和实物资产连接在同一套可验证网络中。</p>
+          <p>{t("nft.desc")}</p>
           <img className="nft-story-banner" src={`${designNftPath}/hero.jpg`} alt="The Cigar Society" />
         </div>
 
@@ -27,21 +29,21 @@ export default function NFTPage() {
           <div className="nft-profile-dots" aria-label="NFT card levels">
             {nftDesignCards.map((card, index) => (
               <button
-                aria-label={`切换到${card.title}`}
+                aria-label={`${t("common.switch")} ${t(card.title)}`}
                 className={activeCardIndex === index ? "active" : ""}
                 key={card.title}
                 onClick={() => setActiveCardIndex(index)}
                 type="button"
-              >
+                >
                 <img src={card.avatar} alt="" aria-hidden="true" />
               </button>
             ))}
           </div>
           <img src={activeCard.image} alt={activeCard.title} />
           <div className="nft-profile-copy">
-            <h3>{activeCard.title}</h3>
-            <strong>{activeCard.subtitle}</strong>
-            <p>{activeCard.text}</p>
+            <h3>{t(activeCard.title)}</h3>
+            <strong>{t(activeCard.subtitle)}</strong>
+            <p>{t(activeCard.text)}</p>
             <div className="nft-trait-strip">
               {activeCard.traits.map((trait) => (
                 <img src={trait} alt="" aria-hidden="true" key={trait} />
@@ -58,14 +60,14 @@ export default function NFTPage() {
 
       <section className="nft-yellow-band">
         <div className="cigr-section">
-          <h2>如何获得？</h2>
+          <h2>{t("nft.howToGet")}</h2>
           <div className="nft-access-grid">
             {nftDesignCards.map((item) => (
               <a href={item.href} key={item.title}>
                 <img src={item.image} alt={item.title} />
                 <div>
-                  <strong>{item.access}</strong>
-                  <span className={item.status === "敬请期待" ? "soon" : ""}>{item.status}</span>
+                  <strong>{t(item.access)}</strong>
+                  <span className={item.status === "敬请期待" ? "soon" : ""}>{t(item.status)}</span>
                 </div>
               </a>
             ))}
@@ -74,26 +76,26 @@ export default function NFTPage() {
       </section>
 
       <section className="figma-sheet cigr-section compact">
-        <h2>合成限量NFT，解锁专属权益</h2>
+        <h2>{t("nft.unlockPerks")}</h2>
         <div className="nft-perk-pair">
           {nftPerkImages.map(([image, title, text]) => (
             <article key={title}>
               <img src={image} alt={title} />
-              <strong>{title}</strong>
-              <p>{text}</p>
+              <strong>{t(title)}</strong>
+              <p>{t(text)}</p>
             </article>
           ))}
         </div>
       </section>
 
       <section className="figma-sheet cigr-section">
-        <h2>Ecosystem Metrics</h2>
+        <h2>{t("mint.pageTitle")}</h2>
         <div className="nft-metrics-grid">
           {nftEcosystemMetrics.map(([value, label, helper]) => (
             <article key={label}>
-              <span>{label}</span>
+              <span>{t(label)}</span>
               <strong>{value}</strong>
-              <small>{helper}</small>
+              <small>{t(helper, helper)}</small>
             </article>
           ))}
         </div>
@@ -106,25 +108,25 @@ export default function NFTPage() {
           <strong>Drop 1 Mint</strong>
         </div>
         <div className="mint-stat-row">
-          <h3>烟田 NFT 发行</h3>
+          <h3>{t("mint.title")}</h3>
           {nftMintStats.map(([value, label], index) => (
             <article className={`tone-${index}`} key={value}>
               <strong>{value}</strong>
-              <span>{label}</span>
+              <span>{t(label)}</span>
             </article>
           ))}
         </div>
         <div className="mint-how-row">
           <img src={`${designMintPath}/how.jpg`} alt="CIGR drop wall" />
           <div>
-            <h3>如何获得？</h3>
+            <h3>{t("mint.howToGet")}</h3>
             <div className="mint-method-list">
               {mintMethodItems.map(([icon, title, text]) => (
                 <article key={title}>
                   <img src={icon} alt="" aria-hidden="true" />
                   <div>
-                    <strong>{title}</strong>
-                    <p>{text}</p>
+                    <strong>{t(title)}</strong>
+                    <p>{t(text)}</p>
                   </div>
                 </article>
               ))}
@@ -134,16 +136,16 @@ export default function NFTPage() {
       </section>
 
       <section className="figma-sheet cigr-section compact" id="nft-synthesis-section">
-        <h2>合成页面</h2>
+        <h2>{t("synthesis.title")}</h2>
         <div className="synthesis-stack">
           <article className="synthesis-upgrade-card">
             <div>
-              <h3>FUSE. UPGRADE. EVOLVE.</h3>
-              <p>Combine your CIGR assets into the fusion chamber to unlock higher rarities and identity rights.</p>
+              <h3>{t("synthesis.subtitle")}</h3>
+              <p>{t("synthesis.description")}</p>
             </div>
-            <a href="#/synthesis">进入合成操作</a>
+            <a href="#/synthesis">{t("nft.toSynthesis")}</a>
           </article>
-          <div className="synthesis-rate-toggle" aria-label="合成概率">
+          <div className="synthesis-rate-toggle" aria-label={t("synthesis.probability")}>
             <button type="button" className={activeRouteIndex === 0 ? "active" : ""} onClick={() => setActiveRouteIndex(0)}>
               R → SR&nbsp;&nbsp;50%
             </button>
@@ -156,18 +158,18 @@ export default function NFTPage() {
       </section>
 
       <section className="nft-auction-coming" style={{ "--auction-bg": "url(/images/cigr/design/auction/coming-soon.jpg)" }}>
-        <h2>竞拍页面</h2>
-        <strong>即将开放</strong>
+        <h2>{t("pages.auction")}</h2>
+        <strong>{t("pages.auctionComing")}</strong>
       </section>
 
       <section className="figma-sheet cigr-section compact" id="nft-exchange-section">
-        <h2>兑换页面</h2>
+        <h2>{t("pages.perks")}</h2>
         <div className="exchange-hero-row">
           <div>
-            <h3>礼品兑换中心</h3>
-            <p>持有指定 NFT 可参与周边、权益与线下活动兑换。</p>
-            <button type="button" onClick={() => setIsExchangeOpen(true)}>
-              立即兑换
+            <h3>{t("pages.redemptionTitle")}</h3>
+            <p>{t("pages.redemptionDesc")}</p>
+            <button type="button" onClick={() => setIsExchangeOpen(true)} aria-label={t("pages.redemptionAction")}>
+              {t("pages.redemptionAction")}
             </button>
           </div>
           <img src="/images/cigr/design/exchange/gift.jpg" alt="CIGR gift center" />

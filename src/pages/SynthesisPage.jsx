@@ -2,12 +2,14 @@ import { useState } from "react";
 import SynthesisDesignCard from "../components/SynthesisDesignCard.jsx";
 import { Icon } from "../components/ui.jsx";
 import { inventory, nftDesignCards, synthesisGroups } from "../data.js";
+import { useI18n } from "../i18n.js";
 
 export default function SynthesisPage() {
   const [selected, setSelected] = useState([]);
   const [isSynthesizing, setIsSynthesizing] = useState(false);
   const [activeRouteIndex, setActiveRouteIndex] = useState(0);
   const displayedSynthesis = synthesisGroups[activeRouteIndex];
+  const { t } = useI18n();
 
   const toggleNft = (id) => {
     setSelected((value) => {
@@ -22,19 +24,21 @@ export default function SynthesisPage() {
     setTimeout(() => setIsSynthesizing(false), 700);
   };
 
-  const resultText = selected.length >= 2 ? displayedSynthesis.outcomes[0].text : "选择 2 张 NFT 后显示结果。";
+  const resultText = selected.length >= 2
+    ? t(displayedSynthesis.outcomes[0].text, displayedSynthesis.outcomes[0].text)
+    : t("synthesis.resultWait", "选择 2 张 NFT 后显示结果。");
   const resultImage = displayedSynthesis.outcomes[0]?.image;
 
   return (
     <main className="cigr-page figma-page synthesis-operation-page">
       <section className="figma-sheet cigr-section compact">
-        <h1 className="figma-page-title">合成页面</h1>
+        <h1 className="figma-page-title">{t("synthesis.title")}</h1>
       </section>
 
       <section className="figma-sheet cigr-section synthesis-fuse-panel">
-        <h2>FUSE. UPGRADE. EVOLVE.</h2>
-        <p>Combine your CIGR assets into the fusion chamber to unlock higher rarities and identity rights.</p>
-        <div className="synthesis-rate-toggle" aria-label="合成概率">
+        <h2>{t("synthesis.subtitle")}</h2>
+        <p>{t("synthesis.description")}</p>
+        <div className="synthesis-rate-toggle" aria-label={t("synthesis.probability")}>
           <button type="button" className={activeRouteIndex === 0 ? "active" : ""} onClick={() => setActiveRouteIndex(0)}>
             R → SR&nbsp;&nbsp;50%
           </button>
@@ -46,7 +50,7 @@ export default function SynthesisPage() {
         <div className="synthesis-operation-grid">
           <div className="synthesis-inventory-column">
             <div className="synthesis-panel-label">
-              <span>INVENTORY</span>
+              <span>{t("synthesis.inventory")}</span>
               <b>{inventory.length} R CIGRS</b>
             </div>
             <div className="synthesis-mini-list">
@@ -67,18 +71,20 @@ export default function SynthesisPage() {
               <i></i>
             </div>
             <button type="button" onClick={beginSynthesis} disabled={selected.length < 2}>
-              合成
+              {t("synthesis.button")}
             </button>
-            <small>{selected.length} / 2 selected</small>
+            <small>
+              {selected.length} / 2 {t("common.selected")}
+            </small>
           </div>
 
           <div className="synthesis-result-preview">
             <div className="synthesis-panel-label">
-              <span>RESULT PREVIEW</span>
-              <b>{selected.length >= 2 ? "READY" : "LOCKED"}</b>
+              <span>{t("synthesis.panelLabel")}</span>
+              <b>{selected.length >= 2 ? t("synthesis.resultReady") : t("synthesis.resultLocked")}</b>
             </div>
             <div className="synthesis-result-box">
-              {selected.length >= 2 ? <img src={resultImage} alt="合成结果预览" /> : <Icon>lock</Icon>}
+              {selected.length >= 2 ? <img src={resultImage} alt={t("synthesis.panelLabel")} /> : <Icon>lock</Icon>}
             </div>
             <p>{resultText}</p>
           </div>

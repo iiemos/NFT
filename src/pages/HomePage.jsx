@@ -7,28 +7,30 @@ import {
   cigrWordmarkImage,
   createStoryColumns,
   cultureImages,
-  designHomePath,
   downloadColumns,
   futureSlots,
   lifestyleItems,
   workflowSteps,
 } from "../data.js";
+import { useI18n } from "../i18n.js";
 
 function CigrHero() {
+  const { t } = useI18n();
+
   return (
     <section className="cigr-hero">
       <video className="cigr-hero-video" aria-label="CIGR homepage banner" autoPlay loop muted playsInline preload="metadata">
         <source src={cigrHeroVideo} type="video/mp4" />
       </video>
       <div className="cigr-hero-inner">
-        <h1>CIGR · 全球首个 MEME × 文化 RWA 驱动价值协议</h1>
-        <p>构建在 Solana 链上，顶级雪茄实物托底，NFT 确权链上可交易价值，MEME 凝聚全球共识，潮牌化运作释放品牌溢价</p>
+        <h1>{t("home.title")}</h1>
+        <p>{t("home.description")}</p>
         <div className="cigr-hero-actions">
           <a className="cigr-button yellow" href="#/mint">
-            Enter The Chamber
+            {t("home.cta.mint")}
           </a>
           <a className="cigr-button pink" href="#/about">
-            View Collection
+            {t("home.cta.collection")}
           </a>
         </div>
       </div>
@@ -37,14 +39,15 @@ function CigrHero() {
 }
 
 function CigrCards() {
+  const { t } = useI18n();
   return (
     <section className="cigr-section cigr-card-section" aria-label="CIGR cards">
       <div className="cigr-card-grid">
         {cigrCardItems.map((item) => (
           <article className="cigr-nft-card" key={item.title}>
             <img src={item.image} alt={item.title} />
-            <strong>{item.title}</strong>
-            <span>{item.label}</span>
+            <strong>{t(item.title)}</strong>
+            <span>{t(item.label)}</span>
           </article>
         ))}
       </div>
@@ -53,15 +56,16 @@ function CigrCards() {
 }
 
 function LifestyleSection() {
+  const { t } = useI18n();
   return (
     <section className="cigr-section lifestyle-section">
-      <h2>我们的生活方式</h2>
+      <h2>{t("home.section.lifestyle")}</h2>
       <div className="lifestyle-grid">
         {lifestyleItems.map((item, index) => (
           <article className={`lifestyle-card tone-${index}`} key={item.title}>
             <img src={item.image} alt="" aria-hidden="true" />
-            <h3>{item.title}</h3>
-            <p>{item.text}</p>
+            <h3>{t(item.title)}</h3>
+            <p>{t(item.text)}</p>
           </article>
         ))}
       </div>
@@ -70,22 +74,26 @@ function LifestyleSection() {
 }
 
 function RwaSection() {
+  const { t } = useI18n();
   return (
     <section className="cigr-section rwa-section">
       <div>
-        <h2>文化 RWA 新范式</h2>
+        <h2>{t("home.section.rwa")}</h2>
         <img className="cigr-wordmark" src={cigrWordmarkImage} alt="CIGR" />
-        <p>利用文化 RWA 体系，将雪茄收藏、潮流叙事与链上资产确权结合，重塑品牌从传播到价值沉淀的完整路径。</p>
+        <p>{t("home.section.rwaDescription")}</p>
       </div>
-      <img className="rwa-doodle-art" src={`${designHomePath}/rwa-doodle.png`} alt="CIGR culture doodle" />
+      <video className="rwa-doodle-art" autoPlay loop muted playsInline preload="metadata">
+        <source src="/videos/home-3-bg.mp4" type="video/mp4" />
+      </video>
     </section>
   );
 }
 
 function CreateSection() {
+  const { t } = useI18n();
   return (
     <section className="cigr-section create-section">
-      <h2>与我们一起创作</h2>
+      <h2>{t("home.section.create")}</h2>
       <div className="create-masonry" aria-label="CIGR creative story waterfall">
         {createStoryColumns.map((column, columnIndex) => (
           <div className={`create-masonry-column offset-${column.offset}`} key={`create-column-${columnIndex}`}>
@@ -97,7 +105,7 @@ function CreateSection() {
                 return (
                   <a className={cardClass} href={item.href} key={cardKey}>
                     <span className="create-action-mark">{item.mark}</span>
-                    <strong>{item.title}</strong>
+                    <strong>{t(item.title)}</strong>
                   </a>
                 );
               }
@@ -126,11 +134,12 @@ function CreateSection() {
 }
 
 function CultureSection() {
+  const { t } = useI18n();
   return (
     <section className="cigr-section culture-section">
       <div className="culture-copy">
-        <h2>CiGR 潮流文化</h2>
-        <p>CIGR 将雪茄文化、街头视觉与会员制权益融合，持续拓展实体商品、社群活动与品牌联名，推动收藏品从线上共识走向真实消费场景。</p>
+        <h2>{t("home.section.culture")}</h2>
+        <p>{t("home.section.cultureDescription")}</p>
       </div>
       <div className="culture-gallery">
         {cultureImages.map((image, index) => (
@@ -142,6 +151,7 @@ function CultureSection() {
 }
 
 function FutureSection() {
+  const { t } = useI18n();
   const placeholderSlots = futureSlots.map((slot, index) => {
     const image = nftImages[index % nftImages.length];
     return {
@@ -156,8 +166,8 @@ function FutureSection() {
   return (
     <section className="cigr-section future-section">
       <div className="future-copy">
-        <h2>共创未来</h2>
-        <p>我们将持续围绕雪茄 NFT 生态拓展会员权益、实体收藏、品牌合作和更多 RWA 场景。社区成员可参与治理、传播与共创，分享品牌成长带来的长期价值。</p>
+        <h2>{t("home.section.future")}</h2>
+        <p>{t("home.section.futureDescription")}</p>
         <a className="magic-link" href="#/about">
           <span>MAGIC</span>
           <img src={cigrArrowBlackImage} alt="" aria-hidden="true" />
@@ -183,16 +193,17 @@ function FutureSection() {
 }
 
 function WorkflowSection() {
+  const { t } = useI18n();
   return (
     <section className="cigr-section workflow-section" id="roadmap">
-      <h2>CIGR 运作流程</h2>
+      <h2>{t("home.section.workflow")}</h2>
       <div className="workflow-grid">
         {workflowSteps.map(([step, title, text, icon]) => (
           <article className="workflow-card" key={step}>
             <img src={icon} alt="" aria-hidden="true" />
             <small>{step}</small>
-            <h3>{title}</h3>
-            <p>{text}</p>
+            <h3>{t(title)}</h3>
+            <p>{t(text)}</p>
           </article>
         ))}
       </div>
@@ -201,6 +212,7 @@ function WorkflowSection() {
 }
 
 function DownloadSection() {
+  const { t } = useI18n();
   const downloadImageColumns = downloadColumns.map((column, columnIndex) => {
     return {
       items: column.map((_, itemIndex) => ({
@@ -214,14 +226,14 @@ function DownloadSection() {
     <section className="cigr-section download-section" id="download">
       <div className="download-panel">
         <div className="download-content">
-          <h2>立即下载，加入潮玩社区</h2>
+          <h2>{t("home.section.downloadTitle")}</h2>
           <div className="download-actions">
             <a href="#/about">
-              iOS 下载
+              {t("home.section.downloadIos")}
               <img src={cigrArrowWhiteImage} alt="" aria-hidden="true" />
             </a>
             <a href="#/about">
-              安卓下载
+              {t("home.section.downloadAndroid")}
               <img src={cigrArrowWhiteImage} alt="" aria-hidden="true" />
             </a>
           </div>

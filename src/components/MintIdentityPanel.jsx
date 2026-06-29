@@ -1,15 +1,17 @@
 import { useState } from "react";
 import { designNftPath, mintLiveActivities, mintTraitBadges } from "../data.js";
 import { Icon } from "./ui.jsx";
+import { useI18n } from "../i18n.js";
 
 export default function MintIdentityPanel() {
+  const { t } = useI18n();
   const [quantity, setQuantity] = useState(10);
   const changeQuantity = (step) => setQuantity((value) => Math.min(10, Math.max(1, value + step)));
 
   return (
     <div className="nft-mint-identity">
-      <h2>Mint Your CIGR Identity</h2>
-      <p>Own a piece of the CIGR ecosystem. Each character is a unique, high-fidelity 3D asset with exclusive access to future drops and revenue sharing.</p>
+      <h2>{t("mintIdentity.title")}</h2>
+      <p>{t("mintIdentity.desc")}</p>
       <div className="mint-widget-row mint-control-row">
         <div className="mint-preview-card">
           <img src={`${designNftPath}/f-card.jpg`} alt="CIGR identity NFT" />
@@ -22,8 +24,8 @@ export default function MintIdentityPanel() {
         <div className="mint-control-stack">
           <div className="mint-status-card">
             <div className="mint-status-head">
-              <span>Mint Status</span>
-              <b>Live Now</b>
+              <span>{t("mintIdentity.status")}</span>
+              <b>{t("mintIdentity.live")}</b>
             </div>
             <div className="mint-status-main">
               <strong>4200 / 10000</strong>
@@ -33,30 +35,30 @@ export default function MintIdentityPanel() {
           </div>
           <div className="mint-widget">
             <label>
-              Price Per NFT
+              {t("mintIdentity.priceLabel")}
               <b>1 SOL</b>
             </label>
-            <small>Select Quantity</small>
+            <small>{t("mintIdentity.quantityLabel")}</small>
             <div className="mint-quantity-control">
-              <button type="button" onClick={() => changeQuantity(-1)} aria-label="减少铸造数量">
+              <button type="button" onClick={() => changeQuantity(-1)} aria-label={t("mintIdentity.qtyDecrease")}>
                 <Icon>remove</Icon>
               </button>
               <output>{quantity}</output>
-              <button type="button" onClick={() => changeQuantity(1)} aria-label="增加铸造数量">
+              <button type="button" onClick={() => changeQuantity(1)} aria-label={t("mintIdentity.qtyIncrease")}>
                 <Icon>add</Icon>
               </button>
             </div>
             <label>
-              Subtotal
+              {t("mintIdentity.subtotalLabel")}
               <b>{quantity} SOL</b>
             </label>
-            <button type="button">Mint More</button>
-            <p>MAX 10 PER WALLET</p>
+            <button type="button">{t("mintIdentity.mintMore")}</button>
+            <p>{t("mintIdentity.max")}</p>
           </div>
           <div className="mint-live-card">
             <div className="mint-live-title">
               <i aria-hidden="true"></i>
-              <span>Live Activity</span>
+              <span>{t("mintIdentity.liveActivity")}</span>
             </div>
             <div className="mint-live-viewport">
               <div className="mint-live-track">
