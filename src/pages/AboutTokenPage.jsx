@@ -81,7 +81,7 @@ export default function AboutTokenPage() {
 
       <section className="distribution-section">
         <div className="distribution-inner">
-          <div>
+          <div className="distribution-copy">
             <h2>{t("about.distribution")}</h2>
             <div className="allocation-note left">
               <strong>10%</strong>

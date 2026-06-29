@@ -5,7 +5,6 @@ export default function AuctionPage() {
 
   return (
     <main className="cigr-page figma-page auction-route-page">
-      <h1 className="figma-page-title">{t("pages.auction")}</h1>
       <section className="nft-auction-coming route-auction-coming" style={{ "--auction-bg": "url(/images/cigr/design/auction/coming-soon.jpg)" }}>
         <strong>{t("pages.auctionComing")}</strong>
       </section>

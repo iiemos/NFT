@@ -9,14 +9,12 @@ import { useI18n } from "../i18n.js";
 export default function NFTPage() {
   const [activeCardIndex, setActiveCardIndex] = useState(0);
   const [isExchangeOpen, setIsExchangeOpen] = useState(false);
-  const [activeRouteIndex, setActiveRouteIndex] = useState(0);
-  const displayedSynthesis = synthesisGroups[activeRouteIndex];
   const activeCard = nftDesignCards[activeCardIndex];
   const { t } = useI18n();
 
   return (
     <main className="cigr-page figma-page nft-overview-page">
-      <section className="figma-sheet cigr-section">
+      <section className="figma-sheet cigr-section nft-profile-section">
         <h1 className="figma-page-title">{t("nft.pageTitle")}</h1>
 
         <div className="nft-story">
@@ -34,7 +32,7 @@ export default function NFTPage() {
                 key={card.title}
                 onClick={() => setActiveCardIndex(index)}
                 type="button"
-                >
+              >
                 <img src={card.avatar} alt="" aria-hidden="true" />
               </button>
             ))}
@@ -138,6 +136,9 @@ export default function NFTPage() {
       <section className="figma-sheet cigr-section compact" id="nft-synthesis-section">
         <h2>{t("synthesis.title")}</h2>
         <div className="synthesis-stack">
+          {synthesisGroups.map((group) => (
+            <SynthesisDesignCard group={group} key={group.title} />
+          ))}
           <article className="synthesis-upgrade-card">
             <div>
               <h3>{t("synthesis.subtitle")}</h3>
@@ -145,15 +146,6 @@ export default function NFTPage() {
             </div>
             <a href="#/synthesis">{t("nft.toSynthesis")}</a>
           </article>
-          <div className="synthesis-rate-toggle" aria-label={t("synthesis.probability")}>
-            <button type="button" className={activeRouteIndex === 0 ? "active" : ""} onClick={() => setActiveRouteIndex(0)}>
-              R → SR&nbsp;&nbsp;50%
-            </button>
-            <button type="button" className={activeRouteIndex === 1 ? "active" : ""} onClick={() => setActiveRouteIndex(1)}>
-              SR → SSR&nbsp;&nbsp;100%
-            </button>
-          </div>
-          <SynthesisDesignCard group={displayedSynthesis} />
         </div>
       </section>
 

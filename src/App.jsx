@@ -4,7 +4,9 @@ import { useHashPage } from "./router.js";
 
 import HomePage from "./pages/HomePage.jsx";
 import AboutTokenPage from "./pages/AboutTokenPage.jsx";
+import BrandKitPage from "./pages/BrandKitPage.jsx";
 import ClubPage from "./pages/ClubPage.jsx";
+import NFTPage from "./pages/NFTPage.jsx";
 import MintPage from "./pages/MintPage.jsx";
 import StakingPage from "./pages/StakingPage.jsx";
 import SynthesisPage from "./pages/SynthesisPage.jsx";
@@ -15,7 +17,9 @@ import PerksPage from "./pages/PerksPage.jsx";
 const pageComponents = {
   home: HomePage,
   about: AboutTokenPage,
+  "brand-kit": BrandKitPage,
   club: ClubPage,
+  nft: NFTPage,
   mint: MintPage,
   staking: StakingPage,
   synthesis: SynthesisPage,

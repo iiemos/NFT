@@ -10,7 +10,6 @@ export default function PerksPage() {
   return (
     <main className="cigr-page figma-page exchange-route-page">
       <section className="figma-sheet cigr-section compact">
-        <h1 className="figma-page-title">{t("pages.perks")}</h1>
         <div className="exchange-hero-row">
           <div>
             <h3>{t("pages.redemptionTitle")}</h3>

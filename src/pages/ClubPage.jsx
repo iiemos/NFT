@@ -6,7 +6,6 @@ export default function ClubPage() {
   return (
     <main className="cigr-page figma-page club-page">
       <section className="figma-sheet cigr-section">
-        <h1 className="figma-page-title">{t("club.pageTitle")}</h1>
         <div className="club-top-row">
           <img src={`${designClubPath}/hero.jpg`} alt="CIGR club lounge" />
           <div>

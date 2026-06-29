@@ -23,7 +23,11 @@ function CigrHero() {
         <source src={cigrHeroVideo} type="video/mp4" />
       </video>
       <div className="cigr-hero-inner">
-        <h1>{t("home.title")}</h1>
+        <h1>
+          <span className="hero-typewriter" aria-label={t("home.title")}>
+            <span aria-hidden="true">{t("home.title")}</span>
+          </span>
+        </h1>
         <p>{t("home.description")}</p>
         <div className="cigr-hero-actions">
           <a className="cigr-button yellow" href="#/mint">
@@ -200,7 +204,9 @@ function WorkflowSection() {
       <div className="workflow-grid">
         {workflowSteps.map(([step, title, text, icon]) => (
           <article className="workflow-card" key={step}>
-            <img src={icon} alt="" aria-hidden="true" />
+            <span className="workflow-icon">
+              <img src={icon} alt="" aria-hidden="true" />
+            </span>
             <small>{step}</small>
             <h3>{t(title)}</h3>
             <p>{t(text)}</p>
@@ -228,12 +234,8 @@ function DownloadSection() {
         <div className="download-content">
           <h2>{t("home.section.downloadTitle")}</h2>
           <div className="download-actions">
-            <a href="#/about">
-              {t("home.section.downloadIos")}
-              <img src={cigrArrowWhiteImage} alt="" aria-hidden="true" />
-            </a>
-            <a href="#/about">
-              {t("home.section.downloadAndroid")}
+            <a href="#/brand-kit">
+              {t("home.section.startCreate")}
               <img src={cigrArrowWhiteImage} alt="" aria-hidden="true" />
             </a>
           </div>

@@ -130,6 +130,34 @@ main {
   }
 }
 
+@keyframes hero-typewriter {
+  0%,
+  8% {
+    width: 0;
+  }
+
+  42%,
+  78% {
+    width: 15ch;
+  }
+
+  79%,
+  100% {
+    width: 0;
+  }
+}
+
+@keyframes hero-caret {
+  0%,
+  100% {
+    border-color: transparent;
+  }
+
+  50% {
+    border-color: currentColor;
+  }
+}
+
 @keyframes synthesis-pulse {
   0%,
   100% {
@@ -140,6 +168,155 @@ main {
   50% {
     box-shadow: 0 0 0 18px rgba(2, 195, 255, 0.14), inset 0 0 54px rgba(248, 48, 139, 0.34);
     transform: scale(1.04);
+  }
+}
+
+@keyframes result-reveal {
+  from {
+    filter: grayscale(1) blur(4px);
+    opacity: 0.35;
+    transform: scale(1.04);
+  }
+
+  to {
+    filter: grayscale(0) blur(0);
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes synthesis-card-border-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes synthesis-energy-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes synthesis-energy-pulse {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.08);
+  }
+}
+
+@keyframes synthesis-status-dot {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.58;
+    transform: scale(1.45);
+  }
+}
+
+@keyframes synthesis-button-shine {
+  to {
+    transform: translateX(170%) rotate(22deg);
+  }
+}
+
+@keyframes synthesis-overlay-card-top {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, calc(-50% - min(30vw, 178px))) scale(0.92) rotate(0deg);
+  }
+
+  62% {
+    opacity: 0.9;
+    transform: translate(-50%, -50%) scale(0.45) rotate(18deg);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.08) rotate(42deg);
+  }
+}
+
+@keyframes synthesis-overlay-card-left {
+  0% {
+    opacity: 1;
+    transform: translate(calc(-50% - min(30vw, 178px)), -50%) scale(0.92) rotate(0deg);
+  }
+
+  62% {
+    opacity: 0.9;
+    transform: translate(-50%, -50%) scale(0.45) rotate(-18deg);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.08) rotate(-42deg);
+  }
+}
+
+@keyframes synthesis-overlay-card-right {
+  0% {
+    opacity: 1;
+    transform: translate(calc(-50% + min(30vw, 178px)), -50%) scale(0.92) rotate(0deg);
+  }
+
+  62% {
+    opacity: 0.9;
+    transform: translate(-50%, -50%) scale(0.45) rotate(18deg);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.08) rotate(42deg);
+  }
+}
+
+@keyframes synthesis-overlay-card-bottom {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, calc(-50% + min(30vw, 178px))) scale(0.92) rotate(0deg);
+  }
+
+  62% {
+    opacity: 0.9;
+    transform: translate(-50%, -50%) scale(0.45) rotate(-18deg);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.08) rotate(-42deg);
+  }
+}
+
+@keyframes synthesis-overlay-burst {
+  0% {
+    opacity: 0.2;
+    transform: translate(-50%, -50%) scale(0.45);
+  }
+
+  55% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1.9);
+  }
+}
+
+@keyframes synthesis-overlay-float {
+  to {
+    transform: translateY(-10px);
   }
 }
 .material-symbols-outlined {
@@ -2726,7 +2903,34 @@ body {
 
 .cigr-hero h1 {
   color: #ffffff;
-  font-size: clamp(30px, 3.1vw, 44px);
+  font-size: clamp(48px, 8vw, 112px);
+  line-height: 1;
+}
+
+.hero-typewriter {
+  display: inline-flex;
+  justify-content: flex-start;
+  width: 15ch;
+  max-width: 100%;
+  overflow: hidden;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.hero-typewriter > span {
+  display: inline-block;
+  width: 0;
+  overflow: hidden;
+  border-right: 0.08em solid currentColor;
+  animation: hero-typewriter 6.4s steps(15, end) infinite, hero-caret 0.8s step-end infinite;
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-typewriter > span {
+    width: 15ch;
+    animation: none;
+  }
 }
 
 .cigr-hero p {
@@ -2846,8 +3050,7 @@ body {
 }
 
 .lifestyle-card img,
-.mechanism-card img,
-.workflow-card img {
+.mechanism-card img {
   width: 46px;
   height: 46px;
   margin: 0 auto 14px;
@@ -3261,6 +3464,34 @@ body {
   text-align: center;
 }
 
+.workflow-icon {
+  display: grid;
+  width: 88px;
+  height: 88px;
+  place-items: center;
+  margin-bottom: 18px;
+  border-radius: 12px;
+}
+
+.workflow-card:nth-child(1) .workflow-icon,
+.workflow-card:nth-child(4) .workflow-icon {
+  background: var(--cigr-yellow);
+}
+
+.workflow-card:nth-child(2) .workflow-icon {
+  background: var(--cigr-cyan);
+}
+
+.workflow-card:nth-child(3) .workflow-icon {
+  background: var(--cigr-pink);
+}
+
+.workflow-icon img {
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+}
+
 .workflow-card small {
   display: inline-flex;
   padding: 4px 16px;
@@ -3532,56 +3763,86 @@ body {
 
 .distribution-section {
   background: #eeeeee;
+  padding: 36px 0;
 }
 
 .distribution-inner {
+  position: relative;
   display: grid;
-  grid-template-columns: 0.9fr 260px 1fr;
-  gap: 56px;
+  grid-template-columns: minmax(160px, 0.72fr) 176px minmax(190px, 0.8fr);
+  width: min(100% - 48px, 780px);
+  gap: 32px;
   align-items: center;
+  margin: 0 auto;
 }
 
 .distribution-inner h2 {
-  margin: 0 0 58px;
-  font-size: clamp(28px, 3vw, 40px);
+  margin: 0 0 54px;
+  font-size: clamp(18px, 2vw, 22px);
+  font-weight: 950;
+  line-height: 1.12;
 }
 
 .donut-chart {
-  width: 260px;
+  position: relative;
+  width: 176px;
   aspect-ratio: 1;
   border-radius: 999px;
-  background: conic-gradient(var(--cigr-cyan) 0 90%, var(--cigr-yellow) 90% 100%);
-  position: relative;
+  background: conic-gradient(from 218deg, var(--cigr-yellow) 0 10%, var(--cigr-cyan) 10% 100%);
 }
 
 .donut-chart::before {
   position: absolute;
-  inset: 54px;
+  inset: 44px;
   content: "";
   background: #eeeeee;
   border-radius: inherit;
 }
 
+.donut-chart::after {
+  position: absolute;
+  left: 12px;
+  bottom: 42px;
+  width: 31px;
+  height: 31px;
+  content: "";
+  background: var(--cigr-yellow);
+  border: 4px solid #eeeeee;
+  border-radius: 999px;
+}
+
+.distribution-copy {
+  min-width: 0;
+}
+
 .allocation-note {
   display: grid;
-  gap: 8px;
+  gap: 3px;
+  max-width: 210px;
+}
+
+.allocation-note.left {
+  justify-self: end;
+  max-width: 170px;
 }
 
 .allocation-note strong {
-  font-size: 34px;
+  font-size: 17px;
   line-height: 1;
 }
 
 .allocation-note span {
-  font-size: 20px;
+  font-size: 10px;
   font-weight: 950;
+  line-height: 1.2;
 }
 
 .allocation-note p {
   margin: 0;
   color: var(--cigr-text);
+  font-size: 8px;
   font-weight: 700;
-  line-height: 1.55;
+  line-height: 1.45;
 }
 
 .mechanism-section {
@@ -4057,13 +4318,17 @@ body {
   padding-top: 112px;
 }
 
-.figma-page .cigr-section,
+.figma-page .cigr-section:not(.synthesis-flow-section):not(.synthesis-fuse-panel),
 .mint-design-section {
   width: min(100% - 48px, 980px);
 }
 
 .figma-page .cigr-section {
   padding: 38px 0;
+}
+
+.nft-overview-page .nft-profile-section {
+  width: min(100% - 64px, 1240px);
 }
 
 .figma-sheet.compact {
@@ -4120,23 +4385,24 @@ body {
 
 .nft-card-profile {
   display: grid;
-  grid-template-columns: 28px minmax(160px, 250px) minmax(0, 1fr);
-  gap: 20px;
+  grid-template-columns: 54px minmax(320px, 500px) minmax(360px, 1fr);
+  gap: 38px;
   align-items: center;
-  width: min(100%, 680px);
-  margin: 44px auto 0;
+  width: min(100%, 1120px);
+  margin: 52px auto 0;
 }
 
 .nft-profile-dots {
   display: grid;
-  gap: 12px;
+  gap: 26px;
+  justify-items: center;
 }
 
 .nft-profile-dots button {
   position: relative;
   display: grid;
-  width: 28px;
-  height: 28px;
+  width: 44px;
+  height: 44px;
   place-items: center;
   padding: 0;
   overflow: hidden;
@@ -4157,7 +4423,7 @@ body {
 .nft-profile-dots button:hover,
 .nft-profile-dots button.active {
   border-color: var(--cigr-cyan);
-  transform: scale(1.08);
+  transform: scale(1.06);
 }
 
 .nft-profile-dots button:hover::after,
@@ -4175,46 +4441,52 @@ body {
   width: 100%;
   aspect-ratio: 1;
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: 12px;
 }
 
 .nft-profile-copy {
   display: grid;
-  gap: 10px;
+  align-content: center;
+  gap: 20px;
 }
 
 .nft-profile-copy h3 {
   margin: 0;
-  font-size: 20px;
+  font-size: clamp(34px, 3.4vw, 48px);
   font-weight: 950;
+  line-height: 1.05;
 }
 
 .nft-profile-copy strong {
-  font-size: 13px;
+  font-size: clamp(20px, 2vw, 28px);
+  font-weight: 950;
 }
 
 .nft-profile-copy p {
-  padding: 16px;
-  background: #f2f2f2;
-  border-radius: 6px;
+  padding: 26px 30px;
+  background: #eeeeee;
+  border-radius: 10px;
+  font-size: clamp(18px, 1.8vw, 28px);
+  font-weight: 900;
+  line-height: 1.65;
 }
 
 .nft-trait-strip {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 8px;
+  gap: 14px;
 }
 
 .nft-trait-strip img,
 .nft-trait-strip span {
   display: grid;
   width: 100%;
-  height: 58px;
+  height: 100px;
   place-items: center;
   object-fit: contain;
-  padding: 8px;
+  padding: 18px;
   background: #f6f6f6;
-  border-radius: 6px;
+  border-radius: 10px;
   color: #666666;
   font-size: 28px;
   font-weight: 950;
@@ -4763,147 +5035,295 @@ body {
 
 .synthesis-stack {
   display: grid;
-  gap: 34px;
+  gap: 82px;
   margin-top: 30px;
+}
+
+.synthesis-page-head {
+  padding-bottom: 6px;
+}
+
+.synthesis-flow-section {
+  padding-top: 10px;
+}
+
+.synthesis-flow-section .synthesis-stack {
+  margin-top: 0;
 }
 
 .synthesis-design-card {
   display: grid;
   justify-items: center;
-  gap: 14px;
-  padding: 22px;
-  background: #ffffff;
-  border: 1px solid #eeeeee;
-  border-radius: 12px;
-  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.06);
+  gap: 16px;
+  width: min(100%, 780px);
+  margin: 0 auto;
 }
 
 .synthesis-design-card h3 {
   margin: 0;
-  font-size: 18px;
+  font-size: clamp(23px, 2.4vw, 32px);
   font-weight: 950;
+  line-height: 1.15;
 }
 
-.synthesis-design-card p {
-  font-size: 13px;
-  text-align: center;
-}
-
-/* 合成流程：材料 → 代币消耗 → 合成 → 成功/失败概率 */
-.synthesis-inputs {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  justify-content: center;
-  gap: 6px;
-}
-
-.synthesis-inputs figure {
+.synthesis-input-tray {
   display: grid;
-  gap: 5px;
-  width: 94px;
-}
-
-.synthesis-inputs figure img {
-  width: 94px;
-  aspect-ratio: 1;
-  object-fit: cover;
+  width: min(100%, 660px);
+  overflow: hidden;
+  background: #f1f1f1;
   border-radius: 8px;
 }
 
-.synthesis-inputs figcaption {
-  text-align: center;
-  font-size: 11px;
-  font-weight: 800;
-  color: #9a9a9a;
-}
-
-.synthesis-plus {
-  align-self: flex-start;
-  margin-top: 36px;
-  color: #c2c2c2;
-  font-size: 18px;
-  font-weight: 900;
-}
-
-.synthesis-cost {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 9px 22px;
-  background: #f4f4f5;
-  border-radius: 999px;
-  font-size: 13px;
-  font-weight: 800;
-}
-
-.synthesis-cost span {
-  color: #bdbdbd;
-}
-
-.synthesis-fuse-btn {
-  min-width: 96px;
-  min-height: 38px;
-  color: #1a1205;
-  background: var(--cigr-gradient);
-  border: 0;
-  border-radius: 999px;
-  font-size: 14px;
-  font-weight: 950;
-  cursor: pointer;
-}
-
-.synthesis-outcomes {
+.synthesis-input-row {
   display: grid;
-  gap: 22px 28px;
-  justify-content: center;
-  width: 100%;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
-.synthesis-outcomes.count-2 {
-  grid-template-columns: repeat(2, minmax(0, 220px));
-}
-
-.synthesis-outcomes.count-1 {
-  grid-template-columns: minmax(0, 360px);
-}
-
-.synthesis-outcome {
+.synthesis-input-card {
+  position: relative;
   display: grid;
   justify-items: center;
-  gap: 10px;
+  gap: 8px;
+  margin: 0;
+  padding: 14px 18px 9px;
+  border-right: 2px solid #ffffff;
 }
 
-.synthesis-rate {
-  font-size: 13px;
+.synthesis-input-card:last-child {
+  border-right: 0;
+}
+
+.synthesis-input-card img {
+  width: min(100%, 126px);
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+.synthesis-input-card figcaption {
+  color: #343434;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.synthesis-inline-plus {
+  position: absolute;
+  top: 50%;
+  right: -13px;
+  z-index: 2;
+  display: grid;
+  width: 26px;
+  height: 26px;
+  place-items: center;
+  color: #111111;
+  background: #ffffff;
+  border-radius: 999px;
+  font-size: 18px;
+  font-weight: 900;
+  line-height: 1;
+  transform: translateY(-50%);
+}
+
+.synthesis-token-cost {
+  display: flex;
+  min-height: 54px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border-top: 2px solid #ffffff;
+  color: #111111;
+  font-size: clamp(16px, 2vw, 20px);
   font-weight: 950;
 }
 
-.synthesis-rate em {
+.synthesis-token-cost span {
+  display: grid;
+  width: 25px;
+  height: 25px;
+  place-items: center;
+  background: #ffffff;
+  border-radius: 999px;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.synthesis-flow-lines {
+  position: relative;
+  width: min(100%, 540px);
+  height: 92px;
+}
+
+.synthesis-flow-main,
+.synthesis-flow-branch {
+  position: absolute;
+  left: 0;
+  right: 0;
+  pointer-events: none;
+}
+
+.synthesis-flow-main {
+  top: 0;
+  height: 30px;
+  border-right: 1px dashed #21bfff;
+  border-bottom: 1px dashed #f8a928;
+  border-left: 1px dashed #f8a928;
+  border-radius: 0 0 12px 12px;
+}
+
+.synthesis-flow-main::after {
+  position: absolute;
+  bottom: -34px;
+  left: 50%;
+  width: 1px;
+  height: 34px;
+  content: "";
+  border-left: 1px dashed #6dbdff;
+}
+
+.synthesis-flow-branch {
+  bottom: 0;
+  height: 30px;
+  border-top: 1px dashed #f8a928;
+  border-right: 1px dashed #222222;
+  border-left: 1px dashed #f8a928;
+  border-radius: 12px 12px 0 0;
+}
+
+.outcome-count-1 .synthesis-flow-branch {
+  width: 1px;
+  margin: 0 auto;
+  border-top: 0;
+  border-right: 0;
+  border-left: 1px dashed #f8a928;
+  border-radius: 0;
+}
+
+.synthesis-merge-dot {
+  position: absolute;
+  top: 38px;
+  left: 50%;
+  z-index: 2;
+  display: grid;
+  width: 58px;
+  height: 58px;
+  place-items: center;
+  color: #111111;
+  background: var(--cigr-gradient);
+  border-radius: 999px;
+  font-size: 16px;
+  font-weight: 950;
+  transform: translateX(-50%);
+}
+
+.synthesis-outcome-map {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 220px));
+  gap: clamp(90px, 13vw, 160px);
+  justify-content: center;
+  width: min(100%, 660px);
+  margin-top: 0;
+}
+
+.outcome-count-1 .synthesis-outcome-map {
+  grid-template-columns: minmax(0, 440px);
+}
+
+.synthesis-outcome-card {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+}
+
+.synthesis-outcome-card strong {
+  display: flex;
+  min-height: 28px;
+  align-items: baseline;
+  gap: 6px;
+  color: #111111;
+  font-size: 14px;
+  font-weight: 950;
+}
+
+.synthesis-outcome-card strong em {
+  color: var(--cigr-pink);
+  font-size: 20px;
   font-style: normal;
 }
 
-.synthesis-outcome.win .synthesis-rate em {
-  color: var(--cigr-pink);
-}
-
-.synthesis-outcome.lose .synthesis-rate em {
-  color: #8a8a8a;
+.synthesis-outcome-card.lose strong em {
+  color: #111111;
 }
 
 .synthesis-outcome-art {
-  display: flex;
-  gap: 12px;
-  justify-content: center;
-  width: 100%;
+  display: grid;
+  width: 178px;
+  min-height: 178px;
+  place-items: center;
+  padding: 12px;
+  background: #f1f1f1;
+  border-radius: 8px;
 }
 
 .synthesis-outcome-art img {
-  width: 100%;
-  max-width: 150px;
+  width: 132px;
   aspect-ratio: 1;
   object-fit: cover;
-  border-radius: 10px;
+}
+
+.synthesis-outcome-card p {
+  width: 178px;
+  margin: -42px 0 0;
+  padding: 0 10px 12px;
+  color: #444444;
+  font-size: 11px;
+  font-weight: 750;
+  line-height: 1.35;
+  text-align: center;
+}
+
+.outcome-count-1 .synthesis-outcome-card {
+  grid-template-columns: 126px 1fr;
+  gap: 18px;
+  align-items: center;
+  width: min(100%, 430px);
+  min-height: 180px;
+  padding: 18px 18px 10px;
+  background: #f1f1f1;
+  border-radius: 8px;
+}
+
+.outcome-count-1 .synthesis-outcome-card strong {
+  display: grid;
+  justify-items: start;
+  gap: 0;
+  color: var(--cigr-pink);
+  font-size: 18px;
+  line-height: 1.05;
+}
+
+.outcome-count-1 .synthesis-outcome-card strong em {
+  color: var(--cigr-pink);
+  font-size: 35px;
+}
+
+.outcome-count-1 .synthesis-outcome-art {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  width: 100%;
+  min-height: 0;
+  padding: 0;
+  background: transparent;
+}
+
+.outcome-count-1 .synthesis-outcome-art img {
+  width: 100%;
+}
+
+.outcome-count-1 .synthesis-outcome-card p {
+  grid-column: 1 / -1;
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 .synthesis-upgrade-card {
@@ -4981,11 +5401,11 @@ body {
 
 .synthesis-operation-grid {
   display: grid;
-  grid-template-columns: minmax(170px, 0.72fr) minmax(240px, 1fr) minmax(170px, 0.72fr);
-  gap: 28px;
-  align-items: start;
-  width: 100%;
-  margin-top: 24px;
+  grid-template-columns: minmax(190px, 0.82fr) minmax(340px, 1.32fr) minmax(190px, 0.82fr);
+  gap: 40px;
+  align-items: center;
+  width: min(100%, 1040px);
+  margin-top: 30px;
 }
 
 .synthesis-panel-label {
@@ -5009,32 +5429,40 @@ body {
 
 .synthesis-mini-list {
   display: grid;
-  gap: 12px;
+  max-height: 540px;
+  gap: 14px;
+  overflow: auto;
+  padding: 14px;
+  background: #f1f1f1;
+  border-radius: 10px;
 }
 
 .synthesis-mini-list button {
   display: grid;
-  grid-template-columns: 78px 1fr;
-  gap: 10px;
+  grid-template-columns: 96px 1fr 18px;
+  gap: 12px;
   align-items: center;
-  padding: 8px;
+  min-width: 0;
+  padding: 10px;
   background: #ffffff;
   border: 1px solid #e5e5e5;
-  border-radius: 10px;
+  border-radius: 8px;
   text-align: left;
-  transition: border-color 180ms ease, transform 180ms ease;
+  cursor: pointer;
+  transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
 }
 
 .synthesis-mini-list button.selected {
   border-color: var(--cigr-cyan);
+  box-shadow: 0 0 0 2px rgba(2, 195, 255, 0.16);
   transform: translateY(-2px);
 }
 
 .synthesis-mini-list img {
-  width: 78px;
+  width: 96px;
   aspect-ratio: 1;
   object-fit: cover;
-  border-radius: 6px;
+  border-radius: 4px;
 }
 
 .synthesis-mini-list span {
@@ -5042,49 +5470,286 @@ body {
   font-weight: 950;
 }
 
+.synthesis-mini-list i {
+  display: grid;
+  width: 18px;
+  height: 18px;
+  place-items: center;
+  color: var(--cigr-cyan);
+  border: 1px solid #cfcfcf;
+  border-radius: 999px;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 950;
+}
+
+.synthesis-mini-list button.selected i {
+  color: #111111;
+  background: var(--cigr-cyan);
+  border-color: var(--cigr-cyan);
+}
+
 .synthesis-chamber {
   display: grid;
   justify-items: center;
-  gap: 14px;
+  gap: 20px;
 }
 
-.synthesis-orb {
+.synthesis-cross-grid {
+  position: relative;
   display: grid;
-  width: min(100%, 260px);
-  aspect-ratio: 1;
-  grid-template-columns: repeat(2, 24px);
-  gap: 18px;
-  place-content: center;
-  background:
-    radial-gradient(circle, rgba(255, 255, 255, 0.95) 0 38%, rgba(255, 244, 180, 0.96) 39% 68%, rgba(251, 194, 2, 0.58) 69% 100%),
-    #fff7c4;
-  border: 2px dashed rgba(2, 195, 255, 0.42);
-  border-radius: 999px;
-  box-shadow: inset 0 0 34px rgba(251, 194, 2, 0.42);
+  grid-template-columns: 128px 154px 128px;
+  grid-template-rows: 128px 154px 128px;
+  gap: 14px;
+  align-items: center;
+  justify-items: center;
+  width: min(100%, 456px);
+  min-height: 424px;
+  padding: 6px;
 }
 
-.synthesis-orb.is-pulsing {
-  animation: synthesis-pulse 700ms ease;
-}
-
-.synthesis-orb i {
-  display: block;
-  width: 24px;
-  height: 24px;
+.synthesis-nft-card {
+  position: relative;
+  display: grid;
+  width: 128px;
+  height: 128px;
+  place-items: center;
+  padding: 0;
+  overflow: hidden;
+  color: rgba(255, 255, 255, 0.82);
   background: #ffffff;
+  border: 2px dashed rgba(179, 136, 255, 0.22);
+  border-radius: 4px;
+  outline: 1px dashed rgba(17, 17, 17, 0.28);
+  outline-offset: 3px;
+  box-shadow: 0 14px 34px rgba(16, 9, 38, 0.28);
+  cursor: pointer;
+  transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease, outline-color 220ms ease;
+}
+
+.synthesis-nft-card:hover {
+  border-color: rgba(179, 136, 255, 0.46);
+  outline-color: rgba(17, 17, 17, 0.46);
+  box-shadow: 0 18px 44px rgba(124, 77, 255, 0.24);
+  transform: translateY(-3px);
+}
+
+.synthesis-nft-card.filled {
+  border-color: rgba(179, 136, 255, 0.48);
+  border-style: solid;
+  outline-color: rgba(179, 136, 255, 0.56);
+}
+
+.synthesis-nft-card.cell-top {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.synthesis-nft-card.cell-left {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.synthesis-nft-card.cell-right {
+  grid-column: 3;
+  grid-row: 2;
+}
+
+.synthesis-nft-card.cell-bottom {
+  grid-column: 2;
+  grid-row: 3;
+}
+
+.synthesis-glow-border {
+  position: absolute;
+  inset: -2px;
+  z-index: 0;
+  background: conic-gradient(from 0deg, transparent, rgba(179, 136, 255, 0.42), transparent, rgba(124, 77, 255, 0.38), transparent);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.synthesis-nft-card.filled .synthesis-glow-border {
+  opacity: 1;
+  animation: synthesis-card-border-spin 5s linear infinite;
+}
+
+.synthesis-nft-card img {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.synthesis-nft-card .material-symbols-outlined {
+  position: relative;
+  z-index: 1;
+  color: rgba(17, 17, 17, 0.42);
+  font-size: 34px;
+}
+
+.synthesis-energy-core {
+  position: relative;
+  display: grid;
+  grid-column: 2;
+  grid-row: 2;
+  width: 154px;
+  height: 154px;
+  place-items: center;
   border-radius: 999px;
-  box-shadow: inset 0 0 0 5px #eeeeee;
+  filter: drop-shadow(0 0 22px rgba(124, 77, 255, 0.28));
+}
+
+.energy-ring,
+.energy-arc {
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  pointer-events: none;
+}
+
+.energy-ring.ring-a {
+  border: 10px solid rgba(179, 136, 255, 0.14);
+}
+
+.energy-ring.ring-b {
+  inset: 20px;
+  background: radial-gradient(circle, rgba(124, 77, 255, 0.2), rgba(124, 77, 255, 0.06) 58%, transparent 70%);
+  animation: synthesis-energy-pulse 2.2s ease-in-out infinite;
+}
+
+.energy-arc {
+  border: 12px solid transparent;
+  border-top-color: #b388ff;
+  border-right-color: rgba(124, 77, 255, 0.82);
+  filter: drop-shadow(0 0 14px rgba(179, 136, 255, 0.65));
+  animation: synthesis-energy-spin 2.6s linear infinite;
+}
+
+.energy-arc.arc-b {
+  inset: 16px;
+  border-width: 6px;
+  border-top-color: rgba(255, 255, 255, 0.42);
+  border-right-color: rgba(179, 136, 255, 0.56);
+  animation-duration: 1.6s;
+  animation-direction: reverse;
+}
+
+.energy-core-label {
+  position: relative;
+  z-index: 2;
+  color: #7c4dff;
+  font-size: 14px;
+  font-weight: 950;
+  letter-spacing: 2px;
+}
+
+.synthesis-status-bar {
+  display: inline-flex;
+  min-height: 28px;
+  align-items: center;
+  gap: 10px;
+  color: #6d647e;
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.synthesis-status-bar span {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  background: rgba(124, 77, 255, 0.32);
+  border-radius: 999px;
+}
+
+.synthesis-status-bar span.done {
+  background: #7c4dff;
+  box-shadow: 0 0 18px rgba(124, 77, 255, 0.58);
+  animation: synthesis-status-dot 1.2s ease-in-out infinite;
+}
+
+.synthesis-probability-panel {
+  display: grid;
+  width: min(100%, 300px);
+  gap: 8px;
+  padding: 12px 18px;
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.synthesis-probability-panel strong {
+  color: #555555;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.synthesis-probability-panel div {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+}
+
+.synthesis-probability-panel span {
+  display: grid;
+  color: #111111;
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.synthesis-probability-panel em {
+  color: #111111;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 950;
+  line-height: 1;
+}
+
+.synthesis-probability-panel .success em {
+  color: var(--cigr-pink);
+}
+
+.synthesis-probability-panel small {
+  color: #777777;
+  font-size: 11px;
+  font-weight: 850;
 }
 
 .synthesis-chamber button {
-  min-width: 76px;
-  min-height: 76px;
+  position: relative;
+  min-height: 36px;
+  overflow: hidden;
+  color: #111111;
+  border: 0;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 950;
+  cursor: pointer;
+}
+
+.synthesis-chamber .synthesis-fuse-action {
+  width: min(100%, 300px);
   color: #111111;
   background: var(--cigr-gradient);
-  border: 0;
   border-radius: 999px;
-  font-size: 18px;
-  font-weight: 950;
+  outline: 0;
+}
+
+.synthesis-chamber button > span:not(.synthesis-glow-border) {
+  position: absolute;
+  top: -60%;
+  left: -70%;
+  width: 80%;
+  height: 220%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.38), transparent);
+  transform: rotate(22deg);
+}
+
+.synthesis-chamber button:not(:disabled) > span:not(.synthesis-glow-border) {
+  animation: synthesis-button-shine 2.2s ease-in-out infinite;
 }
 
 .synthesis-chamber button:disabled {
@@ -5093,15 +5758,10 @@ body {
   opacity: 0.58;
 }
 
-.synthesis-chamber small {
-  color: #777777;
-  font-size: 12px;
-  font-weight: 850;
-}
-
 .synthesis-result-preview {
   display: grid;
-  gap: 12px;
+  gap: 14px;
+  align-self: center;
   text-align: left;
 }
 
@@ -5111,13 +5771,17 @@ body {
   place-items: center;
   overflow: hidden;
   background: #eeeeee;
-  border-radius: 10px;
+  border-radius: 12px;
 }
 
 .synthesis-result-box img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.synthesis-result-box.ready img {
+  animation: result-reveal 800ms ease both;
 }
 
 .synthesis-result-box .material-symbols-outlined {
@@ -5128,6 +5792,173 @@ body {
 .synthesis-result-preview p {
   color: #666666;
   font-size: 12px;
+  font-weight: 750;
+  line-height: 1.45;
+}
+
+.synthesis-potential-tier {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.synthesis-potential-tier span {
+  color: #555555;
+  font-size: 11px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.synthesis-potential-tier b {
+  padding: 5px 12px;
+  color: var(--cigr-cyan);
+  background: #f1f1f1;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 950;
+}
+
+.synthesis-evolution-path {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  padding: 18px 16px 12px;
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.synthesis-evolution-path span {
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+  color: #777777;
+  font-size: 11px;
+  font-weight: 900;
+}
+
+.synthesis-evolution-path i {
+  display: block;
+  width: 28px;
+  height: 28px;
+  border: 2px solid #d3d3d3;
+  border-radius: 999px;
+  background: #ffffff;
+}
+
+.synthesis-evolution-path span:nth-child(2) i {
+  border-color: var(--cigr-yellow);
+}
+
+.synthesis-evolution-path span:nth-child(3) i {
+  border-color: var(--cigr-cyan);
+}
+
+.synthesis-evolution-path span.active {
+  color: #111111;
+}
+
+.synthesis-evolution-path span.active i {
+  box-shadow: 0 0 0 5px rgba(2, 195, 255, 0.13);
+}
+
+.synthesis-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  display: grid;
+  place-items: center;
+  color: #ffffff;
+}
+
+.synthesis-overlay-backdrop {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(124, 77, 255, 0.2), rgba(5, 5, 20, 0.86) 58%, rgba(0, 0, 0, 0.92)),
+    rgba(5, 5, 20, 0.82);
+  backdrop-filter: blur(10px);
+}
+
+.synthesis-overlay-stage {
+  position: relative;
+  width: min(86vw, 500px);
+  aspect-ratio: 1;
+  animation: synthesis-overlay-float 1.8s ease-in-out infinite alternate;
+}
+
+.overlay-card {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 2;
+  width: 132px;
+  height: 132px;
+  object-fit: cover;
+  border: 1px solid rgba(179, 136, 255, 0.28);
+  border-radius: 18px;
+  box-shadow: 0 0 38px rgba(124, 77, 255, 0.24);
+}
+
+.overlay-top {
+  animation: synthesis-overlay-card-top 2.2s cubic-bezier(0.6, 0, 0.2, 1) forwards;
+}
+
+.overlay-left {
+  animation: synthesis-overlay-card-left 2.2s cubic-bezier(0.6, 0, 0.2, 1) forwards;
+}
+
+.overlay-right {
+  animation: synthesis-overlay-card-right 2.2s cubic-bezier(0.6, 0, 0.2, 1) forwards;
+}
+
+.overlay-bottom {
+  animation: synthesis-overlay-card-bottom 2.2s cubic-bezier(0.6, 0, 0.2, 1) forwards;
+}
+
+.overlay-energy {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  width: 250px;
+  height: 250px;
+  border-radius: 999px;
+  transform: translate(-50%, -50%);
+  animation: synthesis-overlay-burst 2.8s ease-out forwards;
+}
+
+.overlay-energy span,
+.overlay-energy i {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+}
+
+.overlay-energy span {
+  background: radial-gradient(circle, rgba(179, 136, 255, 0.44), rgba(124, 77, 255, 0.14) 48%, transparent 66%);
+  box-shadow: 0 0 90px rgba(124, 77, 255, 0.38);
+}
+
+.overlay-energy i {
+  border: 14px solid transparent;
+  border-top-color: #b388ff;
+  border-right-color: rgba(124, 77, 255, 0.94);
+  filter: drop-shadow(0 0 26px rgba(179, 136, 255, 0.72));
+  animation: synthesis-energy-spin 0.9s linear infinite;
+}
+
+.synthesis-overlay-stage b {
+  position: absolute;
+  left: 50%;
+  bottom: 18px;
+  z-index: 3;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 4px;
+  white-space: nowrap;
+  transform: translateX(-50%);
 }
 
 .nft-auction-coming {
@@ -5174,12 +6005,17 @@ body {
 }
 
 .auction-route-page {
+  display: grid;
   min-height: 100dvh;
+  padding-top: 112px;
 }
 
 .route-auction-coming {
-  width: min(100% - 48px, 980px);
-  margin: 0 auto 72px;
+  width: 100vw;
+  min-height: calc(100dvh - 112px);
+  margin: 0;
+  margin-left: calc(50% - 50vw);
+  padding: 0 24px;
 }
 
 .exchange-hero-row {
@@ -5906,8 +6742,20 @@ body {
   }
 
   .distribution-inner {
+    width: min(100% - 40px, 780px);
+    gap: 24px;
     justify-items: center;
     text-align: center;
+  }
+
+  .distribution-inner h2 {
+    margin-bottom: 18px;
+  }
+
+  .allocation-note,
+  .allocation-note.left {
+    justify-self: center;
+    max-width: 260px;
   }
 
   .nft-hero-stack {
@@ -6118,7 +6966,7 @@ body {
   }
 
   .donut-chart {
-    width: 210px;
+    width: 190px;
   }
 }
 
@@ -6166,9 +7014,13 @@ body {
   }
 
   .synthesis-operation-grid {
-    max-width: 620px;
+    max-width: 680px;
     margin-right: auto;
     margin-left: auto;
+  }
+
+  .synthesis-outcome-map {
+    gap: 72px;
   }
 
   .club-house-map {
@@ -6210,7 +7062,6 @@ body {
   .nft-perk-pair,
   .nft-access-grid,
   .nft-metrics-grid,
-  .synthesis-outcomes.count-2,
   .exchange-modal,
   .club-location-grid,
   .brand-spec-color-grid,
@@ -6223,6 +7074,20 @@ body {
     grid-column: auto;
   }
 
+  .nft-profile-dots {
+    gap: 12px;
+  }
+
+  .nft-profile-dots button {
+    width: 38px;
+    height: 38px;
+  }
+
+  .nft-profile-copy p {
+    padding: 18px;
+    font-size: 16px;
+  }
+
   .nft-yellow-band,
   .club-house-band {
     padding: 38px 0;
@@ -6230,6 +7095,75 @@ body {
 
   .nft-trait-strip {
     grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .nft-trait-strip img,
+  .nft-trait-strip span {
+    height: 72px;
+    padding: 10px;
+  }
+
+  .synthesis-stack {
+    gap: 64px;
+  }
+
+  .synthesis-input-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .synthesis-input-card {
+    border-top: 2px solid #ffffff;
+  }
+
+  .synthesis-input-card:nth-child(1),
+  .synthesis-input-card:nth-child(2) {
+    border-top: 0;
+  }
+
+  .synthesis-input-card:nth-child(2n) {
+    border-right: 0;
+  }
+
+  .synthesis-inline-plus {
+    display: none;
+  }
+
+  .synthesis-flow-lines {
+    width: min(100%, 320px);
+    height: 74px;
+  }
+
+  .synthesis-flow-main::after {
+    bottom: -26px;
+    height: 26px;
+  }
+
+  .synthesis-flow-branch {
+    display: none;
+  }
+
+  .synthesis-merge-dot {
+    top: 29px;
+    width: 50px;
+    height: 50px;
+    font-size: 14px;
+  }
+
+  .synthesis-outcome-map,
+  .outcome-count-1 .synthesis-outcome-map {
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
+
+  .outcome-count-1 .synthesis-outcome-card {
+    grid-template-columns: 1fr;
+    width: min(100%, 280px);
+  }
+
+  .outcome-count-1 .synthesis-outcome-card strong {
+    justify-items: center;
+    text-align: center;
   }
 
   .mint-drop-hero {
@@ -6267,19 +7201,75 @@ body {
   }
 
   .synthesis-mini-list button {
-    grid-template-columns: 64px 1fr;
+    grid-template-columns: 64px 1fr 18px;
   }
 
   .synthesis-mini-list img {
     width: 64px;
   }
 
-  .synthesis-orb {
-    width: min(100%, 210px);
+  .synthesis-cross-grid {
+    grid-template-columns: 82px 104px 82px;
+    grid-template-rows: 82px 104px 82px;
+    gap: 8px;
+    width: min(100%, 292px);
+    min-height: 284px;
+  }
+
+  .synthesis-nft-card {
+    width: 82px;
+    height: 82px;
+    border-radius: 4px;
+  }
+
+  .synthesis-energy-core {
+    width: 104px;
+    height: 104px;
+  }
+
+  .energy-ring.ring-a {
+    border-width: 8px;
+  }
+
+  .energy-arc {
+    border-width: 9px;
+  }
+
+  .energy-core-label {
+    font-size: 11px;
+  }
+
+  .synthesis-probability-panel {
+    width: min(100%, 280px);
+  }
+
+  .synthesis-overlay-stage {
+    width: min(90vw, 320px);
+  }
+
+  .overlay-card {
+    width: 86px;
+    height: 86px;
+    border-radius: 12px;
+  }
+
+  .overlay-energy {
+    width: 176px;
+    height: 176px;
+  }
+
+  .synthesis-overlay-stage b {
+    bottom: -6px;
+    font-size: 9px;
+    letter-spacing: 2px;
   }
 
   .nft-auction-coming {
     min-height: 280px;
+  }
+
+  .route-auction-coming {
+    min-height: calc(100dvh - 92px);
   }
 
   .nft-auction-coming h2 {
