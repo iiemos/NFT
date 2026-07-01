@@ -333,6 +333,41 @@ main {
   font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
 }
 
+.home-background-audio {
+  display: none;
+}
+
+.music-toggle {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 70;
+  display: grid;
+  width: 54px;
+  height: 54px;
+  place-items: center;
+  color: #111111;
+  background: #ffffff;
+  border: 2px solid #111111;
+  border-radius: 999px;
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.18);
+  cursor: pointer;
+  transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+}
+
+.music-toggle:hover {
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.22);
+  transform: translateY(-2px);
+}
+
+.music-toggle.is-playing {
+  background: var(--cigr-gradient);
+}
+
+.music-toggle .material-symbols-outlined {
+  font-size: 26px;
+}
+
 .nav-shell {
   position: fixed;
   right: 0;
@@ -3595,8 +3630,16 @@ body {
 .token-issue-grid,
 .expansion-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 24px;
+}
+
+.partner-cards {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.token-issue-grid,
+.expansion-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .partner-cards article {
@@ -3763,29 +3806,29 @@ body {
 
 .distribution-section {
   background: #eeeeee;
-  padding: 36px 0;
+  padding: 58px 0;
 }
 
 .distribution-inner {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(160px, 0.72fr) 176px minmax(190px, 0.8fr);
-  width: min(100% - 48px, 780px);
-  gap: 32px;
+  grid-template-columns: minmax(220px, 0.82fr) 228px minmax(260px, 0.9fr);
+  width: min(100% - 48px, 1080px);
+  gap: 58px;
   align-items: center;
   margin: 0 auto;
 }
 
 .distribution-inner h2 {
-  margin: 0 0 54px;
-  font-size: clamp(18px, 2vw, 22px);
+  margin: 0 0 64px;
+  font-size: clamp(24px, 2.4vw, 32px);
   font-weight: 950;
   line-height: 1.12;
 }
 
 .donut-chart {
   position: relative;
-  width: 176px;
+  width: 228px;
   aspect-ratio: 1;
   border-radius: 999px;
   background: conic-gradient(from 218deg, var(--cigr-yellow) 0 10%, var(--cigr-cyan) 10% 100%);
@@ -3793,7 +3836,7 @@ body {
 
 .donut-chart::before {
   position: absolute;
-  inset: 44px;
+  inset: 58px;
   content: "";
   background: #eeeeee;
   border-radius: inherit;
@@ -3801,13 +3844,13 @@ body {
 
 .donut-chart::after {
   position: absolute;
-  left: 12px;
-  bottom: 42px;
-  width: 31px;
-  height: 31px;
+  left: 16px;
+  bottom: 54px;
+  width: 40px;
+  height: 40px;
   content: "";
   background: var(--cigr-yellow);
-  border: 4px solid #eeeeee;
+  border: 5px solid #eeeeee;
   border-radius: 999px;
 }
 
@@ -3817,22 +3860,22 @@ body {
 
 .allocation-note {
   display: grid;
-  gap: 3px;
-  max-width: 210px;
+  gap: 5px;
+  max-width: 290px;
 }
 
 .allocation-note.left {
   justify-self: end;
-  max-width: 170px;
+  max-width: 250px;
 }
 
 .allocation-note strong {
-  font-size: 17px;
+  font-size: 24px;
   line-height: 1;
 }
 
 .allocation-note span {
-  font-size: 10px;
+  font-size: 13px;
   font-weight: 950;
   line-height: 1.2;
 }
@@ -3840,7 +3883,7 @@ body {
 .allocation-note p {
   margin: 0;
   color: var(--cigr-text);
-  font-size: 8px;
+  font-size: 11px;
   font-weight: 700;
   line-height: 1.45;
 }
@@ -4385,11 +4428,11 @@ body {
 
 .nft-card-profile {
   display: grid;
-  grid-template-columns: 54px minmax(320px, 500px) minmax(360px, 1fr);
-  gap: 38px;
-  align-items: center;
-  width: min(100%, 1120px);
-  margin: 52px auto 0;
+  grid-template-columns: 54px minmax(360px, 500px) minmax(420px, 1fr);
+  gap: 32px;
+  align-items: stretch;
+  width: min(100%, 1160px);
+  margin: 48px auto 0;
 }
 
 .nft-profile-dots {
@@ -4441,40 +4484,50 @@ body {
   width: 100%;
   aspect-ratio: 1;
   object-fit: cover;
-  border-radius: 12px;
+  border-radius: 10px;
 }
 
 .nft-profile-copy {
   display: grid;
-  align-content: center;
-  gap: 20px;
+  height: 100%;
+  align-content: stretch;
+  gap: 14px;
+}
+
+.nft-profile-heading {
+  display: grid;
+  align-content: start;
+  gap: 6px;
 }
 
 .nft-profile-copy h3 {
   margin: 0;
-  font-size: clamp(34px, 3.4vw, 48px);
+  font-size: clamp(32px, 3vw, 44px);
   font-weight: 950;
   line-height: 1.05;
 }
 
 .nft-profile-copy strong {
-  font-size: clamp(20px, 2vw, 28px);
+  font-size: clamp(19px, 1.8vw, 26px);
   font-weight: 950;
 }
 
 .nft-profile-copy p {
-  padding: 26px 30px;
+  display: grid;
+  align-items: center;
+  padding: 22px 28px;
   background: #eeeeee;
   border-radius: 10px;
-  font-size: clamp(18px, 1.8vw, 28px);
+  font-size: clamp(16px, 1.35vw, 20px);
   font-weight: 900;
-  line-height: 1.65;
+  line-height: 1.75;
 }
 
 .nft-trait-strip {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 14px;
+  gap: 10px;
+  align-self: end;
 }
 
 .nft-trait-strip img,
@@ -4488,8 +4541,16 @@ body {
   background: #f6f6f6;
   border-radius: 10px;
   color: #666666;
-  font-size: 28px;
+  font-size: 15px;
   font-weight: 950;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.nft-trait-strip.text-traits span {
+  padding: 0 10px;
+  color: #222222;
+  font-size: clamp(13px, 1.1vw, 16px);
 }
 
 .nft-yellow-band {
@@ -6549,10 +6610,10 @@ body {
 }
 
 .wordmark-canvas {
-  height: 160px;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
+  display: grid;
+  min-height: 190px;
+  place-items: center;
+  padding: 26px;
 }
 
 .wordmark-card.dark .wordmark-canvas {
@@ -6561,8 +6622,17 @@ body {
 
 .wordmark-card.light .wordmark-canvas {
   background-color: #ffffff;
-  background-size: 82%;
   border-bottom: 1px solid #f0f0f0;
+}
+
+.wordmark-canvas img {
+  width: min(100%, 310px);
+  max-height: 150px;
+  object-fit: contain;
+}
+
+.wordmark-card.light .wordmark-canvas img {
+  width: min(100%, 260px);
 }
 
 .wordmark-card figcaption {
@@ -6710,7 +6780,8 @@ body {
 
   .cigr-card-grid,
   .roadmap-grid,
-  .workflow-grid {
+  .workflow-grid,
+  .partner-cards {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -6799,6 +6870,13 @@ body {
 }
 
 @media (max-width: 640px) {
+  .music-toggle {
+    right: 16px;
+    bottom: 16px;
+    width: 48px;
+    height: 48px;
+  }
+
   .cigr-nav .nav-inner,
   .cigr-section,
   .partner-inner,
@@ -6825,6 +6903,10 @@ body {
   .cigr-hero-actions,
   .download-actions {
     gap: 12px;
+  }
+
+  .partner-cards {
+    grid-template-columns: 1fr;
   }
 
   .cigr-button,
@@ -6991,6 +7073,11 @@ body {
 
   .nft-card-profile {
     max-width: 560px;
+    align-items: center;
+  }
+
+  .nft-profile-copy {
+    height: auto;
   }
 
   .nft-profile-dots {

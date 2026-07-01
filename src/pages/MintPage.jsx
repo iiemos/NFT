@@ -29,7 +29,7 @@ export default function MintPage() {
           <h3>{t("mint.title")}</h3>
           {nftMintStats.map(([value, label]) => (
             <article key={value}>
-              <strong>{value}</strong>
+              <strong>{t(value)}</strong>
               <span>{t(label)}</span>
             </article>
           ))}

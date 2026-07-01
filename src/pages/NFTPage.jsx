@@ -39,18 +39,15 @@ export default function NFTPage() {
           </div>
           <img src={activeCard.image} alt={activeCard.title} />
           <div className="nft-profile-copy">
-            <h3>{t(activeCard.title)}</h3>
-            <strong>{t(activeCard.subtitle)}</strong>
+            <div className="nft-profile-heading">
+              <h3>{t(activeCard.title)}</h3>
+              <strong>{t(activeCard.subtitle)}</strong>
+            </div>
             <p>{t(activeCard.text)}</p>
-            <div className="nft-trait-strip">
-              {activeCard.traits.map((trait) => (
-                <img src={trait} alt="" aria-hidden="true" key={trait} />
-              ))}
-              {Array.from({ length: Math.max(0, 4 - activeCard.traits.length) }, (_, index) => (
-                <span aria-hidden="true" key={index}>
-                  ?
-                </span>
-              ))}
+            <div className={activeCard.traitLabels?.length ? "nft-trait-strip text-traits" : "nft-trait-strip"}>
+              {activeCard.traitLabels?.length
+                ? activeCard.traitLabels.map((trait) => <span key={trait}>{t(trait)}</span>)
+                : activeCard.traits.map((trait) => <img src={trait} alt="" aria-hidden="true" key={trait} />)}
             </div>
           </div>
         </div>
@@ -109,7 +106,7 @@ export default function NFTPage() {
           <h3>{t("mint.title")}</h3>
           {nftMintStats.map(([value, label], index) => (
             <article className={`tone-${index}`} key={value}>
-              <strong>{value}</strong>
+              <strong>{t(value)}</strong>
               <span>{t(label)}</span>
             </article>
           ))}

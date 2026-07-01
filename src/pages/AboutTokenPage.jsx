@@ -65,7 +65,7 @@ export default function AboutTokenPage() {
             <img className="token-issue-coins" src={tokenCoinsImage} alt="$CIGR 代币金币" />
             <div>
               <strong>{t("about.tokenName")}: $CIGR</strong>
-              <span>{t("about.tokenSupply")}: 10 亿枚</span>
+              <span>{t("about.tokenSupply")}: {t("about.tokenSupplyValue")}</span>
             </div>
           </article>
           <article className="token-issue yellow">

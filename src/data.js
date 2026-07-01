@@ -8,6 +8,7 @@ export const menuRopeImage = "/images/brand/cigr-banner.jpg";
 
 export const cigrLogoImage = "/images/cigr/logo.png";
 export const cigrHeroVideo = "/videos/home-banner.mp4";
+export const cigrHomeAudio = "/audio/bg.m4a";
 export const cigrWordmarkImage = "/images/cigr/home/cigr-wordmark.png";
 export const cigrArrowBlackImage = "/images/cigr/home/arrow-black.png";
 export const cigrArrowWhiteImage = "/images/cigr/home/arrow-white.png";
@@ -80,7 +81,7 @@ export const cigrSocials = [
 ];
 
 // ===== 首页 =====
-export const homeStoryVideos = [1, 2, 3, 4, 6].map((item) => `/videos/home-stories/${item}.mp4`);
+export const homeStoryVideos = [1, 2, 3, 4].map((item) => `/videos/home-stories/${item}.mp4`).concat("/videos/home-stories/our-presence.mp4");
 export const cigrCardItems = [
   { title: "烟田", label: "F card", image: "/images/cigr/home/cards/2-1.jpg" },
   { title: "窖藏", label: "A card", image: "/images/cigr/home/cards/2-2.jpg" },
@@ -184,6 +185,7 @@ export const expansionImages = [
 export const partnerItems = [
   [`${designAboutPath}/bitflux-logo.png`, "Bitflux Limited，持牌数字银行，为 CIGR 会员提供全球支付、资产管理等金融服务。"],
   [`${designAboutPath}/roma-logo.png`, "ROMA.US，美股上市公司，全球领先的审计机构。为 CIGR 提供创新的底层资产上链证明服务。"],
+  [`${designAboutPath}/solana-partner.png`, "Solana ecosystem partner, supporting CIGR with high-performance on-chain infrastructure and global community reach."],
 ];
 export const mechanismItems = [
   ["国库收益回购销毁", "/images/cigr/home/icons/8-1.png", "国库通过资产增值、金融服务等获得的收益，将定期回购并销毁 $CIGR 代币。"],
@@ -227,10 +229,10 @@ export const brandWordmarks = [
   {
     label: "Wordmark white",
     tone: "light",
-    image: `${designBrandKitPath}/wordmark-white.jpg`,
+    image: cigrLogoImage,
     files: [
       ["JPG", `${designBrandKitPath}/wordmark-white.jpg`],
-      ["PNG", `${designBrandKitPath}/wordmark-white.png`],
+      ["PNG", cigrLogoImage],
     ],
   },
 ];
@@ -290,9 +292,10 @@ export const nftDesignCards = [
     access: "即将推出",
     status: "敬请期待",
     label: "One card",
-    image: `${designNftPath}/one-card.jpg`,
+    image: `${designNftPath}/one-card.png`,
     avatar: `${designNftPath}/one-avatar.png`,
-    traits: [`${designNftPath}/one-trait-1.png`],
+    traits: [],
+    traitLabels: ["创世身份", "最高机密", "未来决议", "稀缺权益"],
     text: "雪茄会的创始成员，掌握着组织最高秘密。他们决定世界的未来。",
     href: "#/perks",
   },

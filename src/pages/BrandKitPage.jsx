@@ -61,7 +61,9 @@ export default function BrandKitPage() {
         <div className="logo-modes-grid">
           {brandWordmarks.map((mark) => (
             <figure className={`wordmark-card ${mark.tone}`} key={mark.label}>
-              <div className="wordmark-canvas" style={{ backgroundImage: `url(${mark.image})` }} role="img" aria-label={mark.label} />
+              <div className="wordmark-canvas">
+                <img src={mark.image} alt={mark.label} />
+              </div>
               <figcaption>
                 <span>{mark.label}</span>
                 <div className="wordmark-actions">
