@@ -91,7 +91,7 @@ function CigrHero() {
             <span aria-hidden="true">{t("home.title")}</span>
           </span>
         </h1>
-        <p>{t("home.description")}</p>
+        {/* <p>{t("home.description")}</p> */}
         <div className="cigr-hero-actions">
           <a className="cigr-button yellow" href="#/mint">
             {t("home.cta.mint")}

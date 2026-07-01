@@ -206,7 +206,7 @@ export default function Navigation({ currentPage }) {
           </a>
           <div className="mobile-socials" aria-label={t("site.socialLinks")}>
             {cigrSocials.map((item) => (
-              <a href="#" key={item.label} aria-label={item.label} onClick={closeMenu}>
+              <a href={item.href} key={item.label} aria-label={item.label} target="_blank" rel="noreferrer" onClick={closeMenu}>
                 <img src={item.icon} alt="" aria-hidden="true" />
               </a>
             ))}

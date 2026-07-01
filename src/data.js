@@ -74,10 +74,9 @@ export const footerColumns = [
 ];
 
 export const cigrSocials = [
-  { label: "X", icon: "/images/cigr/home/social/social-1.png" },
-  { label: "Instagram", icon: "/images/cigr/home/social/social-2.png" },
-  { label: "Discord", icon: "/images/cigr/home/social/social-3.png" },
-  { label: "Telegram", icon: "/images/cigr/home/social/social-4.png" },
+  { label: "X", icon: "/images/cigr/home/social/social-1.png", href: "https://x.com/cigrhabana" },
+  { label: "YouTube", icon: "/images/icons/icon-youtube.svg", href: "https://www.youtube.com/@cigrhabana" },
+  { label: "Instagram", icon: "/images/cigr/home/social/social-2.png", href: "https://www.instagram.com/cigrhabana/" },
 ];
 
 // ===== 首页 =====

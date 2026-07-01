@@ -10,7 +10,7 @@ export default function AboutTokenPage() {
   return (
     <main className="cigr-page about-token-page">
       <section className="about-hero cigr-section">
-        <p className="page-label">{t("about.pageLabel")}</p>
+        {/* <p className="page-label">{t("about.pageLabel")}</p> */}
         <h1>{t("about.title")}</h1>
         <p>{t("about.description")}</p>
         <img src={aboutBannerImage} alt="CIGR global pass banner" />

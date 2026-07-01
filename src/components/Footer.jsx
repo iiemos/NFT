@@ -28,7 +28,7 @@ export default function Footer() {
             <h3>{t("footer.joinCommunity")}</h3>
             <div className="footer-socials">
               {cigrSocials.map((item) => (
-                <a href="#" key={item.label} aria-label={item.label}>
+                <a href={item.href} key={item.label} aria-label={item.label} target="_blank" rel="noreferrer">
                   <img src={item.icon} alt="" aria-hidden="true" />
                 </a>
               ))}
