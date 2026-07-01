@@ -304,8 +304,9 @@ export const nftPerkImages = [
   [`${designNftPath}/perk-2.jpg`, "高端雪茄实物权益 NFT 兑换", "将链上身份与真实雪茄资产连接，形成收藏、兑换和权益验证闭环。"],
 ];
 export const mintMethodItems = [
-  [`${designMintPath}/icon-a.png`, "定向邀约白名单", "社区长和 KOL"],
-  [`${designMintPath}/icon-b.png`, "持币解锁白名单", "连续 7 天日均持仓价值 ≥100U"],
+  [`${designMintPath}/icon-a.png`, "固定白名单", "分发给 KOL 或其他核心人员"],
+  [`${designMintPath}/icon-b.png`, "优先白名单", "可通过做任务获得，或持仓代币获得"],
+  ["/images/cigr/home/icons/8-4.png", "公开发售", "面向全部社区用户开放"],
 ];
 export const mintTraitBadges = ["LEGENDARY CROWN", "GOLD TEXTURE", "QUANTUM AURA"];
 export const mintLiveActivities = [
