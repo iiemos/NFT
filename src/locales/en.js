@@ -69,7 +69,7 @@ export const enLocale = {
 
   "about.pageLabel": "About",
   "about.title": "What is CIGR?",
-  "about.description": "CIGR is a global lifestyle membership system powered by blockchain. Through NFT identity credentials, it builds a community of shared culture, circulation, and IP rights.",
+  "about.description": "CIGR is a blockchain-based lifestyle brand membership system anchored in the value of cigar-backed RWAs; it utilizes NFTs as identity credentials and operates as a meme-driven community offering exclusive benefits.",
   "about.partners": "Partners",
   "about.roadmap": "Roadmap",
   "about.roadmapAction": "Learn more",

@@ -9,7 +9,7 @@ import {
 import { enLocale } from "./locales/en.js";
 import { zhLocale } from "./locales/zh-TW.js";
 
-const STORAGE_KEY = "cigr-lang";
+const STORAGE_KEY = "cigr-lang-v2";
 const DEFAULT_LOCALE = "en";
 const LocaleContext = createContext(null);
 

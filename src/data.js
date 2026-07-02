@@ -23,6 +23,7 @@ export const designClubPath = "/images/cigr/design/club";
 export const designBrandKitPath = "/images/cigr/design/brand-kit";
 export const designSynthesisPath = "/images/cigr/design/synthesis";
 export const brandKitDownload = "/downloads/cigr-logo-kit.zip";
+export const clubPresenceVideo = "/videos/club/our-presence.mp4";
 
 export const nftImages = Array.from({ length: 9 }, (_, index) => `/images/nft/nft-${String(index + 1).padStart(2, "0")}.jpg`);
 export const stakedNftImage = nftImages[2];
@@ -77,10 +78,11 @@ export const cigrSocials = [
   { label: "X", icon: "/images/cigr/home/social/social-1.png", href: "https://x.com/cigrhabana" },
   { label: "YouTube", icon: "/images/icons/icon-youtube.svg", href: "https://www.youtube.com/@cigrhabana" },
   { label: "Instagram", icon: "/images/cigr/home/social/social-2.png", href: "https://www.instagram.com/cigrhabana/" },
+  { label: "Telegram", icon: "/images/cigr/home/social/social-4.png", href: "#" },
 ];
 
 // ===== 首页 =====
-export const homeStoryVideos = [1, 2, 3, 4].map((item) => `/videos/home-stories/${item}.mp4`).concat("/videos/home-stories/our-presence.mp4");
+export const homeStoryVideos = [1, 2, 3, 4, 6].map((item) => `/videos/home-stories/${item}.mp4`);
 export const cigrCardItems = [
   { title: "烟田", label: "F card", image: "/images/cigr/home/cards/2-1.jpg" },
   { title: "窖藏", label: "A card", image: "/images/cigr/home/cards/2-2.jpg" },
@@ -133,7 +135,7 @@ export const createStoryColumns = [
     offset: "mid",
     items: [
       { type: "image", shape: "square", image: cultureImages[2], alt: "CIGR streetwear story" },
-      { type: "action", shape: "square", tone: "cyan", title: "开始 Mint", href: "#/mint", mark: "+" },
+      { type: "action", shape: "square", tone: "cyan", title: "X", href: "https://x.com/cigrhabana", mark: "X" },
       { type: "video", shape: "tall", video: homeStoryVideos[2], alt: "CIGR limited story" },
     ],
   },
@@ -148,14 +150,14 @@ export const createStoryColumns = [
     offset: "mid",
     items: [
       { type: "image", shape: "tall", image: cigrCardItems[3].image, alt: "CIGR one card story" },
-      { type: "action", shape: "square", tone: "yellow", title: "查看 Auction", href: "#/auction", mark: "↗" },
+      { type: "action", shape: "square", tone: "yellow", title: "Youtube", href: "https://www.youtube.com/@cigrhabana", mark: "YT" },
       { type: "image", shape: "square", image: cultureImages[5], alt: "CIGR sketch story" },
     ],
   },
   {
     offset: "low",
     items: [
-      { type: "action", shape: "square", tone: "pink", title: "进入 Fusion", href: "#/synthesis", mark: "×" },
+      { type: "action", shape: "square", tone: "pink", title: "Ins", href: "https://www.instagram.com/cigrhabana/", mark: "IG" },
       { type: "video", shape: "tall", video: homeStoryVideos[4], alt: "CIGR fusion story" },
       { type: "image", shape: "square", image: cultureImages[6], alt: "CIGR collectible story" },
     ],
@@ -164,7 +166,7 @@ export const createStoryColumns = [
     offset: "deep",
     items: [
       { type: "image", shape: "tall", image: nftImages[3], alt: "CIGR community story" },
-      { type: "action", shape: "square", tone: "black", title: "关注 CIGR", href: "#/club", mark: "C" },
+      { type: "action", shape: "square", tone: "black", title: "Telegram", href: "#", mark: "TG" },
     ],
   },
 ];

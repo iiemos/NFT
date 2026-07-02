@@ -27,11 +27,14 @@ export default function Footer() {
           <div>
             <h3>{t("footer.joinCommunity")}</h3>
             <div className="footer-socials">
-              {cigrSocials.map((item) => (
-                <a href={item.href} key={item.label} aria-label={item.label} target="_blank" rel="noreferrer">
-                  <img src={item.icon} alt="" aria-hidden="true" />
-                </a>
-              ))}
+              {cigrSocials.map((item) => {
+                const isExternalLink = item.href.startsWith("http");
+                return (
+                  <a href={item.href} key={item.label} aria-label={item.label} target={isExternalLink ? "_blank" : undefined} rel={isExternalLink ? "noreferrer" : undefined}>
+                    <img src={item.icon} alt="" aria-hidden="true" />
+                  </a>
+                );
+              })}
             </div>
           </div>
         </div>

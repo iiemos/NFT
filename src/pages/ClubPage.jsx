@@ -1,4 +1,4 @@
-import { clubIntroPoints, clubLocations, designClubPath } from "../data.js";
+import { clubIntroPoints, clubLocations, clubPresenceVideo, designClubPath } from "../data.js";
 import { useI18n } from "../i18n.js";
 
 export default function ClubPage() {
@@ -13,6 +13,12 @@ export default function ClubPage() {
             <p>{t("club.heroDescription")}</p>
           </div>
         </div>
+      </section>
+
+      <section className="figma-sheet cigr-section club-presence-section">
+        <video className="club-presence-video" aria-label="CIGR club presence" autoPlay loop muted playsInline preload="metadata">
+          <source src={clubPresenceVideo} type="video/mp4" />
+        </video>
       </section>
 
       <section className="club-house-band" style={{ "--club-bg": `url(${designClubPath}/house-bg.jpg)` }}>

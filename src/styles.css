@@ -1,3 +1,19 @@
+@font-face {
+  font-family: "CIGR Roboto";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/Roboto-Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "CIGR Roboto";
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url("/fonts/Roboto-Black.ttf") format("truetype");
+}
+
 :root {
   --primary: #805062;
   --primary-soft: #ffc1d6;
@@ -136,14 +152,9 @@ main {
     width: 0;
   }
 
-  42%,
-  78% {
-    width: 15ch;
-  }
-
-  79%,
+  72%,
   100% {
-    width: 0;
+    width: 15ch;
   }
 }
 
@@ -2948,6 +2959,8 @@ body {
   width: 15ch;
   max-width: 100%;
   overflow: hidden;
+  font-family: "CIGR Roboto", Arial, sans-serif;
+  font-weight: 900;
   text-align: left;
   white-space: nowrap;
 }
@@ -2957,7 +2970,7 @@ body {
   width: 0;
   overflow: hidden;
   border-right: 0.08em solid currentColor;
-  animation: hero-typewriter 6.4s steps(15, end) infinite, hero-caret 0.8s step-end infinite;
+  animation: hero-typewriter 5.6s steps(15, end) 1 both, hero-caret 0.8s step-end 7 forwards;
   white-space: nowrap;
 }
 
@@ -3806,29 +3819,29 @@ body {
 
 .distribution-section {
   background: #eeeeee;
-  padding: 58px 0;
+  padding: 72px 0;
 }
 
 .distribution-inner {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(220px, 0.82fr) 228px minmax(260px, 0.9fr);
-  width: min(100% - 48px, 1080px);
-  gap: 58px;
+  grid-template-columns: minmax(280px, 0.8fr) 320px minmax(340px, 0.9fr);
+  width: min(100% - 48px, 1200px);
+  gap: 68px;
   align-items: center;
   margin: 0 auto;
 }
 
 .distribution-inner h2 {
-  margin: 0 0 64px;
-  font-size: clamp(24px, 2.4vw, 32px);
+  margin: 0 0 76px;
+  font-size: clamp(30px, 3vw, 42px);
   font-weight: 950;
   line-height: 1.12;
 }
 
 .donut-chart {
   position: relative;
-  width: 228px;
+  width: 320px;
   aspect-ratio: 1;
   border-radius: 999px;
   background: conic-gradient(from 218deg, var(--cigr-yellow) 0 10%, var(--cigr-cyan) 10% 100%);
@@ -3836,7 +3849,7 @@ body {
 
 .donut-chart::before {
   position: absolute;
-  inset: 58px;
+  inset: 82px;
   content: "";
   background: #eeeeee;
   border-radius: inherit;
@@ -3844,13 +3857,13 @@ body {
 
 .donut-chart::after {
   position: absolute;
-  left: 16px;
-  bottom: 54px;
-  width: 40px;
-  height: 40px;
+  left: 24px;
+  bottom: 76px;
+  width: 54px;
+  height: 54px;
   content: "";
   background: var(--cigr-yellow);
-  border: 5px solid #eeeeee;
+  border: 7px solid #eeeeee;
   border-radius: 999px;
 }
 
@@ -3860,22 +3873,22 @@ body {
 
 .allocation-note {
   display: grid;
-  gap: 5px;
-  max-width: 290px;
+  gap: 8px;
+  max-width: 360px;
 }
 
 .allocation-note.left {
   justify-self: end;
-  max-width: 250px;
+  max-width: 300px;
 }
 
 .allocation-note strong {
-  font-size: 24px;
+  font-size: 32px;
   line-height: 1;
 }
 
 .allocation-note span {
-  font-size: 13px;
+  font-size: 16px;
   font-weight: 950;
   line-height: 1.2;
 }
@@ -3883,7 +3896,7 @@ body {
 .allocation-note p {
   margin: 0;
   color: var(--cigr-text);
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 700;
   line-height: 1.45;
 }
@@ -6369,6 +6382,18 @@ body {
 
 .club-top-row h2 {
   margin-bottom: 14px;
+}
+
+.club-presence-section {
+  padding-top: 0;
+}
+
+.club-presence-video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 8px;
 }
 
 .club-house-band {

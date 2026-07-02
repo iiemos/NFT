@@ -1,6 +1,9 @@
+import { useEffect } from "react";
+import BackgroundMusic from "./components/BackgroundMusic.jsx";
 import Footer from "./components/Footer.jsx";
 import Navigation from "./components/Navigation.jsx";
-import { useHashPage } from "./router.js";
+import { lockedNftRouteIds, useHashPage } from "./router.js";
+import { useI18n } from "./i18n.js";
 
 import HomePage from "./pages/HomePage.jsx";
 import AboutTokenPage from "./pages/AboutTokenPage.jsx";
@@ -29,11 +32,21 @@ const pageComponents = {
 
 export default function App() {
   const page = useHashPage();
-  const PageComponent = pageComponents[page] ?? HomePage;
+  const { t } = useI18n();
+  const isLockedNftPage = lockedNftRouteIds.includes(page);
+  const currentPage = isLockedNftPage ? "nft" : page;
+  const PageComponent = pageComponents[currentPage] ?? HomePage;
+
+  useEffect(() => {
+    if (!isLockedNftPage) return;
+    window.alert(t("pages.auctionComing"));
+    window.location.hash = "#/nft";
+  }, [isLockedNftPage, t]);
 
   return (
     <>
-      <Navigation currentPage={page} />
+      <Navigation currentPage={currentPage} />
+      <BackgroundMusic />
       <PageComponent />
       <Footer />
     </>

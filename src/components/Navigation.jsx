@@ -205,11 +205,14 @@ export default function Navigation({ currentPage }) {
             {t("nav.buy")}
           </a>
           <div className="mobile-socials" aria-label={t("site.socialLinks")}>
-            {cigrSocials.map((item) => (
-              <a href={item.href} key={item.label} aria-label={item.label} target="_blank" rel="noreferrer" onClick={closeMenu}>
-                <img src={item.icon} alt="" aria-hidden="true" />
-              </a>
-            ))}
+            {cigrSocials.map((item) => {
+              const isExternalLink = item.href.startsWith("http");
+              return (
+                <a href={item.href} key={item.label} aria-label={item.label} target={isExternalLink ? "_blank" : undefined} rel={isExternalLink ? "noreferrer" : undefined} onClick={closeMenu}>
+                  <img src={item.icon} alt="" aria-hidden="true" />
+                </a>
+              );
+            })}
           </div>
           <img className="menu-rope" src={menuRopeImage} alt="" aria-hidden="true" />
         </div>

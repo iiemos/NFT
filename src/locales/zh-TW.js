@@ -69,7 +69,7 @@ export const zhLocale = {
 
   "about.pageLabel": "關於",
   "about.title": "什麼是 CIGR？",
-  "about.description": "CIGR 是一個基於區塊鏈的全球潮牌生活方式會員體系，透過發行 NFT 身份憑證，構建由 MEME 驅動、共享流量與 IP 權益的興趣社群。",
+  "about.description": "CIGR 是一個基於區塊鏈的生活方式品牌會員體系，以雪茄實物托底 RWA 的價值為核心，透過 NFT 作為身份憑證，並以 MEME 驅動社群運營，提供專屬會員權益。",
   "about.partners": "合作夥伴",
   "about.roadmap": "發展路線圖",
   "about.roadmapAction": "了解更多",

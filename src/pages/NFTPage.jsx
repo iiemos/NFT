@@ -1,21 +1,17 @@
 import { useState } from "react";
-import ExchangeModal from "../components/ExchangeModal.jsx";
-import ExchangeRecords from "../components/ExchangeRecords.jsx";
 import MintIdentityPanel from "../components/MintIdentityPanel.jsx";
-import SynthesisDesignCard from "../components/SynthesisDesignCard.jsx";
-import { designMintPath, designNftPath, mintMethodItems, nftDesignCards, nftEcosystemMetrics, nftMintStats, nftPerkImages, synthesisGroups } from "../data.js";
+import { designMintPath, designNftPath, mintMethodItems, nftDesignCards, nftEcosystemMetrics, nftMintStats, nftPerkImages } from "../data.js";
 import { useI18n } from "../i18n.js";
 
 export default function NFTPage() {
   const [activeCardIndex, setActiveCardIndex] = useState(0);
-  const [isExchangeOpen, setIsExchangeOpen] = useState(false);
   const activeCard = nftDesignCards[activeCardIndex];
   const { t } = useI18n();
 
   return (
     <main className="cigr-page figma-page nft-overview-page">
       <section className="figma-sheet cigr-section nft-profile-section">
-        <h1 className="figma-page-title">{t("nft.pageTitle")}</h1>
+        {/* <h1 className="figma-page-title">{t("nft.pageTitle")}</h1> */}
 
         <div className="nft-story">
           <h2>The Cigar Society</h2>
@@ -129,44 +125,6 @@ export default function NFTPage() {
           </div>
         </div>
       </section>
-
-      <section className="figma-sheet cigr-section compact" id="nft-synthesis-section">
-        <h2>{t("synthesis.title")}</h2>
-        <div className="synthesis-stack">
-          {synthesisGroups.map((group) => (
-            <SynthesisDesignCard group={group} key={group.title} />
-          ))}
-          <article className="synthesis-upgrade-card">
-            <div>
-              <h3>{t("synthesis.subtitle")}</h3>
-              <p>{t("synthesis.description")}</p>
-            </div>
-            <a href="#/synthesis">{t("nft.toSynthesis")}</a>
-          </article>
-        </div>
-      </section>
-
-      <section className="nft-auction-coming" style={{ "--auction-bg": "url(/images/cigr/design/auction/coming-soon.jpg)" }}>
-        <h2>{t("pages.auction")}</h2>
-        <strong>{t("pages.auctionComing")}</strong>
-      </section>
-
-      <section className="figma-sheet cigr-section compact" id="nft-exchange-section">
-        <h2>{t("pages.perks")}</h2>
-        <div className="exchange-hero-row">
-          <div>
-            <h3>{t("pages.redemptionTitle")}</h3>
-            <p>{t("pages.redemptionDesc")}</p>
-            <button type="button" onClick={() => setIsExchangeOpen(true)} aria-label={t("pages.redemptionAction")}>
-              {t("pages.redemptionAction")}
-            </button>
-          </div>
-          <img src="/images/cigr/design/exchange/gift.jpg" alt="CIGR gift center" />
-        </div>
-        <ExchangeRecords />
-      </section>
-
-      {isExchangeOpen && <ExchangeModal onClose={() => setIsExchangeOpen(false)} />}
     </main>
   );
 }

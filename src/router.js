@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 export const routeIds = ["home", "about", "club", "brand-kit", "nft", "mint", "staking", "synthesis", "auction", "perks"];
 // 归属「NFT」一级导航的子页面 id
 export const nftRouteIds = ["nft", "mint", "staking", "synthesis", "auction", "perks"];
+export const lockedNftRouteIds = ["mint", "staking", "synthesis", "auction", "perks"];
 
 export function getPageFromHash() {
   const page = window.location.hash.replace("#/", "") || "home";
